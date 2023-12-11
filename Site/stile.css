@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* Colors definition */
+:root {
+    --textColor: rgb(207, 144, 56);
+    --backgroundColor: rgb(0, 33, 38);
+    --headerBgColor: rgb(0, 33, 38);
+    --headerTextColor: rgb(237, 204, 140);
+    --footerBgColor: rgb(0, 0, 0);
+    --footerTextColor: rgb(255, 255, 255);
+    --linkColor: rgb(207, 144, 56);
+    --linkVisited: rgb(255, 255, 255);
+    
+    --flagColor1: rgb(0, 65, 56);   /* Usato solo su attività sulle cards*/
+
+    --flagColor2: rgb(0, 33, 38);
+    --flagColor3: rgb(237, 204, 140);
+    --flagColor4: rgb(207, 144, 56);
+    
+    --flagColor5: rgba(0, 145, 150, 0.795);   /* Usato solo su attività sulle cards*/
+
+    --font-body-family: "Verdana", sans-serif;
+}
+
+html {
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    font-size: 100%;
+    font-family: var(--font-body-family);
+    line-height: 1.5em;
+    margin: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ----------------------------------------------------------
+   |                         FOOTER                         |
+   ----------------------------------------------------------
+*/
+footer {
+    background-color: var(--footerBgColor);
+    color: var(--footerTextColor);
+    text-align: center;
+    margin-top: auto;
+    padding: 2em;
+}
+
+/* ----------------------------------------------------------
+   |                         HEADER                         |
+   ----------------------------------------------------------
+*/
+header {
+    background-color: var(--headerBgColor);
+    color: var(--headerTextColor);
+    text-align: center;
+    padding: 1em;
+}
+
+/* ----------------------------------------------------------
+   |                           NAV                          |
+   ----------------------------------------------------------
+*/
+
+ul {
+    margin: auto;
+    max-width: 1024px;
+    padding: 1em;
+    list-style-type: none;
+}
+
+nav {
+    background-color: var(--headerBgColor);
+    color: var(--headerTextColor);
+}
+
+#menu {
+    text-align: center;
+    padding-top: 1.5em;
+}
+
+#menu ul li {
+    display: inline-block;
+    width: 18%;
+}
+
+#menu ul li:not(:has(> a)) {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#breadcrump {
+    padding: 1.5em;
+}
+
+#breadcrump p {
+    max-width: 1024px;
+    margin: auto;
+    margin-left: 13%;
+}
+
+nav a:link {
+    color: var(--linkColor);
+    font-weight: normal;
+}
+
+nav a:visited {
+    color: var(--linkVisited);
+}
+
+/* ----------------------------------------------------------
+   |                          MAIN                          |
+   ----------------------------------------------------------
+*/
+
+main {
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+    margin: auto;
+}
+
+h1 {
+    padding: 0.5em;
+}
+
+.gradient-text {
+    background-image: linear-gradient(to right,
+            #462523 0,
+            #cb9b51 30%, 
+            #f6e27a 47%,
+            #f6f2c0 50%,
+            #f6e27a 53%,
+            #cb9b51 70%,
+            #462523 100%
+	);
+    color:transparent;
+    background-clip: text;
+}
+
+/***************************** INDEX *****************************/ 
+
+.main-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5em;
+    width: 100%;
+    min-height: 30em;
+    background-image: url(images/homeImg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.home-content h2 {
+    text-align: center;
+    font-size: 3em;
+    padding: 0.5em;
+    width: 10em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-content p {
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    padding: 1em;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-content input {
+    margin: 2.2em 2em 1em;
+    padding: 0.8em 1.5em;
+    border: 3.3px solid var(--flagColor4);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.home-content {
+    margin-bottom: 3em;
+    transform: translateY(-90%);
+    background-color: rgba(0, 33, 38, 0.6);
+    height: 8em;
+    border-top-right-radius: 10%;
+    border-top-left-radius: 10%;
+}
+
+.btn-empty-bg {
+    background-color: var(--flagColor2);
+    color: var(--flagColor4);
+}
+
+.btn-empty-bg:hover {
+    background-color: var(--flagColor4);
+    color: var(--flagColor2);
+}
+
+.btn-filled-bg {
+    background-color: var(--flagColor4);
+    color: var(--flagColor2);
+}
+
+.btn-filled-bg:hover {
+    background-color: var(--flagColor2);
+    color: var(--flagColor4);
+}
+
+/***************************** ATTIVITA *****************************/ 
+
+#sports {
+    text-align: center;
+    padding: 1em;
+    margin: 3em 0;
+}
+
+#sports > p {
+    margin-bottom: 0.8em;
+    color: var(--flagColor3);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+#sports h2 {
+    font-size: 3em;
+    line-height: 1.5em;
+    margin-bottom: 0.7em;
+}
+
+.separatore {
+    margin: auto;
+    width: 30px;
+    height: 5px;
+    background: var(--flagColor4);
+    margin-top: .5em;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    flex-wrap: wrap;
+}
+
+.container a {
+    position: relative;
+    width: 25em;
+    height: 17em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 50px;
+    transition: 0.5s;
+    text-decoration: none;
+    color: rgb(255, 255, 255, 0.3);
+}
+
+.container a span {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 2;
+}
+
+.container a .contenuto {
+    position: relative;
+    z-index: 10;
+    padding: 20px 40px;
+}
+
+.container a .contenuto h3 {
+    font-size: 2.5em;
+}
+
+/* Hover -> funziona solo sui dispositivi che lo supportano */
+.container a:hover {
+    /*transform: scale(1.1);*/
+    transform: translateY(-20px);
+    color: rgb(255, 255, 255, 1);
+}
+
+.container a:hover span {
+    opacity: 0.5;
+}
+
+.container a:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+}
+
+.container a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+    filter: blur(25px);
+}
+
+/* Applica solamente ai dispositivi che non supportano hover */
+@media (hover: none) {
+    .container a{
+        /*transform: scale(1.1);*/
+        transform: translateY(-20px);
+        color: rgb(255, 255, 255, 1);
+    }
+    
+    .container a span {
+        opacity: 0.5;
+    }
+    
+    .container a::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+    }
+}
+
+#calcetto {
+    background-image: url(images/calcetto.jpg);
+}
+
+#calcio {
+    background-image: url(images/calcio.jpg);
+}
+
+#pallavolo {
+    background-image: url(images/beachVolley.jpg);
+}
+
+#tennis {
+    background-image: url(images/tennis.jpg);
+}
+
+#paddel {
+    background-image: url(images/paddel.jpg);
+}
