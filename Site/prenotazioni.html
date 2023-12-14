@@ -9,47 +9,37 @@
         <meta name="description" content="">
 
         <link rel="stylesheet" href="stile.css" media="screen">
-        <link rel="stylesheet" href="tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:600px)">
         <link rel="stylesheet" href="print.css" media="print">
+        <script src="scripts/prenotation_logic.js"> </script>
+        <script src="script.js"></script>
     </head>
     <body>
-        <header>
-            <img id="logo" src="images/logo.png" alt="Logo">
-            <nav id="menu">
-                <ul>
-                    <li><a href="index.html"><span lang="en">Home</span></a></li>
-                    <li><a href="activities.html">Attività</a></li>
-                    <li><a href="">Eventi</a></li>
-                    <li><a href="">Contatti</a></li>
-                    <li><a href="">Accedi</a></li>
-                </ul>
-                <div class="hamburger" type="button">
-                    <div class="bar"></div>
-                </div>
-            </nav>
-        </header>
 
-        <nav class="mobile-nav">
-            <a href="index.html"><span lang="en">Home</span></a>
-            <a href="activities.html">Attività</a>
-            <a href="">Eventi</a>
-            <a href="">Contatti</a>
-            <a href="">Accedi</a>
-        </nav>
-        
         <nav id="breadcrump">
             <p>Ti trovi in: <a href="activities.html">Attività</a> &gt; Prenotazioni</p>
         </nav>
 
         <main>
 
+            <!-- Selezione della data -->
+            <h1 class="gradient-text">Prenota il tuo campo</h1>
+            <p id="data-description" class="gradient-text"> Seleziona la data</p>
+            <input type="date" id="dataSelezionata" name="dataSelezionata" required>
+
+            <!-- Selezione dell'ora tra quelle disponibili -->
+            <section id="fieldContainerSection" class="gradient-text"></section>
+            <script src="fieldsVisualizator.js" defer></script>
+            <!-- Conferma -->
+            <div id="confirmationButtonContainer">
+                <button id="confirmationButton">Confirm Selection</button>
+            </div>
+            <!--<input class="submitButton" role="button" aria-label="Conferma prenotazione" title="Conferma"> --> 
+
         </main>
 
         <footer>
             <span lang="en">CodeSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.
         </footer>
-
-        <script src="script.js"></script>
     </body>
 </html>
