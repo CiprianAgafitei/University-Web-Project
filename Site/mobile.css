@@ -1,8 +1,8 @@
 /* GENERAL */
 #logo {
-    width: 100px;
-    height: 100px;
-    padding: 0 1em 0;
+    width: 90px;
+    height: 80px;
+    padding: 1em 1em 1em;
 }
 
 .hamburger {
@@ -15,7 +15,7 @@
 }
 
 #breadcrump p {
-    margin-left: 22%;
+    margin-left: 20%;
 }
 
 /* ATTIVITA */
