@@ -431,6 +431,9 @@ main {
 }
 /***************************** PRENOTAZIONE *****************************/ 
 
+#prenotation-title{
+    padding: 1em;
+}
 
 /* Regola CSS per il paragrafo sotto Selezione Data */
 #data-description {
@@ -465,11 +468,11 @@ input[type="date"] {
 }
 
 input[type="date"]:hover {
-    max-width: 150px;
     border-color: black;
 }
 
 input[type="date"]:focus {
+    max-width: 150px;
     border-color: black;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
