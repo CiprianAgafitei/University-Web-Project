@@ -68,10 +68,10 @@ header {
 }
 
 #logo {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 90px;
     float: left;
-    padding: 0 3em 0;
+    padding: 0.5em 3em 0.5em;
 }
 
 .hamburger {
@@ -175,7 +175,7 @@ nav {
 #breadcrump p {
     max-width: 1024px;
     margin: auto;
-    margin-left: 15%;
+    margin-left: 12%;
 }
 
 nav a:link {
