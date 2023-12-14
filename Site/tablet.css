@@ -13,7 +13,7 @@ ul {
 }
 
 #logo {
-    padding: 0 1em 0;
+    padding: 1em 2em 0.5em;
 }
 
 #breadcrump {
@@ -42,9 +42,6 @@ ul {
 /* ATTIVITA */
 
 .container a {
-    /*width: 17em;
-    height: 13em;
-    margin: 15px 20px;*/
     width: 40%;
     height: 12em;
     margin: 15px 20px;
