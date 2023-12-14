@@ -9,22 +9,32 @@
         <meta name="description" content="">
 
         <link rel="stylesheet" href="stile.css" media="screen">
-        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:600px)">
+        <link rel="stylesheet" href="tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">
         <link rel="stylesheet" href="print.css" media="print">
     </head>
     <body>
         <header>
-            <h1><span lang="en">CodeSportsCenter</span></h1>
+            <img id="logo" src="images/logo.png" alt="Logo">
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html"><span lang="en">Home</span></a></li>
+                    <li>Attività</li>
+                    <li><a href="">Eventi</a></li>
+                    <li><a href="">Contatti</a></li>
+                    <li><a href="">Accedi</a></li>
+                </ul>
+                <div class="hamburger" type="button">
+                    <div class="bar"></div>
+                </div>
+            </nav>
         </header>
 
-        <nav id="menu">
-            <ul>
-                <li><a href="index.html"><span lang="en">Home</span></a></li>
-                <li>Attività</li>
-                <li><a href="">Eventi</a></li>
-                <li><a href="">Contatti</a></li>
-                <li><a href="">Accedi</a></li>
-            </ul>
+        <nav class="mobile-nav">
+            <a href="index.html"><span lang="en">Home</span></a></li>
+            <a href="">Eventi</a>
+            <a href="">Contatti</a>
+            <a href="">Accedi</a>
         </nav>
 
         <nav id="breadcrump">
@@ -39,31 +49,31 @@
                 <div class="separatore"></div>
 
                 <div class="container">
-                    <a href="prenotazioni.html">
+                    <a href="prenotazioni.html?option=calcetto">
                         <span id="calcetto"></span>
                         <div class="contenuto">
                             <h3>Calcetto</h3>
                         </div>
                     </a>
-                    <a href="prenotazioni.html">
+                    <a href="prenotazioni.html?option=calcio">
                         <span id="calcio"></span>
                         <div class="contenuto">
                             <h3>Calcio</h3>
                         </div>
                     </a>
-                    <a href="prenotazioni.html">
+                    <a href="prenotazioni.html?option=pallavolo">
                         <span id="pallavolo"></span>
                         <div class="contenuto">
                             <h3>Pallavolo</h3>
                         </div>
                     </a>
-                    <a href="prenotazioni.html">
+                    <a href="prenotazioni.html?option=tennis">
                         <span id="tennis"></span>
                         <div class="contenuto">
                             <h3>Tennis</h3>
                         </div>
                     </a>
-                    <a href="prenotazioni.html">
+                    <a href="prenotazioni.html?option=paddel">
                         <span id="paddel"></span>
                         <div class="contenuto">
                             <h3>Paddel</h3>
@@ -78,5 +88,7 @@
         <footer>
             <span lang="en">CodeSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.
         </footer>
+
+        <script src="script.js"></script>
     </body>
 </html>
