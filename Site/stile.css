@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-/* Colors definition */
+
 :root {
     --textColor: rgb(207, 144, 56);
     --backgroundColor: rgb(0, 33, 38);
@@ -13,14 +13,11 @@
     --linkColor: rgb(207, 144, 56);
     --linkVisited: rgb(255, 255, 255);
     
-    --flagColor1: rgb(0, 65, 56);   /* Usato solo su attività sulle cards*/
-
+    --flagColor1: rgb(0, 65, 56);
     --flagColor2: rgb(0, 33, 38);
     --flagColor3: rgb(237, 204, 140);
     --flagColor4: rgb(207, 144, 56);
-    
-    --flagColor5: rgba(0, 145, 150, 0.795);   /* Usato solo su attività sulle cards*/
-
+    --flagColor5: rgba(0, 145, 150, 0.795);
     --font-body-family: "Verdana", sans-serif;
 }
 
@@ -31,41 +28,33 @@ html {
     font-family: var(--font-body-family);
     line-height: 1.5em;
     margin: auto;
+    position:relative;
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin-bottom: 4em;
+
 }
 
-/* ----------------------------------------------------------
-   |                         FOOTER                         |
-   ----------------------------------------------------------
-*/
 footer {
     background-color: var(--footerBgColor);
     color: var(--footerTextColor);
     text-align: center;
-    margin-top: auto;
-    padding: 2em;
+    margin-top: 2em;
+    padding: 1em;
+    bottom:0;
+    position: absolute;
 }
 
-/* ----------------------------------------------------------
-   |                         HEADER                         |
-   ----------------------------------------------------------
-*/
 header {
     background-color: var(--headerBgColor);
     color: var(--headerTextColor);
     text-align: center;
     padding: 1em;
 }
-
-/* ----------------------------------------------------------
-   |                           NAV                          |
-   ----------------------------------------------------------
-*/
 
 ul {
     margin: auto;
@@ -113,16 +102,11 @@ nav a:visited {
     color: var(--linkVisited);
 }
 
-/* ----------------------------------------------------------
-   |                          MAIN                          |
-   ----------------------------------------------------------
-*/
-
 main {
     text-align: center;
     z-index: 1;
     width: 100%;
-    margin: auto;
+    margin-bottom: 4em;
 }
 
 h1 {
@@ -143,8 +127,6 @@ h1 {
     background-clip: text;
 }
 
-/***************************** INDEX *****************************/ 
-
 .main-background {
     display: flex;
     justify-content: center;
@@ -155,6 +137,17 @@ h1 {
     background-image: url(images/homeImg.jpg);
     background-size: cover;
     background-position: center;
+}
+
+.home-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.home-content.is-visible {
+    opacity: 1;
+    transform: translateY(-300);
 }
 
 .home-content h2 {
@@ -214,6 +207,42 @@ h1 {
     background-color: var(--flagColor2);
     color: var(--flagColor4);
 }
+
+/* Media query for screens with a maximum width of 600px (typical mobile devices) */
+@media screen and (max-width: 600px) {
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    #breadcrump p {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .home-content {
+        transform: translateY(-50%);
+        height: auto;
+        border-radius: 0;
+    }
+
+    .home-content h2 {
+        font-size: 2em;
+    }
+
+    .home-content p {
+        width: 90%;
+    }
+
+    main {
+        margin-bottom: 2em;
+    }
+
+    footer {
+        margin-top: 1em;
+    }
+}
+
 
 /***************************** ATTIVITA *****************************/ 
 
@@ -357,4 +386,143 @@ h1 {
 
 #paddel {
     background-image: url(images/paddel.jpg);
+}
+
+
+/***************************** PRENOTAZIONE *****************************/ 
+
+
+/* Regola CSS per il paragrafo sotto Selezione Data */
+#data-description {
+    font-size: 1.0em;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateX(800px);
+    transition: opacity 2s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Aggiungi questa regola per animare il paragrafo quando appare */
+#data-description.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+input[type="date"] {
+    padding: 12px;
+    border: 2px solid rgb(207, 144, 56);
+    border-radius: 10px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 250px;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    outline: none;
+    color:var(--flagColor4);;
+    transition: max-width 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+
+input[type="date"]:hover {
+    max-width: 150px;
+    border-color: black;
+}
+
+input[type="date"]:focus {
+    border-color: black;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.field-container {
+    color: var(--flagColor4);
+    background-color: #fff;
+    border: 2px solid var(--flagColor4);
+    border-radius: 10px;
+    margin: 30px auto; 
+    padding: 20px;
+    text-align: center;
+    width: 70%;
+    max-width: 600px;
+    background: linear-gradient(rgb(255, 255, 255,0.7), rgba(255, 255, 255, 0.6)), url('images/tennisview.jpeg');
+    background-size: cover;
+    background-position: center;
+    transition: max-width 0.5s ease-in-out, border-color 0.5s ease-in-out;
+    animation: slideIn 1s ease-in-out;
+}
+
+.field-container:hover{
+    border-color: black;
+}
+
+select {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.field-container h2 {
+    margin-bottom: 20px; 
+}
+
+.time-buttons {
+    margin-top: 10px; 
+}
+
+
+.time-buttons button {
+    margin-right: 10px; 
+    margin-bottom: 10px;
+    padding: 8px 16px;
+    border: 2px solid var(--flagColor4);;
+    border-radius: 10px;
+    background-color: #fff;
+    color: var(--flagColor4);;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*.time-buttons button:hover {
+    background-color: rgb(207, 144, 56);
+    color: #fff;
+}*/
+
+.time-buttons button.selected {
+    background-color: var(--flagColor4); 
+    color: #fff;
+}
+
+#confirmationButtonContainer {
+    margin-top: 20px; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+#confirmationButton {
+    padding: 10px 20px;
+    background-color: var(--flagColor4);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 2em;
+}
+
+#confirmationButton:hover {
+    background-color: #333; 
 }

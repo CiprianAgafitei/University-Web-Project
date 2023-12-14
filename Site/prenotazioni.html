@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="stile.css" media="screen">
         <link rel="stylesheet" href="mobile.css" media="screen and (max-width:600px)">
         <link rel="stylesheet" href="print.css" media="print">
+        <script src="scripts/prenotation_logic.js"> </script>
     </head>
     <body>
         <header>
@@ -32,16 +33,19 @@
 
         <main>
 
-            <form method="post">
-                
-                <!-- Selezione della data -->
+            <!-- Selezione della data -->
+            <h1 class="gradient-text">Prenota il tuo campo</h1>
+            <p id="data-description" class="gradient-text"> Seleziona la data</p>
+            <input type="date" id="dataSelezionata" name="dataSelezionata" required>
 
-                <!-- Selezione dell'ora tra quelle disponibili -->
-
-                <!-- Conferma -->
-                <input class="submitButton" role="button" aria-label="Conferma prenotazione" title="Conferma">
-
-            </form>
+            <!-- Selezione dell'ora tra quelle disponibili -->
+            <section id="fieldContainerSection" class="gradient-text"></section>
+            <script src="fieldsVisualizator.js" defer></script>
+            <!-- Conferma -->
+            <div id="confirmationButtonContainer">
+                <button id="confirmationButton">Confirm Selection</button>
+            </div>
+            <!--<input class="submitButton" role="button" aria-label="Conferma prenotazione" title="Conferma"> --> 
 
         </main>
 
