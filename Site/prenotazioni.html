@@ -9,44 +9,47 @@
         <meta name="description" content="">
 
         <link rel="stylesheet" href="stile.css" media="screen">
-        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:600px)">
+        <link rel="stylesheet" href="tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">
         <link rel="stylesheet" href="print.css" media="print">
     </head>
     <body>
         <header>
-            <h1><span lang="en">CodeSportsCenter</span></h1>
+            <img id="logo" src="images/logo.png" alt="Logo">
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html"><span lang="en">Home</span></a></li>
+                    <li><a href="activities.html">Attività</a></li>
+                    <li><a href="">Eventi</a></li>
+                    <li><a href="">Contatti</a></li>
+                    <li><a href="">Accedi</a></li>
+                </ul>
+                <div class="hamburger" type="button">
+                    <div class="bar"></div>
+                </div>
+            </nav>
         </header>
 
-        <nav id="menu">
-            <ul>
-                <li><a href="index.html"><span lang="en">Home</span></a></li>
-                <li><a href="activities.html">Attività</a></li>
-                <li><a href="">Contatti</a></li>
-                <li><a href="">Accedi</a></li>
-            </ul>
+        <nav class="mobile-nav">
+            <a href="index.html"><span lang="en">Home</span></a>
+            <a href="activities.html">Attività</a>
+            <a href="">Eventi</a>
+            <a href="">Contatti</a>
+            <a href="">Accedi</a>
         </nav>
-
+        
         <nav id="breadcrump">
             <p>Ti trovi in: <a href="activities.html">Attività</a> &gt; Prenotazioni</p>
         </nav>
 
         <main>
 
-            <form method="post">
-                
-                <!-- Selezione della data -->
-
-                <!-- Selezione dell'ora tra quelle disponibili -->
-
-                <!-- Conferma -->
-                <input class="submitButton" role="button" aria-label="Conferma prenotazione" title="Conferma">
-
-            </form>
-
         </main>
 
         <footer>
             <span lang="en">CodeSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.
         </footer>
+
+        <script src="script.js"></script>
     </body>
 </html>

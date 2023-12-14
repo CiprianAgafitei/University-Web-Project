@@ -59,7 +59,81 @@ header {
     background-color: var(--headerBgColor);
     color: var(--headerTextColor);
     text-align: center;
-    padding: 1em;
+    display: inline-block;
+    z-index: 99;
+    position: sticky;
+    top: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#logo {
+    width: 120px;
+    height: 120px;
+    float: left;
+    padding: 0 3em 0;
+}
+
+.hamburger {
+    display: none;
+    margin: 1em 2em 0;
+    float: right;
+    width: 35px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.hamburger .bar, .hamburger:after, .hamburger:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: var(--flagColor3);
+    margin: 6px 0px;
+    transition: 0.3s;
+}
+
+.hamburger.is-active:before {
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.hamburger.is-active:after {
+    transform: rotate(45deg) translate(-9px, -8px);
+}
+
+.hamburger.is-active .bar {
+    opacity: 0;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 40%;
+    min-height: 100vh;
+    display: block;
+    z-index: 98;
+    background-color: var(--flagColor2);
+    padding-top: 100px;
+    transition: 0.4s;
+}
+
+.mobile-nav.is-active {
+    left: 60%;
+}
+
+.mobile-nav a {
+    display: block;
+    width: 100%;
+    max-width: 80px;
+    margin: 40px auto 16px;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.2em;
+    color: var(--flagColor2);
 }
 
 /* ----------------------------------------------------------
@@ -70,7 +144,7 @@ header {
 ul {
     margin: auto;
     max-width: 1024px;
-    padding: 1em;
+    padding: 1.5em;
     list-style-type: none;
 }
 
@@ -86,7 +160,7 @@ nav {
 
 #menu ul li {
     display: inline-block;
-    width: 18%;
+    width: 15%;
 }
 
 #menu ul li:not(:has(> a)) {
@@ -95,13 +169,13 @@ nav {
 }
 
 #breadcrump {
-    padding: 1.5em;
+    padding: 0 1.5em 1.5em;
 }
 
 #breadcrump p {
     max-width: 1024px;
     margin: auto;
-    margin-left: 13%;
+    margin-left: 15%;
 }
 
 nav a:link {
@@ -123,10 +197,6 @@ main {
     z-index: 1;
     width: 100%;
     margin: auto;
-}
-
-h1 {
-    padding: 0.5em;
 }
 
 .gradient-text {
@@ -157,13 +227,21 @@ h1 {
     background-position: center;
 }
 
-.home-content h2 {
+.home-content {
+    margin-bottom: 5em;
+    transform: translateY(-90%);
+    background-color: rgba(0, 33, 38, 0.6);
+    height: 8em;
+    border-top-right-radius: 10%;
+    border-top-left-radius: 10%;
+}
+
+.home-content h1 {
     text-align: center;
     font-size: 3em;
     padding: 0.5em;
     width: 10em;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .home-content p {
@@ -172,8 +250,7 @@ h1 {
     line-height: 1.5em;
     padding: 1em;
     width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .home-content input {
@@ -184,15 +261,6 @@ h1 {
     font-weight: bold;
     font-size: 1em;
     text-transform: uppercase;
-}
-
-.home-content {
-    margin-bottom: 3em;
-    transform: translateY(-90%);
-    background-color: rgba(0, 33, 38, 0.6);
-    height: 8em;
-    border-top-right-radius: 10%;
-    border-top-left-radius: 10%;
 }
 
 .btn-empty-bg {
@@ -220,7 +288,7 @@ h1 {
 #sports {
     text-align: center;
     padding: 1em;
-    margin: 3em 0;
+    margin: 2em 0;
 }
 
 #sports > p {
@@ -232,9 +300,11 @@ h1 {
 }
 
 #sports h2 {
+    text-align: center;
     font-size: 3em;
     line-height: 1.5em;
-    margin-bottom: 0.7em;
+    width: 10em;
+    margin: 0 auto 0.7em;
 }
 
 .separatore {
@@ -256,8 +326,10 @@ h1 {
 
 .container a {
     position: relative;
-    width: 25em;
-    height: 17em;
+    /*width: 25em;
+    height: 17em;*/
+    width: 35%;
+    height: 20em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -292,7 +364,6 @@ h1 {
 
 /* Hover -> funziona solo sui dispositivi che lo supportano */
 .container a:hover {
-    /*transform: scale(1.1);*/
     transform: translateY(-20px);
     color: rgb(255, 255, 255, 1);
 }
