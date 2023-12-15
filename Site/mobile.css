@@ -39,7 +39,7 @@
     font-size: 2em;
 }
 
-.home-content input {
+.home-content a {
     margin: 2em 1em 1em;
     padding: 0.5em 1em;
     border: 2.5px solid var(--flagColor4);
