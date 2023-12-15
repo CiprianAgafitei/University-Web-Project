@@ -349,10 +349,10 @@ main {
 
 .container a span {
     position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -463,26 +463,21 @@ main {
 
 input[type="date"] {
     padding: 12px;
-    border: 2px solid rgb(207, 144, 56);
+    border: 2px solid var(--flagColor4);
     border-radius: 10px;
     font-size: 16px;
-    width: 80%;
-    max-width: 250px;
+    width: 130px;
     margin: 1em;
     margin-bottom: 0.5em;
     outline: none;
-    color:var(--flagColor4);;
-    transition: max-width 0.5s ease-in-out, border-color 0.5s ease-in-out;
+    color:var(--flagColor4);
+    background:var(--flagColor2);
+    transition: width ease-in-out, border-color 0.5s ease-in-out, color ease-in-out 0.5s;
 }
 
 input[type="date"]:hover {
-    border-color: black;
-}
-
-input[type="date"]:focus {
-    max-width: 150px;
-    border-color: black;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    color:white;
+    background-color: var(--flagColor4);
 }
 
 @keyframes slideIn {
@@ -505,16 +500,18 @@ input[type="date"]:focus {
     padding: 20px;
     text-align: center;
     width: 70%;
+    height: 20%;
     max-width: 600px;
-    background: linear-gradient(rgb(255, 255, 255,0.7), rgba(255, 255, 255, 0.6)), url('images/tennisview.jpeg');
-    background-size: cover;
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('images/tennisview.jpeg');
+    /*background: none;*/
+    background-size:100% auto;
     background-position: center;
     transition: max-width 0.5s ease-in-out, border-color 0.5s ease-in-out;
     animation: slideIn 1s ease-in-out;
 }
 
 .field-container:hover{
-    border-color: black;
+    border-color: white;
 }
 
 select {
@@ -534,11 +531,14 @@ select {
     margin-top: 10px; 
 }
 
+/*.time-buttons button:hover {
+    background-color: #333;
+}*/
 
 .time-buttons button {
     margin-right: 10px; 
     margin-bottom: 10px;
-    padding: 8px 16px;
+    padding: 6px 10px;
     border: 2px solid var(--flagColor4);;
     border-radius: 10px;
     background-color: #fff;
@@ -578,3 +578,13 @@ select {
     background-color: #333; 
 }
 
+@media (hover: none) {
+    .field-container:hover{
+        border-color: var(--flagColor4);
+    }
+
+    input[type="date"]:focus {
+        color: white;
+        background-color: var(--flagColor4);
+    }
+}
