@@ -68,10 +68,10 @@ header {
 }
 
 #logo {
-    width: 100px;
-    height: 90px;
+    width: 80px;
+    height: 70px;
     float: left;
-    padding: 0.5em 3em 0.5em;
+    padding: 1em 3em 1em;
 }
 
 .hamburger {
@@ -326,8 +326,6 @@ main {
 
 .container a {
     position: relative;
-    /*width: 25em;
-    height: 17em;*/
     width: 35%;
     height: 20em;
     display: flex;
