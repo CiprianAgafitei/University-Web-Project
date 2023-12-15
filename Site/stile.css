@@ -237,7 +237,7 @@ main {
 }
 
 .home-content {
-    margin-bottom: 5em;
+    margin-bottom: 4em;
     transform: translateY(-90%);
     background-color: rgba(0, 33, 38, 0.6);
     height: 8em;
@@ -259,17 +259,18 @@ main {
     line-height: 1.5em;
     padding: 1em;
     width: 70%;
-    margin: 0 auto;
+    margin: 0 auto 1.5em;
 }
 
-.home-content input {
-    margin: 2.2em 2em 1em;
+.home-content a {
+    margin: 0 2em 0;
     padding: 0.8em 1.5em;
-    border: 3.3px solid var(--flagColor4);
+    border: 3px solid var(--flagColor4);
     border-radius: 25px;
     font-weight: bold;
     font-size: 1em;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 .btn-empty-bg {
