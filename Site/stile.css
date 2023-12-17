@@ -4,20 +4,20 @@
 }
 /* Colors definition */
 :root {
-    --textColor: rgb(207, 144, 56);
+    --textColor: rgb(226, 157, 29);
     --backgroundColor: rgb(0, 33, 38);
     --headerBgColor: rgb(0, 33, 38);
     --headerTextColor: rgb(237, 204, 140);
     --footerBgColor: rgb(0, 0, 0);
     --footerTextColor: rgb(255, 255, 255);
-    --linkColor: rgb(207, 144, 56);
+    --linkColor: rgb(226, 157, 29);
     --linkVisited: rgb(255, 255, 255);
     
     --flagColor1: rgb(0, 65, 56);   /* Usato solo su attività sulle cards*/
 
     --flagColor2: rgb(0, 33, 38);
     --flagColor3: rgb(237, 204, 140);
-    --flagColor4: rgb(207, 144, 56);
+    --flagColor4: rgb(226, 157, 29);
     
     --flagColor5: rgba(0, 145, 150, 0.795);   /* Usato solo su attività sulle cards*/
 
@@ -209,13 +209,13 @@ main {
 
 .gradient-text {
     background-image: linear-gradient(to right,
-            #462523 0,
+            #A65B54 0,
             #cb9b51 30%, 
             #f6e27a 47%,
             #f6f2c0 50%,
             #f6e27a 53%,
             #cb9b51 70%,
-            #462523 100%
+            #A65B54 100%
 	);
     color:transparent;
     -webkit-background-clip:text;
@@ -385,7 +385,7 @@ main {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+    background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
 }
 
 .container a::after {
@@ -393,7 +393,7 @@ main {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+    background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
     filter: blur(25px);
 }
 
@@ -414,7 +414,7 @@ main {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+        background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
     }
 }
 
