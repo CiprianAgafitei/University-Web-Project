@@ -588,3 +588,28 @@ select {
         background-color: var(--flagColor4);
     }
 }
+
+/***************************** EVENTI *****************************/ 
+
+#main-content {
+
+}
+
+#title {
+    margin-bottom: 5px;
+}
+
+.content-section {
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#event-packages {
+
+}
+
+#sports-tournaments {
+
+}
