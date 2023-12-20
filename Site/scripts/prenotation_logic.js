@@ -125,3 +125,51 @@ function scrollToConfirmationButton() {
     var yOffset = confirmationButtonContainer.getBoundingClientRect().top + window.pageYOffset;
     window.scrollTo({ top: yOffset, behavior: 'smooth' });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var dataSelezionata = document.getElementById('dataSelezionata');
+
+    dataSelezionata.addEventListener('change', function () {
+        var selectedDate = new Date(dataSelezionata.value);
+        var today = new Date();
+        var oneMonthFromToday = new Date();
+        oneMonthFromToday.setMonth(today.getMonth() + 1);
+
+        if (selectedDate < today || selectedDate > oneMonthFromToday) {
+            // Date is outside the valid range, display error popup
+            displayErrorPopup();
+            dataSelezionata.value = today; // Clear the invalid date
+        }
+    });
+
+    function displayErrorPopup() {
+        var popupContainer = document.createElement('div');
+        popupContainer.className = 'popup-container';
+
+        var popup = document.createElement('div');
+        popup.className = 'popup';
+
+        var errorText = document.createElement('p');
+        errorText.textContent = 'La data selezionata non è valida. Per favore, seleziona una data non superiore ad un mese dalla data corrente'
+        var closeButton = document.createElement('button');
+        closeButton.textContent = 'Ho capito';
+        closeButton.addEventListener('click', function () {
+            document.body.removeChild(popupContainer);
+            document.body.style.overflow = 'auto'; // 
+        });
+
+        popup.appendChild(errorText);
+        popup.appendChild(closeButton);
+        popupContainer.appendChild(popup);
+
+        document.body.appendChild(popupContainer);
+
+        // Disable scrolling on the page
+        document.body.style.overflow = 'hidden';
+
+        // Set a high z-index to make the popup appear above everything
+        popupContainer.style.zIndex = '9999';
+    }
+});
+
+
