@@ -1,59 +1,121 @@
 /* GENERAL */
+#logo {
+    width: 60px;
+    height: auto;
+    padding: 1em 1em 1em;
+}
 
 .hamburger {
     display: block;
-    margin-top: 0.1em;
-}
-
-#menu {
-    padding-top: 1em;
+    margin-top: 0.5em;
 }
 
 .mobile-nav {
     display: block;
+    width: 50%;
 }
 
-ul {
-    display: none;
-}
-
-#logo {
-    width: 60px;
-    height: auto;
-    padding: 1em 1.5em 0.5em;
-}
-
-#breadcrump {
-    padding-bottom: 1em;
+.mobile-nav.is-active {
+    left: 50%;
 }
 
 #breadcrump p {
-    margin-left: 12%;
+    margin-left: 6%;
 }
-
-/* INDEX */
-
-.home-content h1 {
-    padding-top: 0.7em;
-    font-size: 2.7em;
-}
-
-.home-content a {
-    margin: 2.1em 1em 1em;
-    padding: 0.6em 1.3em;
-    border: 2.9px solid var(--flagColor4);
-    font-size: 1em;
-}
-
 
 /* ATTIVITA */
-
-.container a {
-    width: 40%;
-    height: 12em;
+.container a {      /* Dimesnione e margine delle cards */
+    width: 80%;
+    height: 10em;
     margin: 15px 20px;
 }
 
-.container a .contenuto h3 {
-    font-size: 1.8em;
+#sports h2 {
+    font-size: 2em;
+}
+
+
+/* INDEX */
+.home-content {
+    margin-bottom: 2em;
+}
+
+.home-content p {
+    font-size: 1.1em;
+}
+
+.home-content h1 {
+    font-size: 2em;
+}
+
+.home-content a {
+    margin: 2em 1em 1em;
+    padding: 0.5em 1em;
+    border: 2.5px solid var(--flagColor4);
+    font-size: 0.8em;
+}
+
+/* PRENOTAZIONE */
+
+.auth-button {
+    font-size: 0.9em;
+    padding: 0.5em 1.5em;
+}
+
+.card-body {
+    width: 90%;
+    margin: auto auto 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body:first-child {
+    width: 70%;
+}
+
+.card-body > div {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.card-body legend {
+    font-size: 1.3em;
+}
+
+.input-group input {
+    width: 200px;
+    height: 20px;
+}
+
+/* Barra di supporto */
+
+#back-set-prenot {
+    margin: 0 1em 0 0.5em;
+    padding: 0.6em;
+}
+
+#icon {
+    display: inline;
+}
+
+#text {
+    display: none;
+}
+
+#countdown {
+    font-size: 1.5em;
+}
+
+#support-pren-bar input {
+    margin: 0 1em;
+    font-size: 1em;
+}
+
+/* Dimensione contenitore form per autenticazione
+            durante la prenotazione */
+.modal .input-group input {
+    width: 150px;
+    height: 20px;
+    font-size: 0.8em;
 }
