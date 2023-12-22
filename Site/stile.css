@@ -4,21 +4,19 @@
 }
 /* Colors definition */
 :root {
-    --textColor: rgb(207, 144, 56);
+    --textColor: rgb(226, 157, 29);
     --backgroundColor: rgb(0, 33, 38);
     --headerBgColor: rgb(0, 33, 38);
     --headerTextColor: rgb(237, 204, 140);
     --footerBgColor: rgb(0, 0, 0);
     --footerTextColor: rgb(255, 255, 255);
-    --linkColor: rgb(207, 144, 56);
+    --linkColor: rgb(226, 157, 29);
     --linkVisited: rgb(255, 255, 255);
     
     --flagColor1: rgb(0, 65, 56);   /* Usato solo su attività sulle cards*/
-
     --flagColor2: rgb(0, 33, 38);
     --flagColor3: rgb(237, 204, 140);
-    --flagColor4: rgb(207, 144, 56);
-    
+    --flagColor4: rgb(226, 157, 29);
     --flagColor5: rgba(0, 145, 150, 0.795);   /* Usato solo su attività sulle cards*/
 
     --font-body-family: "Verdana", sans-serif;
@@ -39,6 +37,30 @@ body {
     min-height: 100vh;
 }
 
+a:link {
+    color: var(--linkColor);
+    font-weight: normal;
+}
+
+a:visited {
+    color: var(--linkVisited);
+}
+
+.gradient-text {
+    background-image: linear-gradient(to right,
+            #A65B54 0,
+            #cb9b51 30%, 
+            #f6e27a 47%,
+            #f6f2c0 50%,
+            #f6e27a 53%,
+            #cb9b51 70%,
+            #A65B54 100%
+	);
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip: text;
+}
+
 /* ----------------------------------------------------------
    |                         FOOTER                         |
    ----------------------------------------------------------
@@ -49,6 +71,10 @@ footer {
     text-align: center;
     margin-top: auto;
     padding: 2em;
+}
+
+footer > p {
+    margin: 2em;
 }
 
 /* ----------------------------------------------------------
@@ -65,6 +91,13 @@ header {
     top: 0;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    /* effetto shadow: orizzontale, verticale, ampiezza blur */
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navigationHelp {
+    position: absolute;
+    text-indent: -999em;
 }
 
 #logo {
@@ -91,7 +124,15 @@ header {
     display: block;
     width: 100%;
     height: 5px;
-    background-color: var(--flagColor3);
+    background-image: linear-gradient(45deg,
+        #9c763c 0,
+        #cb9b51 20%, 
+        #f6e27a 47%,
+        #f6f2c0 50%,
+        #f6e27a 53%,
+        #cb9b51 80%,
+        #9c763c 100%
+    );
     margin: 6px 0px;
     transition: 0.3s;
 }
@@ -119,6 +160,7 @@ header {
     background-color: var(--flagColor2);
     padding-top: 100px;
     transition: 0.4s;
+    box-shadow: 5px 0px 30px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-nav.is-active {
@@ -127,13 +169,16 @@ header {
 
 .mobile-nav a {
     display: block;
-    width: 100%;
-    max-width: 80px;
-    margin: 40px auto 16px;
+    width: 90%;
+    margin: 1em auto 1em;
     text-align: center;
-    padding: 10px 0;
+    padding: 1em 0;
     font-size: 1.2em;
-    color: var(--flagColor2);
+}
+
+/* funzionerà solo sui dispositivi che supportano, nel resto sarà normale, visibile cliccandoci anche se per poco */
+.mobile-nav a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* ----------------------------------------------------------
@@ -169,22 +214,13 @@ nav {
 }
 
 #breadcrump {
-    padding: 0 1.5em 1.5em;
+    padding: 1.5em 1.5em 1em;
 }
 
 #breadcrump p {
     max-width: 1024px;
     margin: auto;
-    margin-left: 15%;
-}
-
-nav a:link {
-    color: var(--linkColor);
-    font-weight: normal;
-}
-
-nav a:visited {
-    color: var(--linkVisited);
+    margin-left: 10%;
 }
 
 /* ----------------------------------------------------------
@@ -199,20 +235,6 @@ main {
     margin: auto;
 }
 
-.gradient-text {
-    background-image: linear-gradient(to right,
-            #462523 0,
-            #cb9b51 30%, 
-            #f6e27a 47%,
-            #f6f2c0 50%,
-            #f6e27a 53%,
-            #cb9b51 70%,
-            #462523 100%
-	);
-    color:transparent;
-    background-clip: text;
-}
-
 /***************************** INDEX *****************************/ 
 
 .main-background {
@@ -221,7 +243,7 @@ main {
     align-items: center;
     margin-bottom: 1.5em;
     width: 100%;
-    min-height: 30em;
+    min-height: 25em;
     background-image: url(images/homeImg.jpg);
     background-size: cover;
     background-position: center;
@@ -263,22 +285,22 @@ main {
     text-transform: uppercase;
 }
 
-.btn-empty-bg {
+a.btn-empty-bg, .btn-empty-bg {
     background-color: var(--flagColor2);
     color: var(--flagColor4);
 }
 
-.btn-empty-bg:hover {
+a.btn-empty-bg:hover, .btn-empty-bg:hover {
     background-color: var(--flagColor4);
     color: var(--flagColor2);
 }
 
-.btn-filled-bg {
+a.btn-filled-bg, .btn-filled-bg {
     background-color: var(--flagColor4);
     color: var(--flagColor2);
 }
 
-.btn-filled-bg:hover {
+a.btn-filled-bg:hover, .btn-filled-bg:hover {
     background-color: var(--flagColor2);
     color: var(--flagColor4);
 }
@@ -326,10 +348,8 @@ main {
 
 .container a {
     position: relative;
-    /*width: 25em;
-    height: 17em;*/
-    width: 35%;
-    height: 20em;
+    width: 30%;
+    height: 15em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -377,7 +397,7 @@ main {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+    background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
 }
 
 .container a::after {
@@ -385,7 +405,7 @@ main {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+    background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
     filter: blur(25px);
 }
 
@@ -406,7 +426,7 @@ main {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, var(--flagColor1), var(--flagColor5));
+        background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
     }
 }
 
@@ -546,24 +566,270 @@ select {
     color: #fff;
 }
 
-#confirmationButtonContainer {
-    margin-top: 20px; 
-    opacity: 0; 
-    transition: opacity 0.3s ease-in-out; 
+/* Da qui è stato inserito lo stile nuovo successivo scelta del campo */
+
+
+#continueButton {
+    margin: 2em auto;
 }
 
-#confirmationButton {
-    padding: 10px 20px;
-    background-color: var(--flagColor4);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+/* Area accesso con autenticazione/senza */
+#end-prenotation {
+    margin: 2em 0 8em;
+}
+
+.card-body {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    padding: 1.5em 1.5em;
     margin-bottom: 2em;
+    border-radius: 10px;
 }
 
-#confirmationButton:hover {
-    background-color: #333; 
+.card-body:first-child {
+    border: 1px solid var(--flagColor3);
 }
 
+.card-body > div {
+    width: 75%;
+    margin: auto;
+    text-align: left;
+}
+
+.card-body div h3 {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+.card-body div p {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: 0.5em 0 0.5em;
+    color: var(--flagColor3);
+}
+
+.auth-button {
+    margin: auto;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5em 1.7em;
+    text-transform: uppercase;
+    color: var(--flagColor2);
+    background-color: var(--flagColor4);
+    border: 1px solid var(--flagColor4);
+}
+
+/* Inserimento dati senza autenticazione */
+
+.card-body > fieldset {
+    margin: auto;
+}
+
+.card-body form {
+    padding: 1em;
+}
+
+legend {
+    font-size: 1.6em;
+    font-weight: bold;
+    padding: 0 0.5em;
+    color: var(--flagColor4);
+}
+
+.card-body form input {
+    padding: 0.7em;
+    font-size: 1em;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px 20px;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #fff;
+    padding: 0 5px;
+    pointer-events: none;   /* Fa in modo che la label non sia cliccabile */
+    transition: all .3s linear;
+}
+
+.input-group input {
+    width: 300px;
+    height: 30px;
+    color: var(--footerTextColor);
+    background: transparent;
+    border: 1.2px solid var(--flagColor3);
+    outline: none;
+    border-radius: 5px;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label {
+    top: 0;
+    font-size: 12px;
+    color: var(--flagColor3);
+    background-color: var(--flagColor2);
+}
+
+#end-prenotation > span {
+    font-size: 1.1em;
+    color: var(--flagColor3);
+}
+
+#end-prenotation span label {
+    margin-left: 0.6em;
+}
+
+#check-disclaimer {
+    width: 15px;
+    height: 15px;
+}
+
+/* Barra di supporto alla prenotazione per mostrare sempre all'utente il
+ contro alla rovescia e le opzioni per tornare indietro o confermare */
+
+#support-pren-bar {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.8em 1em 0.5em;
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--flagColor2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 1);
+}
+
+/* Nascondi il testo per dispositivi mobili */
+#icon {
+    display: none;
+}
+
+#back-set-prenot {
+    margin: 0 10em;
+    padding: 0.6em;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid var(--flagColor3);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--flagColor3);
+    background-color: transparent;
+}
+
+#back-set-prenot:hover {
+    color: var(--flagColor1);
+    background-color: var(--flagColor3);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+#support-pren-bar span {
+    display: flex;
+}
+
+#circleTimer {
+    margin: 0 1em;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+#countdown {
+    font-size: 1.7em;
+    margin: auto;
+}
+
+#support-pren-bar input {
+    margin: 0 10em;
+    padding: 0.7em;
+    color: var(--flagColor4);
+    background-color: transparent;
+}
+
+#support-pren-bar input:hover {
+    color: var(--flagColor1);
+    background-color: var(--flagColor4);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Stile per l'overlay sul form di login */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+  
+/* Stile per la finestra modale */
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--flagColor2);
+    padding: 35px 40px;
+    border-radius: 8px;
+}
+  
+/* Stile per il pulsante di chiusura */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 35px;
+}
+
+.modal fieldset {
+    font-size: 0.9em;
+    padding: 1em 0.5em;
+    border-color: var(--flagColor4);
+}
+
+.modal .input-group input {
+    width: 250px;
+    height: 30px;
+    font-size: 1.3em;
+    margin: 0 0.5em;
+    padding: 0.5em 0.8em;
+    color: var(--flagColor4);
+}
+
+.modal label {
+    font-size: 1em;
+    margin: 0 1em;
+    color: var(--flagColor4);
+}
+
+.modal .input-group input:focus~label,
+.modal .input-group input:valid~label {
+    top: 0;
+    font-size: 12px;
+    color: var(--flagColor3);
+    background-color: var(--flagColor2);
+}
+
+.modal .auth-button {
+    margin: 0.5em 0 1em;
+    color: var(--flagColor4);
+    background-color: transparent;
+}
+
+.modal .auth-button:hover {
+    color: var(--flagColor2);
+    background-color: var(--flagColor4);
+}
