@@ -830,14 +830,6 @@ legend {
     color: var(--flagColor4);
 }
 
-.modal .input-group input:focus~label,
-.modal .input-group input:valid~label {
-    top: 0;
-    font-size: 12px;
-    color: var(--flagColor3);
-    background-color: var(--flagColor2);
-}
-
 .modal .auth-button {
     margin: 0.5em 0 1em;
     color: var(--flagColor4);
