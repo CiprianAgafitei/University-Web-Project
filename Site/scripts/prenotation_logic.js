@@ -173,3 +173,38 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+/** Visualizzazione del form per il login consentendo l'autenticazione senza la necessità
+ * di reindirizzare l'utente sulla pagina Accedi, portando a numerosi vantaggi.
+ */
+document.addEventListener('DOMContentLoaded', function () {
+    const loginButton = document.getElementById('loginAutentication');
+
+    // Autenticazione tramite login
+    loginButton.addEventListener('click', () => {
+        overlay.style.display = 'block';
+    });
+
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('close');
+    const loginForm = document.getElementById('loginForm');
+
+    // Nascondi la finestra modale quando si fa clic sul pulsante di chiusura
+    closeButton.addEventListener('click', () => {
+        overlay.style.display = 'none';
+    });
+
+    // Possibilità di nascondere la finestra modale cliccando fuori da essa
+    // Aggiungi un evento al documento per nascondere la finestra modale
+    window.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            overlay.style.display = 'none';
+        }
+    });
+
+    // Gestione dell'autenticazione dell'utente
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Inserisci qui la logica per gestire il login
+    });
+});
