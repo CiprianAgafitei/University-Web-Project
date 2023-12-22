@@ -3,26 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><span lang="en">CodeSportsCenter &minus; Home</span></title>
+        <title>CodeSportsCenter &minus; Home</title>
 
         <meta name="keyword" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
 
         <link rel="stylesheet" href="stile.css" media="screen">
         <link rel="stylesheet" href="tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">  <!--600-->
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">
         <link rel="stylesheet" href="print.css" media="print">
     </head>
     <body>
         <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
             <img id="logo" src="images/logo.png" alt="Logo">
             <nav id="menu">
                 <ul>
                     <li><span lang="en">Home</span></li>
                     <li><a href="activities.html">Attività</a></li>
                     <li><a href="eventi.html">Eventi</a></li>
-                    <li><a href="">Contatti</a></li>
-                    <li><a href="">Accedi</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="accedi.html">Accedi</a></li>
                 </ul>
                 <div class="hamburger" type="button">
                     <div class="bar"></div>
@@ -30,11 +33,11 @@
             </nav>
         </header>
 
-        <nav class="mobile-nav">
+        <nav class="mobile-nav" aria-label="Menù">
             <a href="activities.html">Attività</a>
             <a href="eventi.html">Eventi</a>
-            <a href="">Contatti</a>
-            <a href="">Accedi</a>
+            <a href="contatti.html">Contatti</a>
+            <a href="accedi.html">Accedi</a>
         </nav>
 
         <nav id="breadcrump">
@@ -45,7 +48,7 @@
 
             <div class="main-background"></div>
             
-            <div class="home-content">
+            <div class="home-content content" id="content">
                 <h1 class="gradient-text">CodeSportCenter</h1>
                 <p>Prenota il tuo spazio per Calcio, Calcetto, Eventi e altro ancora!</p>
                 <span>
