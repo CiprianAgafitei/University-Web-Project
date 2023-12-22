@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="it">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><span lang="en">CodeSportsCenter</span></title>
-
-        <meta name="keyword" content="">
-        <meta name="description" content="">
-
+        <title>Prenotazione campo</title>
+    
+        <meta name="keyword" content="codesportcenter, prenotazione campi sportivi, attività">
+        <meta name="description"
+            content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
+    
         <link rel="stylesheet" href="stile.css" media="screen">
-        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:600px)">
+        <link rel="stylesheet" href="tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">
         <link rel="stylesheet" href="print.css" media="print">
-        <script src="scripts/prenotation_logic.js"> </script>
-        <script src="script.js"></script>
     </head>
+    
     <body>
-
         <header>
             <nav aria-label="Aiuti alla navigazione">
                 <a class="navigationHelp" href="#content">Vai al contenuto</a>
@@ -34,7 +35,7 @@
                 </div>
             </nav>
         </header>
-
+    
         <nav class="mobile-nav" aria-label="Menù">
             <a href="index.html"><span lang="en">Home</span></a></li>
             <a href="activities.html">Attività</a>
@@ -42,31 +43,106 @@
             <a href="contatti.html">Contatti</a>
             <a href="accedi.html">Accedi</a>
         </nav>
-
+    
         <nav id="breadcrump">
             <p>Ti trovi in: <a href="activities.html">Attività</a> &gt; Prenotazioni</p>
         </nav>
-
+    
         <main id="content">
 
-            <!-- Selezione della data -->
-            <h1 class="gradient-text">Prenota il tuo campo</h1>
-            <p id="data-description" class="gradient-text"> Seleziona la data</p>
-            <input type="date" id="dataSelezionata" name="dataSelezionata" required>
+            <section id="set-prenotation">
+                <!-- Selezione della data -->
+                <h1 class="gradient-text">Prenota il tuo campo</h1>
+                <p id="data-description" class="gradient-text"> Seleziona la data</p>
+                <input type="date" id="dataSelezionata" name="dataSelezionata" required>
+    
+                <!-- Selezione dell'ora tra quelle disponibili -->
+                <section id="fieldContainerSection" class="gradient-text"></section>
+                
+                <!-- Conferma -->
+                <input id="continueButton" class="auth-button btn-filled-bg" value="continua" type="button">
+            </section>
+                
+            <!-- Visualizzazione compilazione campi con informazioni utente/login -->
+            <section id="end-prenotation" hidden>
+                <div class="card-body">
+                    <div>
+                        <h3>Effettua il login o procedi senza autenticazione</h3>
+                        <p>Accedendo potrai visualizzare e gestire le tue prenotazioni direttamente dalla tua Area
+                            Riservata.</p>
+                    </div>
+                    <button id="loginAutentication" class="auth-button btn-filled-bg"><span lang="en">login</span></button>
+                </div>
+    
+                <div class="card-body">
+                    <fieldset>
+                        <legend>Contatti utente</legend>
+                        <form method="post">
+                            <div class="input-group">
+                                <input type="text" required>
+                                <label>Nome</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" required>
+                                <label>Email</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" required>
+                                <label>Conferma Email</label>
+                            </div>
+                        </form>
+                    </fieldset>
+                </div>
+    
+                <span>
+                    <input id="check-disclaimer" type="checkbox" required>
+                    <label for="check-disclaimer">Accetto i <a href="">termini</a> e le <a href="">condizioni</a>.</label>
+                </span>
+    
+                <!-- Barra di supporto per la prenotazione -->
+                <div id="support-pren-bar">
+                    <a href="prenotazioni.html" id="back-set-prenot">
+                        <p id="text">Indietro</p>
+                        <p id="icon">&lt;</p>
+                    </a>
+                    <span>
+                        <!-- Timer -->
+                        <div id="circleTimer"></div>
+                        <div id="countdown">10:00</div>
+                    </span>
+    
+                    <input class="auth-button" type="submit" value="conferma">
+                </div>
+    
+                <!-- Form di login per l'accesso e login allo stesso tempo -->
+                <div class="overlay" id="overlay">
+                    <div class="modal">
+                        <span class="close" id="close">&times;</span>
+                        <fieldset>
+                            <legend>Accedi</legend>
+                            <form action="login.php" method="post">
+                                <div class="input-group">
+                                    <input type="text" required>
+                                    <label>Email</label>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" required>
+                                    <label>Password</label>
+                                </div>
+                                <input class="auth-button" type="submit" value="accedi">
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
 
-            <!-- Selezione dell'ora tra quelle disponibili -->
-            <section id="fieldContainerSection" class="gradient-text"></section>
-            <script src="fieldsVisualizator.js" defer></script>
-            <!-- Conferma -->
-            <div id="confirmationButtonContainer">
-                <button id="confirmationButton">Confirm Selection</button>
-            </div>
-            <!--<input class="submitButton" role="button" aria-label="Conferma prenotazione" title="Conferma"> --> 
-
+            </section>
         </main>
 
-        <footer>
-            <p><span lang="en">CodeSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
-        </footer>
+        <script src="scripts/prenotation_logic.js"></script>
+        <script src="fieldsVisualizator.js" defer></script>
+    
+        <script src="scripts/countdown.js"></script>
+        <script src="script.js"></script>
     </body>
+
 </html>
