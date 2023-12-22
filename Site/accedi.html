@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CodeSportsCenter &minus; Accedi</title>
+
+        <meta name="keyword" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+        <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
+
+        <link rel="stylesheet" href="stile.css" media="screen">
+        <link rel="stylesheet" href="tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="print.css" media="print">
+    </head>
+    <body>
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <img id="logo" src="images/logo.png" alt="Logo">
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html"><span lang="en">Home</span></a></li>
+                    <li><a href="activities.html">Attività</a></li>
+                    <li><a href="eventi.html">Eventi</a></li>
+                    <li><a href="">Contatti</a></li>
+                    <li>Accedi</li>
+                </ul>
+                <div class="hamburger" type="button">
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </header>
+
+        <nav class="mobile-nav" aria-label="Menù">
+            <a href="index.html"><span lang="en">Home</span></a>
+            <a href="activities.html">Attività</a>
+            <a href="eventi.html">Eventi</a>
+            <a href="">Contatti</a>
+        </nav>
+
+        <nav id="breadcrump">
+            <p>Ti trovi in: <a href="index.html"><span lang="en">Home</span></a> &gt; Accedi</p>
+        </nav>
+        
+        <main id="content">
+            <div class="card-body">
+                <fieldset>
+                    <legend>Accedi</legend>
+                    <form action="login.php" method="post">
+                        <div class="input-group">
+                            <input type="email" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" required>
+                            <label>Password</label>
+                        </div>
+                        <input class="auth-button btn-filled-bg" type="submit" value="accedi">
+                    </form>
+                </fieldset>
+            </div>
+
+        </main>
+        
+        <footer>
+            <p><span lang="en">CodeSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
