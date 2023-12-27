@@ -77,8 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var hasScrolled = false
 
             timeOptions.forEach(function (option) {
-                var timeButton = document.createElement('button');
-                timeButton.textContent = option;
+                var timeButton = document.createElement('input');
+                timeButton.type = 'button';
+                timeButton.value = option;
                 timeButton.addEventListener('click', function () {
                     timeButton.classList.toggle('selected');
                     updateSelectedButtons(timeButton);
@@ -118,15 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
             confirmationButtonContainer.style.opacity = '0';
         }
     }
-});
 
-function scrollToConfirmationButton() {
-    var confirmationButtonContainer = document.getElementById('confirmationButtonContainer');
-    var yOffset = confirmationButtonContainer.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({ top: yOffset, behavior: 'smooth' });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
     var dataSelezionata = document.getElementById('dataSelezionata');
 
     dataSelezionata.addEventListener('change', function () {
@@ -135,43 +128,63 @@ document.addEventListener('DOMContentLoaded', function () {
         var oneMonthFromToday = new Date();
         oneMonthFromToday.setMonth(today.getMonth() + 1);
 
-        if (selectedDate < today || selectedDate > oneMonthFromToday) {
-            // Date is outside the valid range, display error popup
-            displayErrorPopup();
+        if (selectedDate < today) {
+            // Date is before today, display error popup
+            displayErrorPopup("Si prega di selezionare una data successiva alla data attuale");
             dataSelezionata.value = today; // Clear the invalid date
+            updateFieldContainers();
+        } else if (selectedDate > oneMonthFromToday) {
+            // Date is more than one month from today, display error popup
+            displayErrorPopup("Si prega a selezionare una data compresa tra la data corrente ed un mese dalla data corrente");
+            dataSelezionata.value = today; // Clear the invalid date
+            updateFieldContainers();
+        } else {
+            updateFieldContainers();
         }
     });
 
-    function displayErrorPopup() {
+    function closeDateSelectionDialog() {
+        var datePicker = document.getElementById('dataSelezionata');
+        if (datePicker) {
+            datePicker.blur();
+        }
+    }
+
+    function displayErrorPopup(errorMessage) {
+        closeDateSelectionDialog();
         var popupContainer = document.createElement('div');
         popupContainer.className = 'popup-container';
-
+    
         var popup = document.createElement('div');
         popup.className = 'popup';
-
+    
         var errorText = document.createElement('p');
-        errorText.textContent = 'La data selezionata non è valida. Per favore, seleziona una data non superiore ad un mese dalla data corrente'
-        var closeButton = document.createElement('button');
-        closeButton.textContent = 'Ho capito';
+        errorText.textContent = errorMessage;
+    
+        var closeButton = document.createElement('input');
+        closeButton.type = 'button';
+        closeButton.value = 'Ho capito';
         closeButton.addEventListener('click', function () {
             document.body.removeChild(popupContainer);
-            document.body.style.overflow = 'auto'; // 
+            document.body.style.overflow = 'auto';
         });
-
+    
         popup.appendChild(errorText);
         popup.appendChild(closeButton);
         popupContainer.appendChild(popup);
-
+    
         document.body.appendChild(popupContainer);
-
-        // Disable scrolling on the page
         document.body.style.overflow = 'hidden';
-
-        // Set a high z-index to make the popup appear above everything
-        popupContainer.style.zIndex = '9999';
     }
+
+
 });
 
+function scrollToConfirmationButton() {
+    var confirmationButtonContainer = document.getElementById('confirmationButtonContainer');
+    var yOffset = confirmationButtonContainer.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top: yOffset, behavior: 'smooth' });
+}
 
 /** Visualizzazione del form per il login consentendo l'autenticazione senza la necessità
  * di reindirizzare l'utente sulla pagina Accedi, portando a numerosi vantaggi.
