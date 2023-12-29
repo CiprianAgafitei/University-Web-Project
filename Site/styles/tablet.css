@@ -1,0 +1,85 @@
+/* GENERAL */
+.hamburger {
+    display: block;
+    margin-top: 0.1em;
+}
+
+#menu {
+    padding-top: 1em;
+}
+
+.mobile-nav {
+    display: block;
+}
+
+ul {
+    display: none;
+}
+
+#logo {
+    width: 60px;
+    height: auto;
+    padding: 1em 1.5em 0.5em;
+}
+
+#breadcrump {
+    padding-bottom: 1em;
+}
+
+#breadcrump p {
+    margin-left: 8%;
+}
+
+/* INDEX */
+.home-content h1 {
+    padding-top: 0.7em;
+    font-size: 2.7em;
+}
+
+.home-content a {
+    margin: 2.1em 1em 1em;
+    padding: 0.6em 1.3em;
+    border: 2.9px solid var(--flagColor4);
+    font-size: 1em;
+}
+
+/* ATTIVITA */
+.container a {
+    width: 40%;
+    height: 12em;
+    margin: 1em 1em;
+}
+
+.container a .contenuto h2 {
+    font-size: 2em;
+}
+
+/* PRENOTAZIONE */
+.card-body legend {
+    font-size: 1.5em;
+}
+
+.input-group input {
+    width: 250px;
+    height: 25px;
+}
+
+/* Barra di supporto */
+#back-set-prenot {
+    margin: 0 2em;
+}
+
+#countdown {
+    font-size: 1.5em;
+}
+
+#support-pren-bar input {
+    margin: 0 2em;
+    font-size: 1em;
+}
+
+.input-group input {
+    width: 220px;
+    height: 25px;
+    font-size: 1em;
+}
