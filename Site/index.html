@@ -8,10 +8,10 @@
         <meta name="keyword" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
 
-        <link rel="stylesheet" href="stile.css" media="screen">
-        <link rel="stylesheet" href="tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:496px)">
-        <link rel="stylesheet" href="print.css" media="print">
+        <link rel="stylesheet" href="styles/stile.css" media="screen">
+        <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="styles/print.css" media="print">
     </head>
     <body>
         <header>
@@ -21,7 +21,7 @@
             <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
             <nav id="menu">
                 <ul>
-                    <li><span lang="en">Home</span></li>
+                    <li lang="en">Home</li>
                     <li><a href="activities.html">Attività</a></li>
                     <li><a href="eventi.html">Eventi</a></li>
                     <li><a href="contatti.html">Contatti</a></li>
@@ -48,7 +48,7 @@
 
             <div class="main-background"></div>
             
-            <div class="home-content content" id="content">
+            <div class="home-content" id="content">
                 <h1 class="gradient-text">CodeSportCenter</h1>
                 <p>Prenota il tuo spazio per Calcio, Calcetto, Eventi e altro ancora!</p>
                 <span>
@@ -59,10 +59,15 @@
 
         </main>
         
+        <div id="go-back">
+            <a href="#" aria-label="Torna su">↑</a>
+        </div>
+        
         <footer>
             <p><span lang="en">CodeSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
         </footer>
 
+        <script src="scripts/home_logic.js"></script>
         <script src="scripts/menu_logic.js"></script>
     </body>
 </html>
