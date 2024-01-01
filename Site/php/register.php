@@ -1,8 +1,11 @@
 <?php
-    include 'CSCAccess.php';
+    require_once "CSCAccess.php";
+    use CSC\CSCAccess;
 
-    $cscAccess = new \CSC\CSCAccess();
+    
 
+
+    $cscAccess = new CSCAccess();
     $conn = $cscAccess->openConnection();
 
     // Verifica della connessione
