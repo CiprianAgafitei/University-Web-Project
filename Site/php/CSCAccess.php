@@ -54,9 +54,18 @@
             
 			return mysqli_num_rows($queryResult) > 0;
         }
+
+		/** VERIFICA CORRETTEZZA DELLE CREDENZIALI-LOGIN  DEL CLIENTE */
+        public function getUserInfo($email) {
+            $queryCheck = "SELECT nome, cognome FROM Cliente WHERE email=\"$email\"";
+
+            $queryResult = mysqli_query($this->connection, $queryCheck) or die("Errore in DBAccess" . mysqli_error($this->connection));
+            
+			return $queryResult;
+        }
         
         /** VERIFICA SE L'UTENTE HA GIA EFFETTUATO RICHIESTE/PRENOTAZIONI 
-         *              (se l'email già presente nel db) */
+         *     (se l'email già presente nel db nella tabella utenti) */
         public function checkUser($email) {
             $queryCheck = "SELECT * FROM Utente WHERE Email=\"$email\"";
 
@@ -128,10 +137,10 @@
         }
         
         /** OTTENIMENTO DI TUTTE LE PRENOTAZIONI DI UN UNTENTE */
-        public function getTClientPrenotations($email) {
+        public function getClientPrenotations($email) {
 			$query = "SELECT * FROM Prenotazione WHERE Utente=\"$email\"";
 			
-			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
+			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this->connection));
 
 			if(mysqli_num_rows($queryResult) != 0){
 				$result = array();
@@ -139,7 +148,7 @@
 				{
 					$result[] = $row;
 				}
-				$queryResult -> free;
+				mysqli_free_result($queryResult);
 				return $result;
 			} 
 			else {
@@ -147,9 +156,18 @@
 			}
 		}
 
+		/** OTTENIMENTO DEL NOME DELL'ATTIVITA DATO L'ID */
+		public function getActivityName($id) {
+			$query = "SELECT nome_sport FROM Attivita WHERE id=\"$id\"";
+
+			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
+			
+			return $queryResult;
+		}
+
         /** OTTENIMENTO DI TUTTE LE PRENOTAZIONI DI TUTTI GLI UTENTI */
         public function getAllPrenotations() {
-			$query = "SELECT * FROM Prenotazione";// ...
+			$query = "SELECT * FROM Prenotazione";
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
 
@@ -159,7 +177,7 @@
 				{
 					$result[] = $row;
 				}
-				$queryResult -> free;
+				mysqli_free_result($queryResult);
 				return $result;
 			} 
 			else {
@@ -179,7 +197,7 @@
 				{
 					$result[] = $row;
 				}
-				$queryResult -> free;
+				mysqli_free_result($queryResult);
 				return $result;
 			} 
 			else {
@@ -190,7 +208,7 @@
 		/** OTTENIMENTO DEGLI ORARI DELLE PRENOTAZIONI EFFETTUATE IN UNA CERTA DATA
 		 * 	(utile per visualizzare in seguito le disponibilità restanti) */
 		public function getReservedPrenotations($data_scelta) {
-			$query = "SELECT ora FROM Prenotazione WHERE data=\"$data_scelta\"";// ...
+			$query = "SELECT DISTINCT ora FROM Prenotazione WHERE data=\"$data_scelta\"";// ...
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
 
@@ -200,7 +218,7 @@
 				{
 					$result[] = $row;
 				}
-				$queryResult -> free;
+				mysqli_free_result($queryResult);
 				return $result;
 			} 
 			else {
