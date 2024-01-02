@@ -2,9 +2,6 @@
     require_once "CSCAccess.php";
     use CSC\CSCAccess;
 
-    
-
-
     $cscAccess = new CSCAccess();
     $conn = $cscAccess->openConnection();
 
