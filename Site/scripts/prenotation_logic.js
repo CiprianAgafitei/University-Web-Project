@@ -1,34 +1,4 @@
 //===========================SELEZIONE DATA==================================
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Imposta la data minima consentita come la data attuale
-    var dataAttuale = new Date();
-    var annoAttuale = dataAttuale.getFullYear();
-    var meseAttuale = ('0' + (dataAttuale.getMonth() + 1)).slice(-2);
-    var giornoAttuale = ('0' + dataAttuale.getDate()).slice(-2);
-    var dataMinima = annoAttuale + '-' + meseAttuale + '-' + giornoAttuale;
-
-    // Calcola la data massima consentita (data corrente + 1 mese)
-    var dataMassima = new Date(dataAttuale);
-    dataMassima.setMonth(dataMassima.getMonth() + 1);
-    var annoMassimo = dataMassima.getFullYear();
-    var meseMassimo = ('0' + (dataMassima.getMonth() + 1)).slice(-2);
-    var giornoMassimo = ('0' + dataMassima.getDate()).slice(-2);
-    var dataMassimaString = annoMassimo + '-' + meseMassimo + '-' + giornoMassimo;
-
-    // Imposta gli attributi min e max sull'elemento input
-    dataInput.setAttribute('min', dataMinima);
-    dataInput.setAttribute('max', dataMassimaString);
-
-    // Imposta la data di default come la data attuale
-    dataInput.setAttribute('value', dataMinima);
-
-    dataInput.addEventListener('keydown', function (event) {
-        event.preventDefault();
-        return false;
-    });
-});
-
 document.addEventListener('DOMContentLoaded', function () {
     var paragrafoData = document.getElementById('data-description');
 
@@ -39,6 +9,33 @@ document.addEventListener('DOMContentLoaded', function () {
 // ===========================CREAZIONE CONTAINER==================================
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    function defaultDate(){
+        var dataSelezionata = document.getElementById('dataSelezionata');
+
+        // Set the current date as default
+        var today = new Date();
+        var formattedDate = today.toISOString().split('T')[0];
+        dataSelezionata.value = formattedDate;
+    
+        // Trigger the database query
+        var selectedDate = new Date(dataSelezionata.value).toISOString().split('T')[0];      
+                fetch('php/prenotation.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'selectedDate=' + selectedDate
+                })
+                .then(response => response.text())     
+                .then(data => {
+                    updateFieldContainers(data);
+                })     
+                .catch(error => console.error('Errore:', error));
+    }
+
+    defaultDate();
+
     var containerSection = document.getElementById('fieldContainerSection');
 
     var confirmationButtonContainer = document.getElementById('confirmationButtonContainer');
@@ -59,9 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var fieldContainer = document.createElement('div');
         fieldContainer.className = 'field-container';
+        fieldContainer.id = chosenSport;
 
         var fieldName = document.createElement('h2');
-        fieldName.textContent = chosenSport;
+        fieldName.textContent = chosenSport.charAt(0).toUpperCase() + chosenSport.slice(1);
 
         var timeButtonsContainer = document.createElement('div');
         timeButtonsContainer.className = 'time-buttons';
@@ -69,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var allTimeOptions = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'];
 
         var timeOptions = allTimeOptions.filter(element => !data.includes(element));
+
+        var hasScrolled = false;
 
         timeOptions.forEach(function (option) {
             var timeButton = document.createElement('input');
@@ -80,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     timeButton.classList.toggle('selected');
                     updateSelectedButtons(timeButton);
                     updateConfirmationButtonVisibility();
+                    if (!hasScrolled) {
+                        scrollToContinueButton();
+                        hasScrolled = true;
+                    }
 
                     nrSelectedButtons = document.querySelectorAll('.selected').length;
                 }
@@ -118,18 +122,17 @@ document.addEventListener('DOMContentLoaded', function () {
     dataSelezionata.addEventListener('change', function () {
         var chosenDate = new Date(dataSelezionata.value);
         var today = new Date();
+        today.setHours(0, 0, 0, 0);
         var oneMonthFromToday = new Date();
         oneMonthFromToday.setMonth(today.getMonth() + 1);
 
         if (chosenDate < today) {
-            displayErrorPopup("Si prega di selezionare una data successiva alla data attuale");
-            dataSelezionata.value = today;
-            containerSection.innerHTML = '';
+            displayErrorPopup("Si prega di non selezionare una data passata");
+            defaultDate();
         } 
         else if (chosenDate > oneMonthFromToday) {
             displayErrorPopup("Si prega a selezionare una data compresa tra la data corrente ed un mese dalla data corrente");
-            dataSelezionata.value = today;
-            containerSection.innerHTML = '';
+            defaultDate();
         }
         else {
             // Gestione data-selezionata-ricerca orari disponibili
@@ -203,6 +206,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
     });*/
 });
+
+function scrollToContinueButton() {
+    var continueButton = document.getElementById('continueButton');
+    var yOffset = continueButton.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top: yOffset, behavior: 'smooth' });
+}
 
 /** Visualizzazione del form per il login consentendo l'autenticazione senza la necessità
  * di reindirizzare l'utente sulla pagina Accedi, portando a numerosi vantaggi.
