@@ -1,115 +1,128 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CadoSportsCenter &minus; Accedi</title>
 
-        <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
-        <meta name="description" content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CadoSportsCenter &minus; Accedi</title>
 
-        <link rel="stylesheet" href="styles/stile.css" media="screen">
-        <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
-        <link rel="stylesheet" href="styles/print.css" media="print">
-    </head>
-    <body>
-        <header>
-            <nav aria-label="Aiuti alla navigazione">
-                <a class="navigationHelp" href="#content">Vai al contenuto</a>
-            </nav>
-            <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
-            <nav id="menu">
-                <ul>
-                    <li><a href="index.html" lang="en">Home</a></li>
-                    <li><a href="activities.html">Attività</a></li>
-                    <li><a href="eventi.html">Eventi</a></li>
-                    <li><a href="contatti.html">Contatti</a></li>
-                    <li>Accedi</li>
-                </ul>
-                <div class="hamburger" type="button">
-                    <div class="bar"></div>
-                </div>
-            </nav>
-        </header>
+    <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+    <meta name="description"
+        content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
 
-        <nav class="mobile-nav" aria-label="Menù">
-            <a href="index.html" lang="en">Home</a>
-            <a href="activities.html">Attività</a>
-            <a href="eventi.html">Eventi</a>
-            <a href="contatti.html">Contatti</a>
+    <link rel="stylesheet" href="styles/stile.css" media="screen">
+    <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
+    <link rel="stylesheet" href="styles/print.css" media="print">
+</head>
+
+<body>
+    <header>
+        <nav aria-label="Aiuti alla navigazione">
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
-
-        <nav id="breadcrump">
-            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Accedi</p>
+        <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+        <nav id="menu">
+            <ul>
+                <li><a href="index.html" lang="en">Home</a></li>
+                <li><a href="activities.html">Attività</a></li>
+                <li><a href="eventi.html">Eventi</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li>Accedi</li>
+            </ul>
+            <div class="hamburger" type="button">
+                <div class="bar"></div>
+            </div>
         </nav>
-        
-        <main id="content">
-            <section id="login-access">
-                <div class="card-body">
+    </header>
+
+    <nav class="mobile-nav" aria-label="Menù">
+        <a href="index.html" lang="en">Home</a>
+        <a href="activities.html">Attività</a>
+        <a href="eventi.html">Eventi</a>
+        <a href="contatti.html">Contatti</a>
+    </nav>
+
+    <nav id="breadcrump">
+        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Accedi</p>
+    </nav>
+
+    <main id="content">
+        <section id="login-access">
+            <div class="card-body">
+                <form action="php/login.php" method="post">
                     <fieldset>
                         <legend>Accedi</legend>
-                        <form action="php/login.php" method="post">
-                            <div class="input-group">
-                                <input id="email" type="text" name="email" required>
-                                <label>Email</label>
-                            </div>
-                            <div class="input-group">
-                                <input id="password" type="password" name="password" required>
-                                <label>Password</label>
-                            </div>
-                            <input class="auth-button btn-filled-bg" type="submit" value="accedi">
-                        </form>
+                            {messaggioLogin}
+                        <div class="input-group">
+                            <input id="email" type="text" name="email" value="{loginEm}" required>
+                            <label>Email</label>
+                        </div>
+                            {login_EmEr}
+                        <div class="input-group">
+                            <input id="password" type="password" name="password" value="{loginPas}" required>
+                            <label>Password</label>
+                        </div>
+                            {login_PasEr}<br>
+                        <input class="auth-button btn-filled-bg" type="submit" value="accedi">
                         <hr>
                         <p>Non sei registrato? <a href="#" id="register-link">Registrati</a>.</p>
                     </fieldset>
-                </div>
-            </section>
+                </form>
+            </div>
+        </section>
 
-            <section id="register-access">
-                <div class="card-body">
+        <section id="register-access">
+            <div class="card-body">
+                <form action="php/register.php" method="post">
                     <fieldset>
                         <legend>Registrati</legend>
-                        <form action="php/register.php" method="post">
-                            <div class="input-group">
-                                <input id="nome" name="nome" type="text" required>
-                                <label>Nome</label>
-                            </div>
-                            <div class="input-group">
-                                <input id="cognome" name="cognome" type="text" required>
-                                <label>Cognome</label>
-                            </div>
-                            <div class="input-group">
-                                <input id="email_new_client" name="email" type="text" required>
-                                <label>Email</label>
-                            </div>
-                            <div class="input-group">
-                                <input id="pass_new_client" name="password" type="password" required>
-                                <label>Password</label>
-                            </div>
-                            <div class="input-group">
-                                <input id="conf_pass_new_client" name="conf_password" type="password" required>
-                                <label>Conferma Password</label>
-                            </div>
-                            <input class="auth-button btn-filled-bg" type="submit" value="registrati">
-                        </form>
+                            {messaggioRegistrazione}
+                        <div class="input-group">
+                            <input id="nome" name="nome" type="text" value="registrNome" required>
+                            <label>Nome</label>
+                        </div>
+                            {nomeErr}
+                        <div class="input-group">
+                            <input id="cognome" name="cognome" type="text" value="registrCognome" required>
+                            <label>Cognome</label>
+                        </div>
+                            {cognomeErr}
+                        <div class="input-group">
+                            <input id="email_new_client" name="email" type="text" value="registrEmail" required>
+                            <label>Email</label>
+                        </div>
+                            {emailErr}
+                        <div class="input-group">
+                            <input id="pass_new_client" name="password" type="password" value="registrPassword" required>
+                            <label>Password</label>
+                        </div>
+                            {passwordErr}
+                        <div class="input-group">
+                            <input id="conf_pass_new_client" name="conf_password" type="password" value="registrConfPass" required>
+                            <label>Conferma Password</label>
+                        </div>
+                            {confPasErr}<br>
+                        <input class="auth-button btn-filled-bg" type="submit" value="registrati">
                         <hr class="center-diamond">
                         <p>Già registrato? <a href="#" id="login-link">Accedi</a>.</p>
                     </fieldset>
-                </div>
-            </section>
+                </form>
+            </div>
+        </section>
 
-        </main>
-        
-        <div id="go-back">
-            <a href="#" aria-label="Torna su">↑</a>
-        </div>
-        
-        <footer>
-            <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
-        </footer>
+    </main>
 
-        <script src="scripts/accedi.js"></script>
-        <script src="scripts/menu_logic.js"></script>
-    </body>
+    <div id="go-back">
+        <a href="#" aria-label="Torna su">↑</a>
+    </div>
+
+    <footer>
+        <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
+    </footer>
+
+    <script src="scripts/accedi.js"></script>
+    <script src="scripts/menu_logic.js"></script>
+</body>
+
 </html>
