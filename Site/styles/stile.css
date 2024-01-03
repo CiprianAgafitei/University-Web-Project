@@ -1081,10 +1081,9 @@ label {
 
 /*********** CONTATTI ***********/
 
-#contacts-title{
+#contacts-title {
     padding: 1em;
 }
-
 
 #contatti-azienda {
     text-align: center; 
@@ -1161,13 +1160,8 @@ label {
     resize: none;
 }
 
-.input-group textarea:focus,
-.input-group textarea:not(:placeholder-shown) {
-    border-color: var(--flagColor3); 
-}
-
-.input-group textarea:focus + label,
-.input-group textarea:not(:placeholder-shown) + label {
+.input-group textarea:focus~label,
+.input-group textarea:valid~label {
     top: 0;
     left: 0;
     font-size: 12px;
