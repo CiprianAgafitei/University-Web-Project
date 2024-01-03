@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contatti</title>
+
+        <meta name="keyword" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+        <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
+
+        <script src="scripts/menu_logic.js"></script>
+        <script src="scripts/contatti_logic.js"></script>
+
+        <link rel="stylesheet" href="styles/stile.css" media="screen">
+        <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="styles/print.css" media="print">
+    </head>
+    <body>
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html" lang="en">Home</a></li>
+                    <li><a href="activities.html">Attività</a></li>
+                    <li><a href="eventi.html">Eventi</a></li>
+                    <li>Contatti</li>
+                    <li><a href="accedi.html">Accedi</a></li>
+                </ul>
+                <div class="hamburger" type="button">
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </header>
+
+        <nav class="mobile-nav" aria-label="Menù">
+            <a href="index.html" lang="en">Home</a></li>
+            <a href="activities.html">Attività</a>
+            <a href="eventi.html">Eventi</a>
+            <a href="accedi.html">Accedi</a>
+        </nav>
+
+        <nav id="breadcrump">
+            <p>Ti trovi in: <a href="contatti.html">Contatti</a></p>
+        </nav>
+
+        <main>
+
+            <h1 id="contacts-title"class="gradient-text">CONTATTACI</h1>
+
+            <section id="contatti-azienda" class="card-body">
+                <div class="contact-item contact-phone">
+                    <p class="contact-text">+39 123 456 7890</p>
+                </div>
+                <div class="contact-item contact-email">
+                    <p class="contact-text">info@codesportcenter.it</p>
+                </div>
+                <div class="contact-item contact-address">
+                    <p class="contact-text">Via Roma, 123, 00100 Roma, Italia</p>
+                </div>
+            </section>
+            
+
+            <section id="invio-messaggio" class="card-body">
+                <fieldset>
+                    <legend>Inviaci un messaggio</legend>
+                    <form action="php/sendmessage.php" method="post">
+                        <div class="input-group">
+                            <input id="email" name="email" type="text" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-group">
+                            <input id="titolo" name="message-title" type="text" required>
+                            <label>Titolo</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="messaggio" name="message-text" placeholder=" " required></textarea>
+                            <label for="messaggio">Messaggio</label>
+                        </div>                        
+                        
+                        <input class="auth-button btn-filled-bg" type="submit" value="Invia">
+                    </form>
+                </fieldset>
+            </section>
+
+        </main>
+
+
+        <div id="go-back">
+            <a href="#" aria-label="Torna su">↑</a>
+            <br><br><br>
+        </div>
+    </body>
+</html>
