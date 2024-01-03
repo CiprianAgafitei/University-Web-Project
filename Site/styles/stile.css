@@ -533,7 +533,6 @@ input[type="date"]:hover {
 
 .field-container {
     color: var(--flagColor4);
-    background-color: #fff;
     border: 2px solid var(--flagColor4);
     border-radius: 10px;
     margin: 30px auto; 
@@ -542,13 +541,44 @@ input[type="date"]:hover {
     width: 70%;
     height: 20%;
     max-width: 600px;
-    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('images/tennisview.jpeg');
-    /*background: none;*/
-    background-size:100% auto;
-    background-position: center;
     transition: max-width 0.5s ease-in-out, border-color 0.5s ease-in-out;
     animation: slideIn 1s ease-in-out;
+    
+    /*background: none;*/
 }
+
+
+
+div#calcio{
+    background: linear-gradient(rgb(0,0,0,0.4), rgba(0, 0, 0, 0.3)), url('../images/soccerview.jpg');
+    background-size:100% auto;
+    background-position: center center;
+}
+
+div#calcetto{
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/futsalview.jpeg');
+    background-size:100% auto;
+    background-position: center center;
+}
+
+div#tennis{
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/tennisview.jpeg');
+    background-size:100% auto;
+    background-position: center center;
+}
+
+div#pallavolo{
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/volleyballview.jpg');
+    background-size:100% auto;
+    background-position: center center;
+}
+
+div#paddel{
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/padelview.jpeg');
+    background-size:100% auto;
+    background-position: center center;
+}
+
 
 .field-container:hover{
     border-color: white;
@@ -567,14 +597,12 @@ select {
     margin-bottom: 20px; 
 }
 
-.time-buttons {
-    margin-top: 10px; 
-}
 
 .time-buttons input[type=button] {
-    margin-right: 10px; 
+    margin-right: 7px; 
+    margin-left: 3px;
     margin-bottom: 10px;
-    padding: 6px 10px;
+    padding: 5px 15px;
     border: 2px solid var(--flagColor4);;
     border-radius: 10px;
     background-color: #fff;
@@ -642,8 +670,20 @@ select {
 
 
 #continueButton {
-    margin: 2em auto;
+    padding: 10px 20px;
+    background-color: var(--flagColor4);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 2em;
 }
+
+#continueButton:hover {
+    background-color: #333; 
+}
+
 
 /* Area accesso con autenticazione/senza */
 #end-prenotation {
