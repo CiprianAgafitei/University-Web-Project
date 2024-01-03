@@ -2,36 +2,24 @@
     require_once "CSCAccess.php";
     use CSC\CSCAccess;
 
-    
-
+    session_start();
 
     $cscAccess = new CSCAccess();
     $conn = $cscAccess->openConnection();
 
-    // Verifica della connessione
-    if (!$conn) {
-        die("Connessione fallita");
-    } 
-
-    // Controllo se è stata inviata una richiesta POST
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $data_selezionata = $_POST["dataSelezionata"];
-        
-        // Verifica data non vuota != gg/mm/aaaa
-
-        // Aggiornamento dei pulsanti in base alla disponibilità oraria
-
-        // Salvataggio data e orari selezionati con prenotazione temporanea su server per 10 minuti
-
-        
+    if (isset($_POST['selectedDate'])) 
+    {
+        if ($conn) 
+        {
+            $selectedDate = $_POST['selectedDate'];
+            $result = $cscAccess->getReservedPrenotations($selectedDate);
+            echo json_encode($result);  
+        }
     }
-
-    // Chiusura della connessione
+        
     $closeResult = $cscAccess->closeConnection();
+    
 
-    if ($closeResult) {
-        echo "Connection Closed Successfully";
-    } else {
-        echo "Failed to close connection";
-    }
+    // Salvataggio data e orari selezionati con prenotazione temporanea su server per 10 minuti
+
 ?>
