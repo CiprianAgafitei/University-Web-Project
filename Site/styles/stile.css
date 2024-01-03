@@ -1083,6 +1083,10 @@ label {
 
 #contacts-title {
     padding: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    width: 10em;
+    margin: auto;
 }
 
 #contatti-azienda {
@@ -1109,7 +1113,6 @@ label {
     margin-bottom: 15px;
 }
 
-
 .contact-item::before {
     content: '';
     display: inline-block;
@@ -1133,23 +1136,21 @@ label {
 
 .contact-text {
     margin: 0;
-    /* Additional styling */
 }
 
-
 #invio-messaggio {
-    width: 90%; 
     max-width: 800px; 
     box-sizing: border-box; 
     border: 1px solid var(--flagColor4);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
-
 .input-group textarea {
-    width: 80%; 
-    padding: 20px;
-    font-size: 1.2em;
+    width: 90%;
+    height: 7em;
+    padding: 1em;
+    font-size: 1.3em;
+    line-height: 1.5em;
     color: var(--flagColor4);
     background: transparent;
     border: 1.2px solid var(--flagColor3);
