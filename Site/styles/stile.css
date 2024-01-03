@@ -1161,6 +1161,10 @@ label {
     resize: none;
 }
 
+.input-group > textarea + label {
+    top: 18%;
+}
+
 .input-group textarea:focus~label,
 .input-group textarea:valid~label {
     top: 0;
