@@ -187,7 +187,7 @@
 
 		/** OTTENIMENTO DI TUTTE LE RICHIESTE */
 		public function getAllRequests() {
-			$query = "SELECT * FROM Richieste";// ...
+			$query = "SELECT * FROM Richieste";
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
 
@@ -208,7 +208,8 @@
 		/** OTTENIMENTO DEGLI ORARI DELLE PRENOTAZIONI EFFETTUATE IN UNA CERTA DATA
 		 * 	(utile per visualizzare in seguito le disponibilità restanti) */
 		public function getReservedPrenotations($data_scelta) {
-			$query = "SELECT DISTINCT ora FROM Prenotazione WHERE data=\"$data_scelta\"";// ...
+			// Aggiungere anche ricerca in base allo sport
+			$query = "SELECT DISTINCT ora FROM Prenotazione WHERE data=\"$data_scelta\"";
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
 
