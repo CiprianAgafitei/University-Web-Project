@@ -935,6 +935,12 @@ label {
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
+#login-access form,
+#register-access form,
+#invio-messaggio form {
+    margin: auto;
+}
+
 #login-access .card-body fieldset hr,
 #register-access .card-body fieldset hr {
     width: 1.5em;
@@ -945,6 +951,11 @@ label {
 #login-access .card-body fieldset p,
 #register-access .card-body fieldset p {
     margin: 1em;
+}
+
+#login-access .card-body fieldset > input,
+#register-access .card-body fieldset > input {
+    margin-top: 1.5em;
 }
 
 /***************************** EVENTI *****************************/ 
