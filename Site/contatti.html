@@ -48,7 +48,7 @@
 
         <main id="content">
 
-            <h1 id="contacts-title"class="gradient-text">CONTATTACI</h1>
+            <h1 id="contacts-title"class="gradient-text">contattaci</h1>
 
             <section id="contatti-azienda" class="card-body">
                 <div class="contact-item contact-phone">
@@ -64,9 +64,9 @@
             
 
             <section id="invio-messaggio" class="card-body">
-                <fieldset>
-                    <legend>Inviaci un messaggio</legend>
-                    <form action="php/sendmessage.php" method="post">
+                <form action="php/sendmessage.php" method="post">
+                    <fieldset>
+                        <legend>Inviaci un messaggio</legend>
                         <div class="input-group">
                             <input id="email" name="email" type="text" required>
                             <label>Email</label>
@@ -78,11 +78,10 @@
                         <div class="input-group">
                             <textarea id="messaggio" name="message-text" placeholder=" " required></textarea>
                             <label for="messaggio">Messaggio</label>
-                        </div>                        
-                        
+                        </div>                   
                         <input class="auth-button btn-filled-bg" type="submit" value="Invia">
-                    </form>
-                </fieldset>
+                    </fieldset>
+                </form>
             </section>
 
         </main>
