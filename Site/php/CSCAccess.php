@@ -55,7 +55,7 @@
 			return mysqli_num_rows($queryResult) > 0;
         }
 
-		/** VERIFICA CORRETTEZZA DELLE CREDENZIALI-LOGIN  DEL CLIENTE */
+	/** OTTENIMENTO DI NOME E COGNOME DELL'UTENTE DATO L'email */
         public function getUserInfo($email) {
             $queryCheck = "SELECT nome, cognome FROM Cliente WHERE email=\"$email\"";
 
