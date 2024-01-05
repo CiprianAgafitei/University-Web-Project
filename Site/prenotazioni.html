@@ -50,25 +50,26 @@
             <p>Ti trovi in: <a href="activities.html">Attività</a> &gt; Prenotazioni</p>
         </nav>
 
-        <main>
-
-            <section id="set-prenotation">
-                <!-- Selezione della data -->
-                <h1 id="prenotation-title"class="gradient-text">Prenota il tuo campo</h1>
-                <p id="data-description" class="gradient-text"> Seleziona la data</p>
-                <input type="date" id="dataSelezionata" name="dataSelezionata" required>
+        <main id="content">
+ 
+            <form id="set-prenotation" action="php/prenotation.php" method="post">
+                <fieldset>
+                    <legend class="gradient-text">Prenota il tuo campo</legend>
+                    <!-- Selezione della data -->
+                    <p id="data-description" class="gradient-text">Seleziona la data</p>
+                    <input id="dataSelezionata" type="date" name="dataSelezionata" required>
     
-                <!-- Selezione dell'ora tra quelle disponibili -->
-                <section id="fieldContainerSection" class="gradient-text"></section>
-                <!-- Conferma -->
-                <div id="confirmationButtonContainer">
-                    <input type="button" id="continueButton" value="Continue">
-                </div>
-                <!--<input class="submitButton" role="button" aria-label="Conferma prenotazione" title="Conferma"> --> 
-            </section>
+                    <!-- Selezione dell'ora tra quelle disponibili -->
+                    <section id="fieldContainerSection" class="gradient-text"></section>
+    
+                    <div id="confirmationButtonContainer">
+                        <input id="continueButton" class="auth-button btn-filled-bg" value="continua" type="button">
+                    </div>
+                </fieldset>
+            </form> 
             
             <!-- Visualizzazione compilazione campi con informazioni utente/login -->
-            <section id="end-prenotation" hidden>
+            <div id="end-prenotation" hidden>
                 <div class="card-body">
                     <div>
                         <h3>Effettua il login o procedi senza autenticazione</h3>
@@ -84,15 +85,15 @@
                         <form action="php/user_access.php" method="post">
                             <div class="input-group">
                                 <input id="nome" type="text" name="nome" required>
-                                <label for="nome">Nome</label>
+                                <label>Nome</label>
                             </div>
                             <div class="input-group">
                                 <input id="email_user" type="text" name="email" required>
-                                <label for="email_user">Email</label>
+                                <label>Email</label>
                             </div>
                             <div class="input-group">
                                 <input id="conf_email_user" type="text" name="conf_email" required>
-                                <label for="conf_email_user">Conferma Email</label>
+                                <label>Conferma Email</label>
                             </div>
                         </form>
                     </fieldset>
@@ -105,7 +106,7 @@
     
                 <!-- Barra di supporto per la prenotazione -->
                 <div id="support-pren-bar">
-                    <a href="prenotazioni.html" id="back-set-prenot">
+                    <a href="#" id="back-set-prenot">
                         <p id="text">Indietro</p>
                         <p id="icon">&lt;</p>
                     </a>
@@ -138,13 +139,17 @@
                         </fieldset>
                     </div>
                 </div>
-    
-            </section>
+            </div>
         </main>
             
         <div id="go-back">
             <a href="#" aria-label="Torna su">↑</a>
             <br><br><br>
         </div>
+    
+        <script src="scripts/prenotation_logic.js"></script>
+        <script src="scripts/countdown.js"></script>
+        <script src="scripts/menu_logic.js"></script>
     </body>
+
 </html>
