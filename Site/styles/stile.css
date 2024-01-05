@@ -2,8 +2,6 @@
     margin: 0;
     padding: 0;
 }
-
-
 /* Colors definition */
 :root {
     --textColor: rgb(226, 157, 29);
@@ -15,11 +13,11 @@
     --linkColor: rgb(226, 157, 29);
     --linkVisited: rgb(255, 255, 255);
     
-    --flagColor1: rgb(0, 65, 56);   /* Usato solo su attività sulle cards*/
-    --flagColor2: rgb(0, 33, 38);
-    --flagColor3: rgb(237, 204, 140);
-    --flagColor4: rgb(226, 157, 29);
-    --flagColor5: rgba(0, 145, 150, 0.795);   /* Usato solo su attività sulle cards*/
+    --flagColor1: rgb(0, 33, 38);
+    --flagColor2: rgb(237, 204, 140);
+    --flagColor3: rgb(226, 157, 29);
+    --flagColor4: rgba(0, 145, 150, 0.795);   /* Usato solo su attività sulle cards*/
+    --flagColor5: rgb(0, 65, 56); 
 
     --font-body-family: "Verdana", sans-serif;
 }
@@ -31,8 +29,6 @@ html {
     font-family: var(--font-body-family);
     line-height: 1.5em;
     margin: auto;
-    scroll-behavior: smooth;
-    
 }
 
 body {
@@ -66,27 +62,27 @@ a:visited {
 }
 
 #go-back {
-    margin: 3em auto;
+    margin: 3em auto 2em;
     text-align: center;
 }
 
 #go-back a {
     font-size: 1.2em;
-    color: var(--flagColor2);
-    background-color: var(--flagColor4);
+    color: var(--flagColor1);
+    background-color: var(--flagColor3);
     width: 50px;
     height: 50px;
     margin: auto;
     padding: 0.3em 0.7em;
     text-decoration: none;
     border-radius: 25px;
-    border: 2px solid var(--flagColor4);
+    border: 2px solid var(--flagColor3);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 #go-back a:hover {
-    color: var(--flagColor4);
-    background-color: var(--flagColor2);
+    color: var(--flagColor3);
+    background-color: var(--flagColor1);
 }
 
 /* ----------------------------------------------------------
@@ -184,7 +180,7 @@ header {
     min-height: 100vh;
     display: block;
     z-index: 98;
-    background-color: var(--flagColor2);
+    background-color: var(--flagColor1);
     padding-top: 100px;
     transition: 0.4s;
     box-shadow: 5px 0px 30px rgba(0, 0, 0, 0.5);
@@ -309,7 +305,7 @@ main {
 .home-content a {
     margin: 0 2em 0;
     padding: 0.8em 1.5em;
-    border: 3px solid var(--flagColor4);
+    border: 3px solid var(--flagColor3);
     border-radius: 25px;
     font-weight: bold;
     font-size: 1em;
@@ -319,23 +315,23 @@ main {
 }
 
 a.btn-empty-bg, .btn-empty-bg {
-    background-color: var(--flagColor2);
-    color: var(--flagColor4);
+    background-color: var(--flagColor1);
+    color: var(--flagColor3);
 }
 
 a.btn-empty-bg:hover, .btn-empty-bg:hover {
-    background-color: var(--flagColor4);
-    color: var(--flagColor2);
+    background-color: var(--flagColor3);
+    color: var(--flagColor1);
 }
 
 a.btn-filled-bg, .btn-filled-bg {
-    background-color: var(--flagColor4);
-    color: var(--flagColor2);
+    background-color: var(--flagColor3);
+    color: var(--flagColor1);
 }
 
 a.btn-filled-bg:hover, .btn-filled-bg:hover {
-    background-color: var(--flagColor2);
-    color: var(--flagColor4);
+    background-color: var(--flagColor1);
+    color: var(--flagColor3);
 }
 
 /***************************** ATTIVITA *****************************/ 
@@ -348,7 +344,7 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
 
 #sports > p {
     margin-bottom: 0.8em;
-    color: var(--flagColor3);
+    color: var(--flagColor2);
     text-transform: uppercase;
     font-size: 0.9em;
     font-weight: bold;
@@ -366,7 +362,7 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
     margin: auto;
     width: 30px;
     height: 5px;
-    background: var(--flagColor4);
+    background: var(--flagColor3);
     margin-top: .5em;
 }
 
@@ -430,7 +426,7 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
+    background: linear-gradient(45deg, var(--flagColor2), var(--flagColor4), var(--flagColor2));
 }
 
 .container a::after {
@@ -438,14 +434,13 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
+    background: linear-gradient(45deg, var(--flagColor2), var(--flagColor4), var(--flagColor2));
     filter: blur(25px);
 }
 
 /* Applica solamente ai dispositivi che non supportano hover */
 @media (hover: none) {
     .container a{
-        /*transform: scale(1.1);*/
         transform: translateY(-20px);
         color: rgb(255, 255, 255, 1);
     }
@@ -459,7 +454,7 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: linear-gradient(45deg, var(--flagColor3), var(--flagColor5), var(--flagColor3));
+        background: linear-gradient(45deg, var(--flagColor2), var(--flagColor4), var(--flagColor2));
     }
 }
 
@@ -673,21 +668,10 @@ select {
 
 
 
+
 #continueButton {
-    padding: 10px 20px;
-    background-color: var(--flagColor4);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    margin-bottom: 2em;
+    margin: 2em auto;
 }
-
-#continueButton:hover {
-    background-color: #333; 
-}
-
 
 /* Area accesso con autenticazione/senza */
 #end-prenotation {
@@ -704,7 +688,7 @@ select {
 }
 
 .card-body:first-child {
-    border: 1px solid var(--flagColor3);
+    border: 1px solid var(--flagColor2);
 }
 
 .card-body > div {
@@ -722,7 +706,7 @@ select {
     font-size: 0.9em;
     line-height: 1.5em;
     padding: 0.5em 0 0.5em;
-    color: var(--flagColor3);
+    color: var(--flagColor2);
 }
 
 .auth-button {
@@ -732,9 +716,9 @@ select {
     border-radius: 10px;
     padding: 0.5em 1.7em;
     text-transform: uppercase;
-    color: var(--flagColor2);
-    background-color: var(--flagColor4);
-    border: 1px solid var(--flagColor4);
+    color: var(--flagColor1);
+    background-color: var(--flagColor3);
+    border: 1px solid var(--flagColor3);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
@@ -751,7 +735,7 @@ legend {
     font-size: 1.6em;
     font-weight: bold;
     padding: 0 0.5em;
-    color: var(--flagColor4);
+    color: var(--flagColor3);
 }
 
 .input-group {
@@ -764,8 +748,8 @@ legend {
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    font-size: 15px;
-    color: var(--flagColor4);
+    font-size: 1.2em;
+    color: var(--flagColor3);
     padding: 0 5px;
     pointer-events: none;   /* Fa in modo che la label non sia cliccabile */
     transition: all .3s linear;
@@ -776,9 +760,9 @@ legend {
     height: 30px;
     padding: 0.7em 1em;
     font-size: 1.2em;
-    color: var(--flagColor4);
+    color: var(--flagColor3);
     background: transparent;
-    border: 1.2px solid var(--flagColor3);
+    border: 1.2px solid var(--flagColor2);
     outline: none;
     border-radius: 5px;
 }
@@ -786,14 +770,14 @@ legend {
 .input-group input:focus~label,
 .input-group input:valid~label {
     top: 0;
-    font-size: 12px;
-    color: var(--flagColor3);
-    background-color: var(--flagColor2);
+    font-size: 1em;
+    color: var(--flagColor2);
+    background-color: var(--flagColor1);
 }
 
 #end-prenotation > span {
     font-size: 1.1em;
-    color: var(--flagColor3);
+    color: var(--flagColor2);
 }
 
 #end-prenotation span label {
@@ -813,7 +797,7 @@ legend {
     z-index: 2;
     position: fixed;
     bottom: 0;
-    background-color: var(--flagColor2);
+    background-color: var(--flagColor1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -831,17 +815,17 @@ legend {
     font-size: 0.9em;
     font-weight: bold;
     border-radius: 10px;
-    border: 1px solid var(--flagColor3);
+    border: 1px solid var(--flagColor2);
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--flagColor3);
+    color: var(--flagColor2);
     background-color: transparent;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 #back-set-prenot:hover {
-    color: var(--flagColor2);
-    background-color: var(--flagColor3);
+    color: var(--flagColor1);
+    background-color: var(--flagColor2);
 }
 
 #support-pren-bar span {
@@ -862,13 +846,13 @@ legend {
 #support-pren-bar input {
     margin: 0 10em;
     padding: 0.7em;
-    color: var(--flagColor4);
+    color: var(--flagColor3);
     background-color: transparent;
 }
 
 #support-pren-bar input:hover {
-    color: var(--flagColor2);
-    background-color: var(--flagColor4);
+    color: var(--flagColor1);
+    background-color: var(--flagColor3);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -889,7 +873,7 @@ legend {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--flagColor2);
+    background-color: var(--flagColor1);
     padding: 35px 40px;
     border-radius: 8px;
 }
@@ -905,33 +889,34 @@ legend {
 fieldset {
     font-size: 0.9em;
     padding: 1em 0.5em;
-    border-color: var(--flagColor4);
+    border-color: var(--flagColor3);
 }
 
 label {
     font-size: 1em;
     margin: 0 1em;
-    color: var(--flagColor4);
+    color: var(--flagColor3);
 }
 
 .modal .auth-button {
     margin: 0.5em 0 1em;
-    color: var(--flagColor4);
+    color: var(--flagColor3);
     background-color: transparent;
 }
 
 .modal .auth-button:hover {
-    color: var(--flagColor2);
-    background-color: var(--flagColor4);
+    color: var(--flagColor1);
+    background-color: var(--flagColor3);
 }
 
 /* ACCEDI */
-#login-access, #register-access {
+#login-access, #register-access, #invio-messaggio {
     margin-top: 2em;
 }
 
 #login-access .card-body,
-#register-access .card-body {
+#register-access .card-body,
+#invio-messaggio .card-body {
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -945,7 +930,7 @@ label {
 #register-access .card-body fieldset hr {
     width: 1.5em;
     margin: 2em auto;
-    border: 1px solid var(--flagColor3);
+    border: 1px solid var(--flagColor2);
 }
 
 #login-access .card-body fieldset p,
@@ -954,82 +939,85 @@ label {
 }
 
 #login-access .card-body fieldset > input,
-#register-access .card-body fieldset > input {
+#register-access .card-body fieldset > input,
+#invio-messaggio .card-body fieldset > input {
     margin-top: 1.5em;
 }
 
 /***************************** EVENTI *****************************/ 
 
-.gradient-text {
-    padding-bottom: 7px;
+#main-content h1, #main-content h2 {
+    font-size: 2em;
+    padding: 0.5em 0;
+    line-height: 1.5em;
 }
 
-.info_txt {
-    margin: 30px 130px;
+.content-section {
+    margin: 2em 4em;
+    line-height: 1.5em;
 }
 
-.ag-format-container {
-    width: 1142px;
-    margin: 0 auto;
+#main-content > p,
+.content-section > p {
+    padding: 0.3em;
+    color: var(--flagColor2);
 }
 
-.ag-courses_box {
-    display: -webkit-box;
-    display: -ms-flexbox;
+.content-section span {
+    font-weight: bold;
+}
+
+.content-section ul {
     display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    padding: 30px 0;
+    justify-content: center;
 }
-.ag-courses_item {
-    -ms-flex-preferred-size: calc(33.33333% - 30px);
-    flex-basis: calc(33.33333% - 30px);
-    margin: 0 15px 30px;
-    overflow: hidden;
-    border-radius: 28px;
-}
-.ag-courses-item_link {
-    display: block;
-    padding: 30px 20px;
-    background-color: var(--flagColor1);
-    overflow: hidden;
+
+.content-section ul li {
+    padding: 1.5em 1em;
+    border-radius: 10px;
+    margin: 1em;
+    transition: 0.5s;
     position: relative;
-}
-
-.ag-courses-item_link:hover .ag-courses-item_info-box, 
-.ag-courses-item_link:hover .ag-courses-item_title {
-  color: #FFF;
-}
-
-.ag-courses-item_link:hover .ag-courses-item_bg {
-    -webkit-transform: scale(10);
-    -ms-transform: scale(10);
-    transform: scale(10);
-}
-.ag-courses-item_title {
-    min-height: 40px;
-    margin: 0 0 20px;
     overflow: hidden;
-    font-weight: bold; 
-    font-size: 25px;
-    color: var(--textColor);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.7);
+    background: var(--flagColor5);
+}
+
+.content-section ul li > a {
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.content-section ul li h4 {
+    font-size: 1.3em;
+    padding-bottom: 1em;
+    color: var(--flagColor3);
+}
+
+.content-section ul li p {
+    width: 19em;
+    font-size: 0.9em;
+    color: var(--flagColor2);
+}
+
+#sports-tournaments > p + h3 {
+    margin: 1em auto 0;
+}
+
+#sports-tournaments > ul + h3 {
+    margin: 1em auto;
+}
+
+.content-section ul li a > h4,
+.content-section ul li a > p {
     z-index: 2;
     position: relative;
 }
-.ag-courses-item_info-box {
-    font-size: 15px;
-    color: var(--textColor);
-    z-index: 2;
-    position: relative;
-}
 
-.ag-courses-item_bg {
+.item {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
     z-index: 1;
     position: absolute;
     top: -75px;
@@ -1039,47 +1027,29 @@ label {
     -o-transition: all .5s ease;
     transition: all .5s ease;
 }
-.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+
+.content-section ul li:nth-child(1) .item,
+.content-section ul li:nth-child(3) .item {
     background-color: var(--flagColor3);
 }
-.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-    background-color: #f9b234;
+
+.content-section ul li:nth-child(2) .item {
+    background-color: var(--flagColor2);
 }
 
-
-@media only screen and (max-width: 979px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: calc(50% - 30px);
-    flex-basis: calc(50% - 30px);
-  }
-  .ag-courses-item_title {
-    font-size: 24px;
-  }
+.content-section ul li:hover {
+    transform: translateY(-20px);
 }
 
-@media only screen and (max-width: 767px) {
-  .ag-format-container {
-    width: 96%;
-  }
-
+.content-section ul li:hover .item {
+    -webkit-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
 }
-@media only screen and (max-width: 639px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-  }
-  .ag-courses-item_title {
-    min-height: 72px;
-    line-height: 1;
 
-    font-size: 24px;
-  }
-  .ag-courses-item_link {
-    padding: 22px 40px;
-  }
-  .ag-courses-item_info-box {
-    font-size: 16px;
-  }
+.content-section ul li:hover h4,
+.content-section ul li:hover p {
+    color: var(--flagColor1);
 }
 
 /*********** CONTATTI ***********/
