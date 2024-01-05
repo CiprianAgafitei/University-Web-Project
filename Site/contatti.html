@@ -63,33 +63,34 @@
             </section>
             
 
-            <section id="invio-messaggio" class="card-body">
-                <form action="php/sendmessage.php" method="post">
-                    <fieldset>
-                        <legend>Inviaci un messaggio</legend>
-                        <div class="input-group">
-                            <input id="nome" name="user-name" type="text" required>
-                            <label for="nome">Nome</label>
-                        </div>
-                        <div class="input-group">
-                            <input id="email" name="email" type="text" required>
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-group">
-                            <input id="titolo" name="message-title" type="text" required>
-                            <label for="titolo">Titolo</label>
-                        </div>
-                        <div class="input-group">
-                            <textarea id="messaggio" name="message-text" placeholder=" " required></textarea>
-                            <label for="messaggio">Messaggio</label>
-                        </div>                   
-                        <input class="auth-button btn-filled-bg" type="submit" value="Invia">
-                    </fieldset>
-                </form>
+            <section id="invio-messaggio">
+                <div class="card-body">
+                    <form action="php/sendmessage.php" method="post">
+                        <fieldset>
+                            <legend>Inviaci un messaggio</legend>
+                            <div class="input-group">
+                                <input id="nome" name="user-name" type="text" required>
+                                <label for="nome">Nome</label>
+                            </div>
+                            <div class="input-group">
+                                <input id="email" name="email" type="text" required>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-group">
+                                <input id="titolo" name="message-title" type="text" required>
+                                <label for="titolo">Titolo</label>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="messaggio" name="message-text" required></textarea>
+                                <label for="messaggio">Messaggio</label>
+                            </div>                        
+                            <input class="auth-button btn-filled-bg" type="submit" value="Invia">
+                        </fieldset>
+                    </form>
+                </div>
             </section>
 
         </main>
-
 
         <div id="go-back">
             <a href="#" aria-label="Torna su">↑</a>
