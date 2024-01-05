@@ -960,124 +960,127 @@ label {
 
 /***************************** EVENTI *****************************/ 
 
-#main-content h1, #main-content h2 {
-    font-size: 2em;
-    padding: 0.5em 0;
-    line-height: 1.5em;
+.gradient-text {
+    padding-bottom: 7px;
 }
 
-.content-section {
-    margin: 2em 4em;
-    line-height: 1.5em;
+.info_txt {
+    margin: 30px 130px;
 }
 
-.content-section > p {
-    padding: 0.3em;
-    color: var(--flagColor3);
+.ag-format-container {
+    width: 1142px;
+    margin: 0 auto;
 }
 
-.content-section ul {
+.ag-courses_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 30px 0;
+}
+.ag-courses_item {
+    -ms-flex-preferred-size: calc(33.33333% - 30px);
+    flex-basis: calc(33.33333% - 30px);
+    margin: 0 15px 30px;
+    overflow: hidden;
+    border-radius: 28px;
+}
+.ag-courses-item_link {
+    display: block;
+    padding: 30px 20px;
+    background-color: var(--flagColor1);
+    overflow: hidden;
+    position: relative;
 }
 
-.content-section ul li {
-    width: 30%;
-    margin: auto;
-    padding: 1.5em 1em;
-    border-radius: 10px;
-    margin: 1em;
-    transition: 0.5s;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.7);
+.ag-courses-item_link:hover .ag-courses-item_info-box, 
+.ag-courses-item_link:hover .ag-courses-item_title {
+  color: #FFF;
 }
 
-.content-section ul li:hover {
-    transform: translateY(-20px);
+.ag-courses-item_link:hover .ag-courses-item_bg {
+    -webkit-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+}
+.ag-courses-item_title {
+    min-height: 40px;
+    margin: 0 0 20px;
+    overflow: hidden;
+    font-weight: bold; 
+    font-size: 25px;
+    color: var(--textColor);
+    z-index: 2;
+    position: relative;
+}
+.ag-courses-item_info-box {
+    font-size: 15px;
+    color: var(--textColor);
+    z-index: 2;
+    position: relative;
 }
 
-.content-section ul li:nth-child(1),
-.content-section ul li:nth-child(3) {
-    border: 1px solid var(--flagColor4);
-    background-color: var(--flagColor4);
+.ag-courses-item_bg {
+    height: 128px;
+    width: 128px;
+    background-color: #f9b234;
+    z-index: 1;
+    position: absolute;
+    top: -75px;
+    right: -75px;
+    border-radius: 50%;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
 }
-
-.content-section ul li:nth-child(1):hover,
-.content-section ul li:nth-child(3):hover {
-    background-color: var(--flagColor2);
-}
-
-.content-section ul li h4 {
-    font-size: 1.3em;
-    padding-bottom: 1em;
-}
-
-.content-section ul li:nth-child(1) h4,
-.content-section ul li:nth-child(3) h4 {
-    color: var(--flagColor2);
-}
-
-.content-section ul li:nth-child(1):hover h4,
-.content-section ul li:nth-child(3):hover h4 {
-    color: var(--flagColor4);
-}
-
-.content-section ul li p {
-    font-size: 0.9em;
-    color: var(--flagColor3);
-}
-
-.content-section ul li:nth-child(1) p,
-.content-section ul li:nth-child(3) p {
-    color: var(--flagColor1);
-}
-
-.content-section ul li:nth-child(1):hover p,
-.content-section ul li:nth-child(3):hover p {
-    color: var(--flagColor3);
-}
-
-.content-section ul li:nth-child(3) hr {
-    width: 1em;
-    margin: 1em auto;
-    border: 1px dashed var(--flagColor2);
-}
-
-.content-section ul li:nth-child(3):hover hr {
-    border: 1px dashed var(--flagColor4);
-}
-
-.content-section ul li:nth-child(2) {
-    border: 1px solid var(--flagColor3);
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
     background-color: var(--flagColor3);
 }
-
-.content-section ul li:nth-child(2):hover {
-    background-color: var(--flagColor2);
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+    background-color: #f9b234;
 }
 
-.content-section ul li:nth-child(2) h4 {
-    color: var(--flagColor2);
+
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .ag-courses-item_title {
+    font-size: 24px;
+  }
 }
 
-.content-section ul li:nth-child(2):hover h4 {
-    color: var(--flagColor4);
-}
-
-.content-section ul li:nth-child(2) p {
-    color: var(--flagColor2);
-}
-
-.content-section ul li:nth-child(2):hover p {
-    color: var(--flagColor3);
-}
-/*
-#event-packages {
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
 
 }
+@media only screen and (max-width: 639px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .ag-courses-item_title {
+    min-height: 72px;
+    line-height: 1;
 
-#sports-tournaments {
-
-}*/
-
+    font-size: 24px;
+  }
+  .ag-courses-item_link {
+    padding: 22px 40px;
+  }
+  .ag-courses-item_info-box {
+    font-size: 16px;
+  }
+}
 
 /*********** CONTATTI ***********/
 
