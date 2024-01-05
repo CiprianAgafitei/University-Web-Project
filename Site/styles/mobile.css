@@ -80,6 +80,7 @@
 
 .card-body legend {
     font-size: 1.3em;
+    line-height: 1.5em;
 }
 
 /* Barra di supporto */
@@ -107,7 +108,26 @@
 }
 
 .input-group input {
-    width: 150px;
+    width: 170px;
     height: 20px;
-    font-size: 0.8em;
+    font-size: 0.9em;
+}
+
+.input-group textarea {
+    font-size: 1em;
+}
+
+.input-group textarea + label {
+    font-size: 0.9em;
+}
+
+.input-group label {
+    font-size: 0.9em;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label,
+.input-group textarea:focus~label,
+.input-group textarea:valid~label {
+    font-size: 0.7em;
 }
