@@ -68,12 +68,16 @@
                     <fieldset>
                         <legend>Inviaci un messaggio</legend>
                         <div class="input-group">
+                            <input id="nome" name="user-name" type="text" required>
+                            <label for="nome">Nome</label>
+                        </div>
+                        <div class="input-group">
                             <input id="email" name="email" type="text" required>
-                            <label>Email</label>
+                            <label for="email">Email</label>
                         </div>
                         <div class="input-group">
                             <input id="titolo" name="message-title" type="text" required>
-                            <label>Titolo</label>
+                            <label for="titolo">Titolo</label>
                         </div>
                         <div class="input-group">
                             <textarea id="messaggio" name="message-text" placeholder=" " required></textarea>
