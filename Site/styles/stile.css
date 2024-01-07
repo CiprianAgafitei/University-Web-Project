@@ -480,8 +480,9 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
 
 /***************************** PRENOTAZIONE *****************************/ 
 
-#prenotation-title{
-    padding: 1em;
+#set-prenotation legend{
+    padding: 0.5em;
+    font-size: 2.5em;
 }
 
 #data-description {
@@ -502,21 +503,21 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
 
 input[type="date"] {
     padding: 12px;
-    border: 2px solid var(--flagColor4);
+    border: 2px solid var(--flagColor3);
     border-radius: 10px;
     font-size: 16px;
     width: 130px;
     margin: 1em;
     margin-bottom: 0.5em;
     outline: none;
-    color:var(--flagColor4);
-    background:var(--flagColor2);
+    color:var(--flagColor3);
+    background:var(--flagColor1);
     transition: width ease-in-out, border-color 0.5s ease-in-out, color ease-in-out 0.5s;
 }
 
 input[type="date"]:hover {
     color:white;
-    background-color: var(--flagColor4);
+    background-color: var(--flagColor3);
 }
 
 @keyframes slideIn {
@@ -531,8 +532,8 @@ input[type="date"]:hover {
 }
 
 .field-container {
-    color: var(--flagColor4);
-    border: 2px solid var(--flagColor4);
+    color: var(--flagColor3);
+    border: 2px solid var(--flagColor3);
     border-radius: 10px;
     margin: 30px auto; 
     padding: 20px;
@@ -542,45 +543,30 @@ input[type="date"]:hover {
     max-width: 600px;
     transition: max-width 0.5s ease-in-out, border-color 0.5s ease-in-out;
     animation: slideIn 1s ease-in-out;
-    
-    /*background: none;*/
 }
-
-
 
 div#calcio{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/soccerview.jpeg');
-    background-size:100% auto;
-    background-position: center center;
 }
 
 div#calcetto{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/futsalview.jpeg');
-    background-size:100% auto;
-    background-position: center center;
 }
 
 div#tennis{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/tennisview.jpeg');
-    background-size:100% auto;
-    background-position: center center;
 }
 
 div#pallavolo{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/volleyballview.jpg');
-    background-size:100% auto;
-    background-position: center center;
 }
 
 div#paddel{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/padelview.jpeg');
-    background-size:100% auto;
-    background-position: center center;
 }
 
-
 .field-container:hover{
-    border-color: white;
+    border-color: var(--footerTextColor);
 }
 
 select {
@@ -596,33 +582,32 @@ select {
     margin-bottom: 20px; 
 }
 
-
 .time-buttons input[type=button] {
     margin-right: 7px; 
     margin-left: 3px;
     margin-bottom: 10px;
     padding: 5px 15px;
-    border: 2px solid var(--flagColor4);;
+    border: 2px solid var(--flagColor3);
     border-radius: 10px;
     background-color: #fff;
-    color: var(--flagColor4);;
+    color: var(--flagColor3);
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .time-buttons input[type=button].selected {
-    background-color: var(--flagColor4); 
+    background-color: var(--flagColor3); 
     color: #fff;
 }
 
 @media (hover: none) {
     .field-container:hover{
-        border-color: var(--flagColor4);
+        border-color: var(--flagColor3);
     }
 
     input[type="date"]:focus {
         color: white;
-        background-color: var(--flagColor4);
+        background-color: var(--flagColor3);
     }
 }
 
@@ -644,21 +629,21 @@ select {
 }
 
 .popup {
-    background-color: #fff;
+    background-color: var(--footerTextColor);
     padding: 20px;
     border-radius: 5px;
     width: 80%;
     max-width: 500px; 
     margin: auto;
-    text-align: center; /* Center the text and the button */
+    text-align: center;
 }
 
 .popup input[type=button] {
-    display: block; /* Make the button a block element */
-    margin: 20px auto; /* Center the button and add some vertical space */
+    display: block;
+    margin: 20px auto;
     padding: 10px 20px;
-    background-color: var(--flagColor4);
-    color: #fff;
+    background-color: var(--flagColor3);
+    color: var(--footerTextColor);
     border: none;
     border-radius: 5px;
     cursor: pointer;
