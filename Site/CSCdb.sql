@@ -90,8 +90,8 @@ INSERT INTO Prenotazione VALUES
 CREATE TABLE Richieste (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) NOT NULL,
-    titolo VARCHAR(50) NOT NULL,
-    testo VARCHAR(500),
+    titolo VARCHAR(50),
+    testo VARCHAR(500) NOT NULL,
     FOREIGN KEY (email) REFERENCES Utente(email)
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
