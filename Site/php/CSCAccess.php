@@ -55,7 +55,7 @@
 			return mysqli_num_rows($queryResult) > 0;
         }
 
-	/** OTTENIMENTO DI NOME E COGNOME DELL'UTENTE DATO L'email */
+		/** OTTENIMENTO DI NOME E COGNOME DELL'UTENTE DATO L'email */
         public function getUserInfo($email) {
             $queryCheck = "SELECT nome, cognome FROM Cliente WHERE email=\"$email\"";
 
@@ -120,7 +120,7 @@
         public function insertNewRequest($email, $titolo, $testo) {
 			/* Inserimento in db con valori "" (campo vuoto) se il valori sono null sui campi che accettano null */
 			$queryInsert = "INSERT INTO Richieste(Email, Titolo, Testo) 
-								VALUES (\"$email\", \"$titolo\", \"$testo\")";
+								VALUES (\"$email\", NULLIF(\"$titolo\", \"\"), \"$testo\")";
 			
 			mysqli_query($this->connection, $queryInsert) or die(mysqli_error($this->connection));
 
