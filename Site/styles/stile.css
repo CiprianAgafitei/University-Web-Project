@@ -12,6 +12,7 @@
     --footerTextColor: rgb(255, 255, 255);
     --linkColor: rgb(226, 157, 29);
     --linkVisited: rgb(255, 255, 255);
+    --errorColor: rgb(255, 56, 56);
     
     --flagColor1: rgb(0, 33, 38);
     --flagColor2: rgb(237, 204, 140);
@@ -749,7 +750,7 @@ legend {
 }
 
 .input-group input:focus~label,
-.input-group input:valid~label {
+.input-group input:not(:placeholder-shown)~label {
     top: 0;
     font-size: 1em;
     color: var(--flagColor2);
@@ -1125,10 +1126,25 @@ label {
 }
 
 .input-group textarea:focus~label,
-.input-group textarea:valid~label {
+.input-group textarea:not(:placeholder-shown)~label {
     top: 0;
     left: 0;
     font-size: 1em;
     color: var(--flagColor2);
     background-color: var(--backgroundColor); 
+}
+
+/**********  CONTATTI + js  *************/
+.error_form {
+    display: inline-block;
+    width: 290px;
+    color: var(--errorColor);
+    font-weight: bold;
+    font-size: 0.9em;
+    margin: auto;
+}
+
+fieldset > span {
+    width: 3em;
+    margin: 1.5em auto 1em;
 }
