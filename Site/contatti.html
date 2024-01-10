@@ -8,26 +8,26 @@
         <meta name="keyword" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
 
-        <link rel="stylesheet" href="styles/stile.css" media="screen">
-        <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
-        <link rel="stylesheet" href="styles/print.css" media="print">
-        <script src="scripts/menu_logic.js"></script>
-        <script src="scripts/contatti_logic.js"></script>
+        <link rel="stylesheet" href="../styles/stile.css" media="screen">
+        <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="../styles/mobile.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="../styles/print.css" media="print">
+        <script src="../scripts/menu_logic.js"></script>
+        <script src="../scripts/contatti.js"></script>
     </head>
     <body>
         <header>
             <nav aria-label="Aiuti alla navigazione">
                 <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
-            <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            <img id="logo" src="../images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
             <nav id="menu">
                 <ul>
-                    <li><a href="index.html" lang="en">Home</a></li>
-                    <li><a href="activities.html">Attività</a></li>
-                    <li><a href="eventi.html">Eventi</a></li>
+                    <li><a href="../index.html" lang="en">Home</a></li>
+                    <li><a href="../activities.html">Attività</a></li>
+                    <li><a href="../eventi.html">Eventi</a></li>
                     <li>Contatti</li>
-                    <li><a href="accedi.html">Accedi</a></li>
+                    <li><a href="login.php">Accedi</a></li>
                 </ul>
                 <div class="hamburger" type="button">
                     <div class="bar"></div>
@@ -39,7 +39,7 @@
             <a href="index.html" lang="en">Home</a></li>
             <a href="activities.html">Attività</a>
             <a href="eventi.html">Eventi</a>
-            <a href="accedi.html">Accedi</a>
+            <a href="login.php">Accedi</a>
         </nav>
 
         <nav id="breadcrump">
@@ -48,46 +48,63 @@
 
         <main id="content">
 
-            <h1 id="contacts-title"class="gradient-text">contattaci</h1>
+            <h1 id="contacts-title" class="gradient-text">contattaci</h1>
 
             <section id="contatti-azienda" class="card-body">
                 <div class="contact-item contact-phone">
                     <p class="contact-text">+39 123 456 7890</p>
                 </div>
                 <div class="contact-item contact-email">
-                    <p class="contact-text">info@codesportcenter.it</p>
+                    <p class="contact-text">info@cadosportcenter.it</p>
                 </div>
                 <div class="contact-item contact-address">
                     <p class="contact-text">Via Roma, 123, 00100 Roma, Italia</p>
                 </div>
             </section>
             
-
             <section id="invio-messaggio">
                 <div class="card-body">
-                    <form action="php/sendmessage.php" method="post">
+                    <form action="contatti.php" method="post" onsubmit="return validateFormContatti()">
                         <fieldset>
                             <legend>Inviaci un messaggio</legend>
+                                {messaggioContatti}
+                            <br>
                             <div class="input-group">
-                                <input id="nome" name="user-name" type="text" required>
+                                <input id="nome" name="user-name" type="text" value="{nome_utente}" placeholder="" autocomplete="on">
                                 <label for="nome">Nome</label>
                             </div>
+                            <span id="errore_nome" class="error_form">{errore_nome}</span>
+
                             <div class="input-group">
-                                <input id="email" name="email" type="text" required>
+                                <input id="email" name="email" type="text" value="{email_utente}" placeholder="" autocomplete="on">
                                 <label for="email">Email</label>
                             </div>
+                            <span id="errore_email" class="error_form">{errore_email}</span>
+
                             <div class="input-group">
-                                <input id="titolo" name="message-title" type="text" required>
+                                <input id="titolo" name="message-title" type="text" value="{titolo_richiesta}" placeholder="" autocomplete="off">
                                 <label for="titolo">Titolo</label>
                             </div>
+                            <span id="errore_titolo" class="error_form">{errore_titolo}</span>
+                            
                             <div class="input-group">
-                                <textarea id="messaggio" name="message-text" required></textarea>
+                                <textarea id="messaggio" name="message-text" placeholder="" autocomplete="off">{testo_messaggio}</textarea>
                                 <label for="messaggio">Messaggio</label>
-                            </div>                        
-                            <input class="auth-button btn-filled-bg" type="submit" value="Invia">
+                            </div>
+                            <span id="errore_messaggio" class="error_form">{errore_messaggio}</span><br>
+
+                            <input class="auth-button btn-filled-bg" name="submit" type="submit" value="Invia">
                         </fieldset>
                     </form>
                 </div>
+                <!--
+                <div class="overlay" id="overlay">
+                    <div class="modal">
+                        <span class="close" id="close" aria-describedby="Chiudi messaggio">&times;</span>
+                        <p>Il messaggio è stato inviato con successo!</p>
+                    </div>
+                </div>-->
+
             </section>
 
         </main>
