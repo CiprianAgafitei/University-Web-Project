@@ -7,14 +7,16 @@
     error_reporting(E_ALL);
     setlocale(LC_ALL, 'it_IT');
 
-
-    $paginaHTML = file_get_contents("../accedi.html");
+    // Ottenimento del contenuto di accedi.php senza file_get_contents
+    ob_start();
+    require_once "../accedi.html";
+    $paginaHTML = ob_get_clean();
 
     $messaggioForm = "";
 
     $email_utente = "";
-    $em_ut_error = "";
     $password_utente = "";
+    $em_ut_error = "";
     $pas_ut_error = "";
 
     function pulisciInput($value) {
@@ -29,54 +31,61 @@
     $cscAccess = new CSCAccess();
     $conn = $cscAccess->openConnection();
 
-    if ($conn) {
-        // Controllo se è stata inviata una richiesta POST
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
+    if ($conn) 
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
+            if (isset($_POST['submit'])) 
+            { 
+                $email_utente = pulisciInput($_POST['email']);
+                $password_utente = pulisciInput($_POST['password']);
 
-            $result = $cscAccess->checkLoginClientCredentials($email, $password);
-            
-            if ($result) 
-            {
-                $user_info = $cscAccess->getUserInfo($email);
-                $info = $use_info->fetch_assoc();
+                if (empty($email_utente))
+                    $em_ut_error = "Il campo email non deve essere vuoto.";
 
-                // Salvataggio informazioni dell'utente nella sessione
-                $_SESSION['user_id'] = $email;
-                $_SESSION['user_password'] = $password;
-                $_SESSION['user_name'] = $info['nome'];
-                $_SESSION['user_surname'] = $info['cognome'];
+                if (empty($password_utente))
+                    $pas_ut_error = "Il campo password non deve essere vuoto.";
 
-                if ($email == "admin")
-                    header("Location: admin.html");
-                else
-                    header("Location: cliente.html");
-                exit;
-            } 
-            else {
-                $messaggioForm = "<p>Utente non registrato.</p>";
+                // Se tutto ok
+                if (empty($em_ut_error) && empty($pas_ut_error)) 
+                {
+                    $result = $cscAccess->checkLoginClientCredentials($email_utente, $password_utente);
+                    
+                    if ($result) 
+                    {
+                        $user_info = $cscAccess->getUserInfo($email);
+                        $info = $user_info->fetch_assoc();
+
+                        // Salvataggio informazioni dell'utente nella sessione
+                        $_SESSION['user_id'] = $email_utente;
+                        $_SESSION['user_password'] = $password_utente;
+                        $_SESSION['user_name'] = $info['nome'];
+                        $_SESSION['user_surname'] = $info['cognome'];
+
+                        if ($email_utente == "admin")
+                            header("Location: ../admin.html");
+                        else
+                            header("Location: ../cliente.html");
+                        exit;
+                    } 
+                    else {
+                        // Verifica se l'utente esiste e ha immesso una password sbagliata 
+                        $wrong_pass_check = $cscAccess->checkRegisteredClient($email_utente);
+
+                        if($wrong_pass_check) 
+                        {
+                            $pas_ut_error = "La password immessa non è corretta.";
+                        }
+                        else {
+                            $messaggioForm = "<span class=\"error_form\">Utente non registrato.</span>";
+                        }
+                    }
+                }
             }
         }    
     }
-
-    if (isset($_POST['submit'])) 
-    { 
-        $email_utente = pulisciInput($_POST['email']);
-        $password_utente = pulisciInput($_POST['password']);
-
-        if (empty($email_utente))
-            $em_ut_error = "<p>Il campo email non deve essere vuoto.</p>";
-
-        if (!filter_var($email_utente, FILTER_VALIDATE_EMAIL))
-            $em_ut_error = "<p>Il formato dell'email non è valido.</p>";
-
-        if (empty($password_utente))
-            $pas_ut_error = "<p>Il campo password non deve essere vuoto.</p>";
-    }
-
     $closeResult = $cscAccess->closeConnection();
-
+    
     $paginaHTML = str_replace("{messaggioLogin}", $messaggioForm, $paginaHTML);
     $paginaHTML = str_replace("{login_EmEr}", $em_ut_error, $paginaHTML);
     $paginaHTML = str_replace("{login_PasEr}", $pas_ut_error, $paginaHTML);
