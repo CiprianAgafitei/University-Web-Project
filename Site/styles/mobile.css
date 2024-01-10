@@ -113,6 +113,11 @@
     font-size: 0.9em;
 }
 
+.error_form {
+    width: 160px;
+    font-size: 0.7em;
+}
+
 .input-group textarea {
     font-size: 1em;
 }
@@ -126,8 +131,8 @@
 }
 
 .input-group input:focus~label,
-.input-group input:valid~label,
+.input-group input:not(:placeholder-shown)~label,
 .input-group textarea:focus~label,
-.input-group textarea:valid~label {
+.input-group textarea:not(:placeholder-shown)~label {
     font-size: 0.7em;
 }
