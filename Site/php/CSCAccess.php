@@ -205,11 +205,26 @@
 			}
 		}
 
-		/** OTTENIMENTO DEGLI ORARI DELLE PRENOTAZIONI EFFETTUATE IN UNA CERTA DATA
+		/** OTTENIMENTO DELL'ID DELL'ATTIVITA PASSATA COME PARAMETRO */
+		private function getIdAttivita($attivita) {
+			$query = "SELECT id FROM Attivita WHERE nome_sport = \"$attivita\"";
+
+			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
+
+			return $queryResult;
+		}
+
+		/** OTTENIMENTO DEGLI ORARI DELLE PRENOTAZIONI EFFETTUATE IN UNA CERTA DATA DI UNA DATA ATTIVITA
 		 * 	(utile per visualizzare in seguito le disponibilità restanti) */
-		public function getReservedPrenotations($data_scelta) {
-			// Aggiungere anche ricerca in base allo sport
-			$query = "SELECT DISTINCT ora FROM Prenotazione WHERE data=\"$data_scelta\"";
+		public function getReservedPrenotations($data_scelta, $attivita) 
+		{
+			$id_attivita = $this->getIdAttivita($attivita);
+
+			$query = "SELECT orario_prenotazione, codice_campo
+					  FROM Prenotazione P JOIN Campo C 
+					  ON P.codice_campo = C.codice AND P.id_Attivita = C.id_Attivita
+					  WHERE P.data = \"$data_scelta\" AND P.id_Attivita = $id_attivita
+					  ORDER BY P.ora";
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
 
@@ -225,6 +240,21 @@
 			else {
 				return null;
 			}
+		}
+
+		/** OTTENIMENTO DEL PRIMO CAMPO DISPONIBILE DATO L'ORARIO E L'ATTIVITA SCELTA */
+		public function getCampoDisponibile($data_scelta, $attivita) {
+			$id_attivita = $this->getIdAttivita($attivita);
+
+			$query = "SELECT codice
+					  FROM Campo
+				  	  WHERE id_Attivita = (SELECT id FROM Attivita WHERE nome_sport = \"$attivita\")
+					  AND codice NOT IN (SELECT codice_campo FROM Prenotazione WHERE data = \"$data_scelta\" AND id_Attivita=$id_attivita)
+					  LIMIT 1";
+	
+			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
+
+			return $queryResult;
 		}
 	}
 ?>
