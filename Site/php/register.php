@@ -25,6 +25,10 @@
     $conferma_password_utente = "";
     $conf_pas_ut_error = "";
 
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
     function pulisciInput($value) {
         $value = trim($value);
         $value = strip_tags($value);
