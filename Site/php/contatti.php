@@ -28,7 +28,9 @@
         return $value;
     }
 
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     $cscAccess = new CSCAccess();
     $conn = $cscAccess->openConnection();
