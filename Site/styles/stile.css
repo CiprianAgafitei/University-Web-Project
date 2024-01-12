@@ -1148,3 +1148,11 @@ fieldset > span {
     width: 3em;
     margin: 1.5em auto 1em;
 }
+
+#js-disabled-ms {
+    text-align: center; 
+    padding: 10px; 
+    font-weight: bold;
+    background-color: #f8d7da; 
+    color: #721c24;
+}
