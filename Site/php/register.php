@@ -77,14 +77,24 @@
                     }
                     else if (!$check_registered_user && $password_utente === $conferma_password_utente)
                     {
-                        $result = $cscAccess->insertNewClient($email_utente, $nome_utente, $cognome_utente, hash('sha256', $password_utente));
-                        
-                        if ($result) {
-                            header("Location: ../cliente.html");
-                            exit;
-                        } 
-                        else {
-                            $messaggioForm = "<span class=\"error_form\">Errore di autenticazione.</span>";
+                        // Verifica se è già presente nella tabella utenti
+                        $user_check = $cscAccess->checkUser($email_utente);
+
+                        if (!$user_check) {
+                            $result1 = $cscAccess->insertNewUser($email_utente, $nome_utente);
+
+                            if ($result1) 
+                            {
+                                // Inserimento nuovo cliente
+                                $result2 = $cscAccess->insertNewClient($email_utente, $nome_utente, $cognome_utente, hash('sha256', $password_utente));
+                                                        
+                                if ($result2) {
+                                    header("Location: ../cliente.html");
+                                    exit;
+                                }
+                            }
+                            // Se nessun result true errore nella communicazione con il db
+                            $messaggioForm = "<span class=\"error_form\">Errore di autenticazione. Si prega di riprovare o contattarci.</span>";
                         }
                     }
                 }
