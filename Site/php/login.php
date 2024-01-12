@@ -26,7 +26,9 @@
         return $value;
     }
 
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     $cscAccess = new CSCAccess();
     $conn = $cscAccess->openConnection();
@@ -61,6 +63,7 @@
                         $_SESSION['user_password'] = $password_utente;
                         $_SESSION['user_name'] = $info['nome'];
                         $_SESSION['user_surname'] = $info['cognome'];
+                        $_SESSION['logged_in'] = true;
 
                         if ($email_utente == "admin")
                             header("Location: ../admin.html");
