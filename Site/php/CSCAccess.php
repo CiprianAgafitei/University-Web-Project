@@ -167,7 +167,7 @@
 
         /** OTTENIMENTO DI TUTTE LE PRENOTAZIONI DI TUTTI GLI UTENTI */
         public function getAllPrenotations() {
-			$query = "SELECT * FROM Prenotazione";
+			$query = "SELECT * FROM Prenotazione ORDER BY data DESC";
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
 
@@ -187,7 +187,7 @@
 
 		/** OTTENIMENTO DI TUTTE LE RICHIESTE */
 		public function getAllRequests() {
-			$query = "SELECT * FROM Richieste";
+			$query = $query = "SELECT * FROM Richieste ORDER BY id DESC";
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
 

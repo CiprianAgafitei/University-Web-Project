@@ -31,7 +31,7 @@
                                 <td>{$prenotazione["data"]}</td>
                                 <td>{$prenotazione["ora"]}</td>
                                 <td>\"$sport\"</td>
-                                <td>1</td>
+                                <td>{$prenotazione["codice_campo"]}</td>
                                 <td>{$prenotazione["utente"]}</td>
                             </tr>";
         }
