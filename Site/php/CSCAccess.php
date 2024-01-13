@@ -205,6 +205,38 @@
 			}
 		}
 
+				/** OTTENIMENTO DEL NOME DELL'ATTIVITA CORRISPONDENTE ALL'ID */
+		public function getNomeAttivita($id_attivita) {
+			$query = "SELECT nome_sport FROM Attivita WHERE id = \"$id_attivita\"";
+			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
+
+			if ($queryResult) 
+			{
+				$row = mysqli_fetch_assoc($queryResult);
+			
+				if ($row) {
+					return $row['nome_sport'];
+				}
+			}
+			return null;
+		}
+
+		/** OTTENIMENTO DEL NOME DELL'ATTIVITA CORRISPONDENTE ALL'ID */
+		public function getNomeUtente($email) {
+			$query = "SELECT nome FROM Utente WHERE email = \"$email\"";
+			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
+
+			if ($queryResult) 
+			{
+				$row = mysqli_fetch_assoc($queryResult);
+			
+				if ($row) {
+					return $row['nome'];
+				}
+			}
+			return null;
+		}
+
 		/** OTTENIMENTO DELL'ID DELL'ATTIVITA PASSATA COME PARAMETRO */
 		private function getIdAttivita($attivita) {
 			$query = "SELECT id FROM Attivita WHERE nome_sport = \"$attivita\"";
