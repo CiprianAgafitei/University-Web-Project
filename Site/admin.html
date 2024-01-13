@@ -45,14 +45,18 @@
         </nav>
 
         <nav id="breadcrump">
-            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Area riservata</p>
+            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Area Amministratore</p>
         </nav>
         
         <main id="admin-content">
             <h1 class="gradient-text"> Storico Prenotazioni </h1>
+            <div class="pagination-buttons">
+                <input type="button" id="prevPage" value="&#8592; Precedente" aria-label="Visualizza le precedenti 10 righe della tabella">
+                <input type="button" id="nextPage" value="Successivo &#8594;" aria-label="Visualizza le successive 10 righe della tabella">
+            </div>
             <div id="storico-prenotazioni" class="card-body">
                 <div class="table-container">
-                    <table class="custom-table" aria-describedby="descrizioneTabella">
+                    <table class="custom-table" aria-describedby="Ogni riga di questa tabella descrive una prenotazione. Ogni prenotazione è identificata da: Data, Ora, Attività e Nome dell'utente che l'ha eseguita">
                         <thead>
                             <tr>
                                 <th scope="col">Data</th>
@@ -76,6 +80,7 @@
                         </table>
                 </div>
             </div>
+
             <h1 class="gradient-text"> Messaggi Ricevuti </h1>
             <div class="messages-container">
                     {messaggi}
