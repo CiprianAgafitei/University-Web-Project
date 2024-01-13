@@ -63,24 +63,24 @@
                 if (empty($em_ut_error) && empty($nome_error) && empty($tit_mes_error) && empty($mes_error))
                 {
                     // Verifica se l'utente è già noto nel db come cliente
-                    $client_check = $cscAccess->checkRegisteredClient($email);
+                    $client_check = $cscAccess->checkRegisteredClient($email_utente);
 
                     if (!$client_check) {
-                        $user_check = $cscAccess->checkUser($email);    // Verifica se utente già noto nel db come utente
+                        $user_check = $cscAccess->checkUser($email_utente);    // Verifica se utente già noto nel db come utente
                     
                         if (!$user_check) 
                         {
-                            $cscAccess->insertNewUser($email, $nome);    // Registrazione nella tabella utente
+                            $cscAccess->insertNewUser($email_utente, $nome);    // Registrazione nella tabella utente
                         }
                     }
-                    $result = $cscAccess->insertNewRequest($email, $titolo_messaggio, $messaggio);
+                    $result = $cscAccess->insertNewRequest($email_utente, $titolo_messaggio, $messaggio);
 
                     if(!$result) {
                         $messaggioForm = "<span class=\"error_form\">Ci dispiace, non è stato possibile completare l'invio della richesta. Si prega di riprovare più tardi o contattarci tramite email o telefono.</span>";
                         exit;
                     }
                             
-                    if ($email == "admin")
+                    if ($email_utente == "admin")
                         header("Location: ../admin.html");
                     else
                         header("Location: ../cliente.html");
