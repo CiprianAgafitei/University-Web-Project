@@ -1160,7 +1160,10 @@ label {
 }
 
 fieldset > span {
-    width: 3em;
+    display: inline-block;
+    width: 290px;
+    font-weight: bold;
+    line-height: 1.5em;
     margin: 1.5em auto 1em;
 }
 
