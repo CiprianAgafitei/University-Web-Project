@@ -66,9 +66,9 @@
                         $_SESSION['logged_in'] = true;
 
                         if ($email_utente == "admin")
-                            header("Location: ../admin.html");
+                            header("Location: admin.php");
                         else
-                            header("Location: ../cliente.html");
+                            header("Location: cliente.php");
                         exit;
                     } 
                     else {
