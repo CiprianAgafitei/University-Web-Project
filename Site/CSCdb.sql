@@ -87,6 +87,7 @@ INSERT INTO Prenotazione VALUES
                     (9, 'C', 1, "pippo@gmail.com", '2023-12-15', '08:00'),
                     (10, 'B', 3, "pluto@gmail.com", '2023-12-15', '08:00');
 
+
 CREATE TABLE Richieste (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) NOT NULL,

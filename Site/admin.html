@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="styles/print.css" media="print">
 
         <script src="scripts/accedi.js"></script>
+        <script src="scripts/admin.js"></script>
     </head>
     <body>
         <header>
@@ -48,21 +49,42 @@
         </nav>
         
         <main id="admin-content">
+            <h1 class="gradient-text"> Storico Prenotazioni </h1>
+            <div id="storico-prenotazioni" class="card-body">
+                <div class="table-container">
+                    <table class="custom-table" aria-describedby="descrizioneTabella">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Ora</th>
+                                <th scope="col">Attività</th>
+                                <th scope="col">Campo</th>
+                                <th scope="col">Utente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Idati della tabella verranno inseriti qui -->
+                            <tr>
+                                <td>01/01/2020</td>
+                                <td>10:00</td>
+                                <td>Calcio</td>
+                                <td>1</td>
+                                <td>Nome Cognome</td>
+                        </tbody>
+                        </table>
+                </div>
+            </div>
+            <h1 class="gradient-text"> Messaggi Ricevuti </h1>
+            <div class="messages-container">
+                    <div class="message-box">
+                    <h3 class="message-title">Titolo del Messaggio</h3>
+                    <p class="message-name">Nome: Nome Mittente</p>
+                    <p class="message-email">Email: email@mittente.com</p>
+                    <p class="message-content">Contenuto del messaggio...</p>
+                </div>
+            </div>
             
-            <table aria-describedby="In questa tabella ci sono 4 colonne con i seguenti campi: data, ora, attività, campo.">
-                <thead>
-                    <th scope="col">Data</th>
-                    <th scope="col">Ora</th>
-                    <th scope="col">Attività</th>
-                    <th scope="col">Campo</th>
-                    <th scope="col">Utente</th>
-                </thead>
 
-                <tbody>
-                    {prenotazioni}
-                    <!-- <tr scope="row"> -->
-                </tbody>
-            </table>
         </main>
         
         <div id="go-back">
