@@ -1251,4 +1251,33 @@ fieldset > span {
     margin-bottom: 10px;
 }
 
+.pagination-buttons {
+    text-align: center; 
+    margin-top: 10px;
+    margin-bottom: 5px; 
+}
+
+
+#prevPage, #nextPage {
+    padding: 10px 10px; 
+    border: 1px solid #f1c40f; 
+    background: var(--flagColor1);
+    color: #f1c40f;
+    border-radius: 20px; 
+    cursor: pointer;
+    margin: 0 5px; 
+    font-size: 0.8em; 
+}
+
+#prevPage:hover, #nextPage:hover {
+    background-color: #f1c40f ; 
+    color: var(--flagColor1);
+    border: solid var(--flagColor1)
+}
+
+.pagination-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 
