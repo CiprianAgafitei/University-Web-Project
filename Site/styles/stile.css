@@ -30,6 +30,7 @@ html {
     font-family: var(--font-body-family);
     line-height: 1.5em;
     margin: auto;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -60,6 +61,8 @@ a:visited {
     color:transparent;
     -webkit-background-clip:text;
     background-clip: text;
+    display: block;
+    padding: 20px 0;
 }
 
 #go-back {
@@ -79,11 +82,13 @@ a:visited {
     border-radius: 25px;
     border: 2px solid var(--flagColor3);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #go-back a:hover {
     color: var(--flagColor3);
     background-color: var(--flagColor1);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ----------------------------------------------------------
@@ -548,22 +553,32 @@ input[type="date"]:hover {
 
 div#calcio{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/soccerview.jpeg');
+    background-size:100% auto;
+    background-position: center center;
 }
 
 div#calcetto{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/futsalview.jpeg');
+    background-size:100% auto;
+    background-position: center center;
 }
 
 div#tennis{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/tennisview.jpeg');
+    background-size:100% auto;
+    background-position: center center;
 }
 
 div#pallavolo{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/volleyballview.jpg');
+    background-size:100% auto;
+    background-position: center center;
 }
 
 div#paddel{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/padelview.jpeg');
+    background-size:100% auto;
+    background-position: center center;
 }
 
 .field-container:hover{
@@ -1156,3 +1171,84 @@ fieldset > span {
     background-color: #f8d7da; 
     color: #721c24;
 }
+
+/**********  ADMIN *************/
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.custom-table {
+    width: 80%; 
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #2a2a2a; 
+    color: white; 
+}
+
+.custom-table thead {
+    background-color: #f1c40f; 
+    color: #2a2a2a; 
+}
+
+.custom-table th,
+.custom-table td {
+    text-align: left;
+    padding: 12px 15px;
+}
+
+.custom-table th {
+    border-radius: 5px;
+}
+
+.custom-table tr {
+    border-bottom: 1px solid #f1c40f; 
+}
+
+.custom-table tr:nth-of-type(even) {
+    background-color: #333333; 
+}
+
+.custom-table tr:last-of-type {
+    border-bottom: 2px solid #f1c40f;
+}
+
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    width: 100%; 
+}
+
+.message-box {
+    background-color: #2a2a2a; 
+    width: 80%;
+    color: white; 
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.message-title {
+    background-color: #f1c40f; 
+    color: #2a2a2a;
+    padding: 10px;
+    border-radius: 5px;
+    margin: -20px -20px 10px; 
+    display: inline-block;
+}
+
+.message-name,
+.message-email,
+.message-content {
+    margin-bottom: 10px;
+}
+
+

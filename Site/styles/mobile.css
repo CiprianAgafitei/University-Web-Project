@@ -136,3 +136,12 @@
 .input-group textarea:not(:placeholder-shown)~label {
     font-size: 0.7em;
 }
+
+.custom-table {
+    width: 100%; /* Imposta la larghezza al 100% per schermi piccoli */
+}
+
+.custom-table, .custom-table th, .custom-table td {
+    font-size: smaller; /* Riduci la dimensione del font */
+    padding: 8px; /* Riduci il padding */
+}
