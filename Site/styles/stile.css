@@ -51,11 +51,11 @@ a:visited {
 .gradient-text {
     background-image: linear-gradient(to right,
             #A65B54 0,
-            #cb9b51 30%, 
+            #cb9b51 20%, 
             #f6e27a 47%,
             #f6f2c0 50%,
             #f6e27a 53%,
-            #cb9b51 70%,
+            #cb9b51 80%,
             #A65B54 100%
 	);
     color:transparent;
