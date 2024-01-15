@@ -51,7 +51,7 @@
                 // Se tutto ok
                 if (empty($em_ut_error) && empty($pas_ut_error)) 
                 {
-                    $result = $cscAccess->checkLoginClientCredentials($email_utente, $password_utente);
+                    $result = $cscAccess->checkLoginClientCredentials($email_utente, hash('sha256', $password_utente));
                     
                     if ($result) 
                     {
