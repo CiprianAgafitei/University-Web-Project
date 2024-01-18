@@ -51,11 +51,11 @@ a:visited {
 .gradient-text {
     background-image: linear-gradient(to right,
             #A65B54 0,
-            #cb9b51 20%, 
+            #cb9b51 30%, 
             #f6e27a 47%,
             #f6f2c0 50%,
             #f6e27a 53%,
-            #cb9b51 80%,
+            #cb9b51 70%,
             #A65B54 100%
 	);
     color:transparent;
@@ -1160,10 +1160,7 @@ label {
 }
 
 fieldset > span {
-    display: inline-block;
-    width: 290px;
-    font-weight: bold;
-    line-height: 1.5em;
+    width: 3em;
     margin: 1.5em auto 1em;
 }
 
@@ -1283,4 +1280,12 @@ fieldset > span {
     margin-bottom: 20px;
 }
 
+#error-display { 
+    margin:2em; 
+    padding: 1em;
+    margin: auto;
+    justify-content: center;
+    text-align: center;  
+    width: 100%; 
+}
 
