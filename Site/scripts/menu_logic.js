@@ -1,3 +1,20 @@
+function checkWindowSize() {
+    const screenWidth = window.innerWidth;
+    const mobileMenu = document.querySelector('.mobile-nav');
+    const desktopMenu = document.getElementById('menu');
+
+    if (screenWidth <= 1032) {
+        // Schermo piccolo o uguale a 1032px (mobile)
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        desktopMenu.setAttribute('aria-hidden', 'true');
+    } else {
+        // Schermo più grande di 1032px (desktop)
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        desktopMenu.setAttribute('aria-hidden', 'false');
+    }
+}
+
+
 window.onload = function() {
     window.addEventListener('scroll', function(e) {
         if (window.scrollY > 100) {
@@ -17,3 +34,5 @@ window.onload = function() {
     });
 }
 
+window.addEventListener('DOMContentLoaded', checkWindowSize);
+window.addEventListener('resize', checkWindowSize);
