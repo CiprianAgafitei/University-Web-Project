@@ -28,7 +28,7 @@
                     <li><a href="../activities.html">Attività</a></li>
                     <li><a href="../eventi.html">Eventi</a></li>
                     <li><a href="contatti.php">Contatti</a></li>
-                    <li><a href="accedi.php">Accedi</a></li>
+                    <li><a href="admin.php" lang="en">Account</a></li>
                 </ul>
                 <div class="hamburger" type="button">
                     <div class="bar"></div>
@@ -41,11 +41,11 @@
             <a href="../activities.html">Attività</a>
             <a href="../eventi.html">Eventi</a>
             <a href="contatti.php">Contatti</a>
-            <a href="accedi.php">Accedi</a>
+            <a href="admin.php" lang="en">Account</a>
         </nav>
 
         <nav id="breadcrump">
-            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Area Amministratore</p>
+            <p>Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; <a href="admin.php" lang="en">Account</a> : Area Amministratore</p>  ;
         </nav>
         
         <main id="admin-content">
@@ -56,7 +56,7 @@
             </div>
             <div id="storico-prenotazioni" class="card-body">
                 <div class="table-container">
-                    <table class="custom-table" aria-describedby="Ogni riga di questa tabella descrive una prenotazione. Ogni prenotazione è identificata da: Data, Ora, Attività e Nome dell'utente che l'ha eseguita">
+                    <table class="custom-table" caption="Prenotazioni" aria-describedby="Ogni riga di questa tabella descrive una prenotazione. Ogni prenotazione è identificata da: Data, Ora, Attività e Nome dell'utente che l'ha eseguita">
                         <thead>
                             <tr>
                                 <th scope="col">Data</th>
@@ -69,13 +69,6 @@
                         <tbody>
                             <!-- Idati della tabella verranno inseriti qui -->
                                 {righe_tabella}
-                            <tr>
-                                <td>01/01/2020</td>
-                                <td>10:00</td>
-                                <td>Calcio</td>
-                                <td>1</td>
-                                <td>Nome Cognome</td>
-                            </tr>
                         </tbody>
                         </table>
                 </div>
@@ -84,12 +77,6 @@
             <h1 class="gradient-text"> Messaggi Ricevuti </h1>
             <div class="messages-container">
                     {messaggi}
-                <div class="message-box">
-                    <h3 class="message-title">Titolo del Messaggio</h3>
-                    <p class="message-name">Nome: Nome Mittente</p>
-                    <p class="message-email">Email: email@mittente.com</p>
-                    <p class="message-content">Contenuto del messaggio...</p>
-                </div>
             </div>
         </main>
         
