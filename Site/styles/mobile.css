@@ -19,6 +19,10 @@
     left: 50%;
 }
 
+#menu{
+    display: none;
+}
+
 #breadcrump p {
     margin-left: 6%;
 }
