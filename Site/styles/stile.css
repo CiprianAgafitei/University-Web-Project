@@ -190,16 +190,10 @@ header {
     padding-top: 100px;
     transition: 0.4s;
     box-shadow: 5px 0px 30px rgba(0, 0, 0, 0.5);
-    display: none;
 }
 
 .mobile-nav.is-active {
     left: 60%;
-}
-
-.mobile-nav.is-active body {
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 9999;
 }
 
 .mobile-nav a {
@@ -209,11 +203,6 @@ header {
     text-align: center;
     padding: 1em 0;
     font-size: 1.2em;
-}
-
-/* funzionerà solo sui dispositivi che supportano, nel resto sarà normale, visibile cliccandoci anche se per poco */
-.mobile-nav a:hover {
-    background-color: rgba(0, 24, 27, 0.7);
 }
 
 /* ----------------------------------------------------------
@@ -1247,6 +1236,13 @@ fieldset > span {
     display: inline-block;
 }
 
+.message-box h3::before {
+    content: "Titolo: ";
+    position: absolute;
+    left: -9999px; /* Sposta il testo fuori dalla vista */
+}
+
+
 .message-name,
 .message-email,
 .message-content {
@@ -1282,12 +1278,23 @@ fieldset > span {
     margin-bottom: 20px;
 }
 
+@media (hover: none) {
+    #prevPage:hover,
+    #nextPage:hover {
+        background-color: transparent;
+        color: #f1c40f;
+        border: 1px solid #f1c40f;
+    }
+
+}
+
+/**********  404 *************/
+
 #error-display { 
+    width: auto;
     margin:2em; 
     padding: 1em;
-    margin: auto;
     justify-content: center;
     text-align: center;  
-    width: 100%; 
 }
 

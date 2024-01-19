@@ -19,8 +19,8 @@
     left: 50%;
 }
 
-#menu{
-    display: none;
+#breadcrump p {
+    margin-left: 6%;
 }
 
 #breadcrump p {
@@ -146,8 +146,8 @@
 }
 
 .custom-table, .custom-table th, .custom-table td {
-    font-size: smaller; /* Riduci la dimensione del font */
-    padding: 8px; /* Riduci il padding */
+    font-size: smaller; 
+    padding: 8px; 
 }
 
 #prevPage, #nextPage {
