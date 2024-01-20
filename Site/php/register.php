@@ -93,7 +93,7 @@
                                 $result2 = $cscAccess->insertNewClient($email_utente, $nome_utente, $cognome_utente, hash('sha256', $password_utente));
                                                         
                                 if ($result2) {
-                                    header("Location: ../cliente.html");
+                                    header("Location: cliente.php");
                                     exit;
                                 }
                             }
