@@ -305,4 +305,18 @@ class CSCAccess {
 		}
 		return null;
 	}
+
+	/** OTTENIMENTO DEL NOME DELL'ATTIVITA CORRISPONDENTE ALL'ID */
+	public function getNomeAttivita($id_attivita) {
+		$query = "SELECT nome_sport
+					  FROM Attivita
+				  	  WHERE id_Attivita=\"$id_attivita\"";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
+
+		$row = mysqli_fetch_assoc($queryResult);
+		$attivita = ($row && mysqli_num_rows($queryResult) > 0) ? $row['nome_sport'] : null;
+
+		mysqli_free_result($queryResult);
+		return $attivita;
+	}
 }
