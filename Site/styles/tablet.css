@@ -59,12 +59,6 @@ ul {
     font-size: 1.5em;
 }
 
-.input-group input {
-    width: 250px;
-    height: 25px;
-}
-
-/* Barra di supporto */
 #back-set-prenot {
     margin: 0 2em;
 }
@@ -96,4 +90,32 @@ ul {
 .error_form {
     width: 210px;
     font-size: 0.8em;
+}
+
+fieldset > span {
+    width: 210px;
+}
+
+h5 {
+    font-size: 2em;
+    width: 8em;
+}
+
+#show-pren-details div:not(#logged-in-confirmation) p {
+    font-size: 1em;
+}
+
+#logged-in-confirmation input {
+    margin: 1em 0.5em;
+    padding: 0.5em;
+    font-size: 0.9em;
+}
+
+#logged-in-confirmation p {
+    font-size: 0.9em;
+}
+
+#logged-in-confirmation a {
+    font-size: 0.9em;
+    padding: 0.5em;
 }
