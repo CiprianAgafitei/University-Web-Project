@@ -4,14 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CadoSportCenter &minus; Attività</title>
-
-        <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, calcetto, calcio, pallavolo, tennis, paddel">
+        <meta name="keywords" content="cadosportcenter, prenotazione campi sportivi, attività, calcetto, calcio, pallavolo, tennis, paddel">
         <meta name="description" content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-
         <link rel="stylesheet" href="styles/stile.css" media="screen">
         <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
         <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
         <link rel="stylesheet" href="styles/print.css" media="print">
+        <script src="scripts/menu_logic.js"></script>
     </head>
     <body>
         <header>
@@ -36,8 +35,8 @@
         <nav class="mobile-nav" aria-label="Menù">
             <a href="index.html" lang="en">Home</a></li>
             <a href="eventi.html">Eventi</a>
-            <a href="contatti.html">Contatti</a>
-            <a href="accedi.html">Accedi</a>
+            <a href="php/contatti.php">Contatti</a>
+            <a href="php/login.php">Accedi</a>
         </nav>
 
         <nav id="breadcrump">
@@ -52,50 +51,46 @@
                 <div class="separatore"></div>
 
                 <div class="container">
-                    <a href="prenotazioni.html?option=calcetto">
+                    <a href="php/prenotation.php?option=calcetto">
                         <span id="calcetto"></span>
                         <div class="contenuto">
                             <h2>Calcetto</h2>
                         </div>
                     </a>
-                    <a href="prenotazioni.html?option=calcio">
+                    <a href="php/prenotation.php?option=calcio">
                         <span id="calcio"></span>
                         <div class="contenuto">
                             <h2>Calcio</h2>
                         </div>
                     </a>
-                    <a href="prenotazioni.html?option=pallavolo">
+                    <a href="php/prenotation.php?option=pallavolo">
                         <span id="pallavolo"></span>
                         <div class="contenuto">
                             <h2>Pallavolo</h2>
                         </div>
                     </a>
-                    <a href="prenotazioni.html?option=tennis">
+                    <a href="php/prenotation.php?option=tennis">
                         <span id="tennis"></span>
                         <div class="contenuto">
                             <h2>Tennis</h2>
                         </div>
                     </a>
-                    <a href="prenotazioni.html?option=paddel">
+                    <a href="php/prenotation.php?option=paddel">
                         <span id="paddel"></span>
                         <div class="contenuto">
                             <h2>Paddel</h2>
                         </div>
                     </a>
                 </div>
-                
             </section>
-
         </main>
-
+        
         <div id="go-back">
             <a href="#" aria-label="Torna su">↑</a>
         </div>
-        
+
         <footer>
             <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
         </footer>
-
-        <script src="scripts/menu_logic.js"></script>
     </body>
 </html>
