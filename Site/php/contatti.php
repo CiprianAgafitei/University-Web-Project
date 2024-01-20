@@ -70,25 +70,23 @@
                     
                         if (!$user_check) 
                         {
-                            $cscAccess->insertNewUser($email_utente, $nome_utente);    // Registrazione nella tabella utente
+                            $cscAccess->insertNewUser($email_utente, $nome);    // Registrazione nella tabella utente
                         }
                     }
                     $result = $cscAccess->insertNewRequest($email_utente, $titolo_messaggio, $messaggio);
 
                     if(!$result) {
                         $messaggioForm = "<span class=\"error_form\">Ci dispiace, non è stato possibile completare l'invio della richesta. Si prega di riprovare più tardi o contattarci tramite email o telefono.</span>";
-                        exit;
                     }
+                    else {
+                        $messaggioForm = "<span>AVVISO: Messaggio inviato con successo! Riceverà un nostro riscontro all'indirizzo email inserito.</span>";
 
-                    else{
-                        $messaggioForm = "<span class=\"success_form\">La richiesta è stata inviata con successo.</span>";
+                        // Pulizia valori dei campi
+                        $email_utente = "";
+                        $nome_utente = "";
+                        $titolo_messaggio = "";
+                        $messaggio = "";
                     }
-                    
-                    // Pulizia valori dei campi
-                    $email_utente = "";
-                    $nome_utente = "";
-                    $titolo_messaggio = "";
-                    $messaggio = "";
                 }
             }
         }    
