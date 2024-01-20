@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CadoSportsCenter &minus; Home</title>
-
-        <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+        <meta name="keywords" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-
         <link rel="stylesheet" href="styles/stile.css" media="screen">
         <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
         <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
         <link rel="stylesheet" href="styles/print.css" media="print">
+        <script src="scripts/menu_logic.js"></script>
+        <script src="scripts/home_logic.js"></script>
     </head>
     <body>
         <!-- Avviso per gli utenti con JavaScript disabilitato -->
@@ -25,7 +25,7 @@
                 <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
             <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
-            <nav id="menu">
+            <nav id="menu" aria-label="Menù principale di navigazione">
                 <ul>
                     <li lang="en">Home</li>
                     <li><a href="activities.html">Attività</a></li>
@@ -33,25 +33,24 @@
                     <li><a href="php/contatti.php">Contatti</a></li>
                     <li><a href="php/login.php">Accedi</a></li>
                 </ul>
-                <div class="hamburger" type="button">
+                <div class="hamburger" type="button" aria-label="Premi per aprire il menù">
                     <div class="bar"></div>
                 </div>
             </nav>
         </header>
 
-        <nav class="mobile-nav" aria-label="Menù">
+        <nav class="mobile-nav" aria-label="Menù a tendina">
             <a href="activities.html">Attività</a>
             <a href="eventi.html">Eventi</a>
             <a href="php/contatti.php">Contatti</a>
             <a href="php/login.php">Accedi</a>
         </nav>
 
-        <nav id="breadcrump">
+        <nav id="breadcrump" aria-label="Menù breadcrump">
             <p>Ti trovi in: <span lang="en">Home</span></p>
         </nav>
         
         <main>
-
             <div class="main-background"></div>
             
             <div class="home-content" id="content">
@@ -72,8 +71,5 @@
         <footer>
             <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
         </footer>
-
-        <script src="scripts/home_logic.js"></script>
-        <script src="scripts/menu_logic.js"></script>
     </body>
 </html>
