@@ -1,137 +1,136 @@
 <!DOCTYPE html>
 <html lang="it">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CadoSportsCenter &minus; Accedi</title>
-    
-        <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
-        <meta name="description"
-            content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-    
-        <link rel="stylesheet" href="../styles/stile.css" media="screen">
-        <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="../styles/mobile.css" media="screen and (max-width:496px)">
-        <link rel="stylesheet" href="../styles/print.css" media="print">    
-        <script src="../scripts/menu_logic.js"></script>
-        <script src="../scripts/accedi.js"></script>
-    </head>
-    
-    <body>
-        <header>
-            <nav aria-label="Aiuti alla navigazione">
-                <a class="navigationHelp" href="#content">Vai al contenuto</a>
-            </nav>
-            <img id="logo" src="../images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
-            <nav id="menu">
-                <ul>
-                    <li><a href="../index.html" lang="en">Home</a></li>
-                    <li><a href="../activities.html">Attività</a></li>
-                    <li><a href="../eventi.html">Eventi</a></li>
-                    <li><a href="contatti.php">Contatti</a></li>
-                    <li>Accedi</li>
-                </ul>
-                <div class="hamburger" type="button">
-                    <div class="bar"></div>
-                </div>
-            </nav>
-        </header>
-    
-        <nav class="mobile-nav" aria-label="Menù">
-            <a href="../index.html" lang="en">Home</a>
-            <a href="../activities.html">Attività</a>
-            <a href="../eventi.html">Eventi</a>
-            <a href="contatti.php">Contatti</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CadoSportsCenter &minus; Accedi</title>
+    <meta name="keywords" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+    <meta name="description"
+        content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
+    <link rel="stylesheet" href="../styles/stile.css" media="screen">
+    <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
+    <link rel="stylesheet" href="../styles/mobile.css" media="screen and (max-width:496px)">
+    <link rel="stylesheet" href="../styles/print.css" media="print">    
+    <script src="../scripts/menu_logic.js"></script>
+    <script src="../scripts/accedi.js"></script>
+    <script src="../scripts/loginValidation.js"></script>
+</head>
+  
+<body>
+    <header>
+        <nav aria-label="Aiuti alla navigazione">
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
-    
-        <nav id="breadcrump">
-            <p>Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Accedi</p>
+        <img id="logo" src="../images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+        <nav id="menu">
+            <ul>
+                <li><a href="../index.html" lang="en">Home</a></li>
+                <li><a href="../activities.html">Attività</a></li>
+                <li><a href="../eventi.html">Eventi</a></li>
+                <li><a href="contatti.php">Contatti</a></li>
+                <li>Accedi</li>
+            </ul>
+            <div class="hamburger" type="button">
+                <div class="bar"></div>
+            </div>
         </nav>
-    
-        <main id="content">
-            <section id="login-access">
-                <div class="card-body">
-                    <form action="login.php" method="post" onsubmit="return validateFormLogin()">
-                        <fieldset>
-                            <legend>Accedi</legend>
-                                {messaggioLogin}
-                            <br>
-                            <div class="input-group">
-                                <input id="email" type="text" name="email" value="{loginEm}" placeholder="" autocomplete="on">
-                                <label for="email" lang="en">Email</label>
-                            </div>
-                            <span id="errore_email" class="error_form">{login_EmEr}</span>
-                                
-                            <div class="input-group">
-                                <input id="password" type="password" name="password" value="{loginPas}" placeholder="" autocomplete="on">
-                                <label for="password" lang="en">Password</label>
-                            </div>
-                            <span id="errore_password" class="error_form">{login_PasEr}</span><br>
+    </header>
+
+    <nav class="mobile-nav" aria-label="Menù">
+        <a href="../index.html" lang="en">Home</a>
+        <a href="../activities.html">Attività</a>
+        <a href="../eventi.html">Eventi</a>
+        <a href="contatti.php">Contatti</a>
+    </nav>
+
+    <nav id="breadcrump">
+        <p>Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Accedi</p>
+    </nav>
+
+    <main id="content">
+        <div id="login-access">
+            <div class="card-body">
+                <form action="login.php" method="post" onsubmit="return validateFormLogin()">
+                    <fieldset>
+                        <legend>Accedi</legend>
+                            {messaggioLogin}
+                        <br>
+                        <div class="input-group">
+                            <input id="email" type="text" name="email" value="{loginEm}" placeholder="" autocomplete="on">
+                            <label for="email" lang="en">Email</label>
+                        </div>
+                        <span id="errore_email" class="error_form">{login_EmEr}</span>
                             
-                            <input class="auth-button btn-filled-bg" name="submit" type="submit" value="accedi">
-                            <hr>
-                            <p>Non sei registrato? <a href="register.php" id="register-link">Registrati</a>.</p>
-                        </fieldset>
-                    </form>
-                </div>
-            </section>
-    
-            <section id="register-access">
-                <div class="card-body">
-                    <form action="register.php" method="post" onsubmit="return validateFormRegistrazione()">
-                        <fieldset>
-                            <legend>Registrati</legend>
-                                {messaggioRegistrazione}
-                            <br>
-                            <div class="input-group">
-                                <input id="nome" name="nome" type="text" value="{registrNome}" placeholder="" autocomplete="off">
-                                <label for="nome">Nome</label>
-                            </div>
-                            <span id="errore_nome" class="error_form">{nomeErr}</span>
-                                
-                            <div class="input-group">
-                                <input id="cognome" name="cognome" type="text" value="{registrCognome}" placeholder="" autocomplete="off">
-                                <label for="cognome">Cognome</label>
-                            </div>
-                            <span id="errore_cognome" class="error_form">{cognomeErr}</span>
-                                
-                            <div class="input-group">
-                                <input id="email_new_client" name="emailReg" type="text" value="{registrEmail}" placeholder="" autocomplete="off">
-                                <label for="email_new_client" lang="en">Email</label>
-                            </div>
-                            <span id="errore_emailReg" class="error_form">{emailErr}</span>
-                                
-                            <div class="input-group">
-                                <input id="pass_new_client" name="passwordReg" type="password" value="{registrPassword}" placeholder="" autocomplete="off">
-                                <label for="pass_new_client" lang="en">Password</label>
-                            </div>
-                            <span id="errore_passwordReg" class="error_form">{passwordErr}</span>
-                                
-                            <div class="input-group">
-                                <input id="conf_pass_new_client" name="conf_password" type="password" value="{registrConfPass}" placeholder="" autocomplete="off">
-                                <label for="conf_pass_new_client">Conferma <span lang="en">Password</span></label>
-                            </div>
-                            <span id="errore_conf_password" class="error_form">{confPasErr}</span><br>
-                            
-                            <input class="auth-button btn-filled-bg" name="submit" type="submit" value="registrati">
-                            <hr>
-                            <p>Già registrato? <a href="login.php" id="login-link">Accedi</a>.</p>
-                        </fieldset>
-                    </form>
-                </div>
-            </section>
-    
-        </main>
-    
-        <div id="go-back">
-            <a href="#" aria-label="Torna su">↑</a>
+                        <div class="input-group">
+                            <input id="password" type="password" name="password" value="{loginPas}" placeholder="" autocomplete="on">
+                            <label for="password" lang="en">Password</label>
+                        </div>
+                        <span id="errore_password" class="error_form">{login_PasEr}</span><br>
+                        
+                        <input class="auth-button btn-filled-bg" name="submit" type="submit" value="accedi">
+                        <hr>
+                        <p>Non sei registrato? <a href="register.php" id="register-link">Registrati</a>.</p>
+                    </fieldset>
+                </form>
+            </div>
         </div>
+
+        <div id="register-access">
+            <div class="card-body">
+                <form action="register.php" method="post" onsubmit="return validateFormRegistrazione()">
+                    <fieldset>
+                        <legend>Registrati</legend>
+                            {messaggioRegistrazione}
+                        <br>
+                        <div class="input-group">
+                            <input id="nome" name="nome" type="text" value="{registrNome}" placeholder="" autocomplete="off">
+                            <label for="nome">Nome</label>
+                        </div>
+                        <span id="errore_nome" class="error_form">{nomeErr}</span>
+                            
+                        <div class="input-group">
+                            <input id="cognome" name="cognome" type="text" value="{registrCognome}" placeholder="" autocomplete="off">
+                            <label for="cognome">Cognome</label>
+                        </div>
+                        <span id="errore_cognome" class="error_form">{cognomeErr}</span>
+                            
+                        <div class="input-group">
+                            <input id="email_new_client" name="emailReg" type="text" value="{registrEmail}" placeholder="" autocomplete="off">
+                            <label for="email_new_client" lang="en">Email</label>
+                        </div>
+                        <span id="errore_emailReg" class="error_form">{emailErr}</span>
+                            
+                        <div class="input-group">
+                            <input id="pass_new_client" name="passwordReg" type="password" value="{registrPassword}" placeholder="" autocomplete="off">
+                            <label for="pass_new_client" lang="en">Password</label>
+                        </div>
+                        <span id="errore_passwordReg" class="error_form">{passwordErr}</span>
+                            
+                        <div class="input-group">
+                            <input id="conf_pass_new_client" name="conf_password" type="password" value="{registrConfPass}" placeholder="" autocomplete="off">
+                            <label for="conf_pass_new_client">Conferma <span lang="en">Password</span></label>
+                        </div>
+                        <span id="errore_conf_password" class="error_form">{confPasErr}</span><br>
+                        
+                        <input class="auth-button btn-filled-bg" name="submit" type="submit" value="registrati">
+                        <hr>
+                        <p>Già registrato? <a href="login.php" id="login-link">Accedi</a>.</p>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="go-back">
+        <a href="#" aria-label="Torna su">↑</a>
+    </div>
+
+    <footer>
+        <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
+    </footer>
     
-        <footer>
-            <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
-        </footer>
-        
-    </body>
+</body>
 
 </html>
