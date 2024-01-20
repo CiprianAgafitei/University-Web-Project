@@ -52,13 +52,6 @@ class CSCAccess {
             	$queryResult = mysqli_query($this->connection, $queryCheck) or die("Errore in DBAccess" . mysqli_error($this->connection));
 		return mysqli_num_rows($queryResult) > 0;
         }
-
-	/** OTTENIMENTO DI NOME E COGNOME DELL'UTENTE DATO L'email */
-        public function getUserInfo($email) {
-            	$queryCheck = "SELECT nome, cognome FROM Cliente WHERE email=\"$email\"";
-            	$queryResult = mysqli_query($this->connection, $queryCheck) or die("Errore in DBAccess" . mysqli_error($this->connection));
-		return $queryResult;
-        }
         
         /** VERIFICA SE L'UTENTE HA GIA EFFETTUATO RICHIESTE/PRENOTAZIONI 
          *     (se l'email già presente nel db nella tabella utenti) */
