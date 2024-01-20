@@ -40,7 +40,8 @@
 
         foreach ($messages as $messaggio) 
         {
-            $nome_utente = $csc->getNomeUtente($messaggio["email"]);
+            $info = $csc->getClientInfoDetails($messaggio["email"]);
+            $nome_utente = $info['nome'];
 
             if ($messaggio["titolo"] === NULL) {
                 $messaggio["titolo"] = "Senza titolo";
