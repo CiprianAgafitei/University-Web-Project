@@ -4,10 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contatti</title>
-
-        <meta name="keyword" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+        <meta name="keywords" content="codesportcenter, contattaci, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-
         <link rel="stylesheet" href="../styles/stile.css" media="screen">
         <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
         <link rel="stylesheet" href="../styles/mobile.css" media="screen and (max-width:496px)">
@@ -35,19 +33,18 @@
             </nav>
         </header>
 
-        <nav class="mobile-nav" aria-label="Menù">
-            <a href="index.html" lang="en">Home</a></li>
-            <a href="activities.html">Attività</a>
-            <a href="eventi.html">Eventi</a>
+        <nav class="mobile-nav" aria-label="Menù a tendina">
+            <a href="../index.html" lang="en">Home</a></li>
+            <a href="../activities.html">Attività</a>
+            <a href="../eventi.html">Eventi</a>
             <a href="login.php">Accedi</a>
         </nav>
 
         <nav id="breadcrump">
-            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Contatti</p>
+            <p>Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Contatti</p>
         </nav>
 
         <main id="content">
-
             <h1 id="contacts-title" class="gradient-text">contattaci</h1>
 
             <section id="contatti-azienda" class="card-body">
@@ -77,7 +74,7 @@
 
                             <div class="input-group">
                                 <input id="email" name="email" type="text" value="{email_utente}" placeholder="" autocomplete="on">
-                                <label for="email">Email</label>
+                                <label for="email" lang="en">Email</label>
                             </div>
                             <span id="errore_email" class="error_form">{errore_email}</span>
 
@@ -97,24 +94,7 @@
                         </fieldset>
                     </form>
                 </div>
-
-                <div id="confirm-popup" class="popup" style="display: none;">
-                    <div class="popup-content">
-                        <h2>Messaggio inviato!</h2>
-                        <p>Il messaggio è stato inviato correttamente.</p>
-                        <button onclick="closePopup()">OK</button>
-                    </div>
-                </div>
-                <!--
-                <div class="overlay" id="overlay">
-                    <div class="modal">
-                        <span class="close" id="close" aria-describedby="Chiudi messaggio">&times;</span>
-                        <p>Il messaggio è stato inviato con successo!</p>
-                    </div>
-                </div>-->
-
             </section>
-
         </main>
 
         <div id="go-back">
