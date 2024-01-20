@@ -14,6 +14,8 @@ CREATE TABLE Utente (
 
 INSERT INTO Utente VALUES 
                     ("admin", "admin"),
+                    ("user", "user"),
+                    ("guest", "guest"),
                     ("pippo@gmail.com", "pippo"),
                     ("pluto@gmail.com", "pluto"),
                     ("paperino@gmail.com", "paperino");
@@ -27,10 +29,11 @@ CREATE TABLE Cliente (
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO Cliente VALUES 
-                    ("admin", "admin", "admin", "admin"),
-                    ("pluto@gmail.com", "pluto", "plutoropoli", "1234"),
-                    ("pippo@gmail.com", "pippo", "pipputo", "0000"),
-                    ("paperino@gmail.com", "paperino", "de paperoni", "$$$$$");
+                    ("admin", "admin", "admin", SHA2('admin', 256)),
+                    ("user", "user", "user", SHA2('user', 256)),
+                    ("pluto@gmail.com", "pluto", "plutoropoli", SHA2('1234', 256)),
+                    ("pippo@gmail.com", "pippo", "pipputo", SHA2('0000', 256)),
+                    ("paperino@gmail.com", "paperino", "de paperoni", SHA2('$$$$$', 256));
 
 CREATE TABLE Attivita (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -86,7 +89,6 @@ INSERT INTO Prenotazione VALUES
                     (8, 'A', 3, "paperino@gmail.com", '2023-12-09', '21:00'),
                     (9, 'C', 1, "pippo@gmail.com", '2023-12-15', '08:00'),
                     (10, 'B', 3, "pluto@gmail.com", '2023-12-15', '08:00');
-
 
 CREATE TABLE Richieste (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
