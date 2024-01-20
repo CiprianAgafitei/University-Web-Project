@@ -55,8 +55,7 @@
                     
                     if ($result) 
                     {
-                        $user_info = $cscAccess->getUserInfo($email);
-                        $info = $user_info->fetch_assoc();
+                        $info = $cscAccess->getClientInfoDetails($email);
 
                         // Salvataggio informazioni dell'utente nella sessione
                         $_SESSION['user_id'] = $email_utente;
