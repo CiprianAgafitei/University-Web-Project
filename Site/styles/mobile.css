@@ -23,10 +23,6 @@
     margin-left: 6%;
 }
 
-#breadcrump p {
-    margin-left: 6%;
-}
-
 /* ATTIVITA */
 .container a {      /* Dimesnione e margine delle cards */
     width: 80%;
@@ -59,7 +55,6 @@
 }
 
 /* PRENOTAZIONE */
-
 .auth-button {
     font-size: 0.9em;
     padding: 0.5em 1.5em;
@@ -86,8 +81,6 @@
     font-size: 1.3em;
     line-height: 1.5em;
 }
-
-/* Barra di supporto */
 
 #back-set-prenot {
     margin: 0 1em 0 0.5em;
@@ -122,6 +115,20 @@
     font-size: 0.7em;
 }
 
+fieldset > span {
+    width: 160px;
+}
+
+h5 {
+    font-size: 1.7em;
+    width: 7em;
+}
+
+#logged-in-confirmation a {
+    font-size: 0.8em;
+}
+
+/*     CONTATTI    */
 .input-group textarea {
     font-size: 1em;
 }
@@ -141,8 +148,28 @@
     font-size: 0.7em;
 }
 
+/*    EVENTI    */
+.content-section {
+    margin: 1.5em 1em;
+}
+
+.content-section ul li h4 {
+    font-size: 1.1em;
+}
+
+.content-section ul li p {
+    width: 16em;
+    font-size: 0.9em;
+}
+
+.item {
+    height: 115px;
+    width: 115px;
+}
+
+/* ADMIN SECTION */
 .custom-table {
-    width: 100%; /* Imposta la larghezza al 100% per schermi piccoli */
+    width: 100%;
 }
 
 .custom-table, .custom-table th, .custom-table td {
