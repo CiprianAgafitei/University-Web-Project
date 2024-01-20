@@ -4,47 +4,45 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CadoSportsCenter &minus; Cliente</title>
-
-        <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+        <meta name="keywords" content="cadosportcenter">
         <meta name="description" content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-
-        <link rel="stylesheet" href="styles/stile.css" media="screen">
-        <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
-        <link rel="stylesheet" href="styles/print.css" media="print">
-
-        <script src="scripts/accedi.js"></script>
+        <link rel="stylesheet" href="../styles/stile.css" media="screen">
+        <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="../styles/mobile.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="../styles/print.css" media="print">
+        <script src="../scripts/menu_logic.js"></script>
+        <script src="../scripts/accedi.js"></script>
     </head>
     <body>
         <header>
             <nav aria-label="Aiuti alla navigazione">
                 <a class="navigationHelp" href="#client-content">Vai al contenuto</a>
             </nav>
-            <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            <img id="logo" src="..images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
             <nav id="menu">
                 <ul>
-                    <li><a href="index.html" lang="en">Home</a></li>
-                    <li><a href="activities.html">Attività</a></li>
-                    <li><a href="eventi.html">Eventi</a></li>
-                    <li><a href="">Contatti</a></li>
-                    <li><a href="accedi.html">Accedi</a></li>
+                    <li><a href="../index.html" lang="en">Home</a></li>
+                    <li><a href="../activities.html">Attività</a></li>
+                    <li><a href="../eventi.html">Eventi</a></li>
+                    <li><a href="contatti.php">Contatti</a></li>
+                    <li><a href="login.php">Accedi</a></li>
                 </ul>
-                <div class="hamburger" type="button">
+                <div class="hamburger" type="button" aria-label="Premi per apriere il menù">
                     <div class="bar"></div>
                 </div>
             </nav>
         </header>
 
-        <nav class="mobile-nav" aria-label="Menù">
-            <a href="index.html" lang="en">Home</a>
-            <a href="activities.html">Attività</a>
-            <a href="eventi.html">Eventi</a>
-            <a href="contatti.html">Contatti</a>
-            <a href="accedi.html" lang="en">Logout</a>
+        <nav class="mobile-nav" aria-label="Menù a tendina">
+            <a href="../index.html" lang="en">Home</a>
+            <a href="../activities.html">Attività</a>
+            <a href="../eventi.html">Eventi</a>
+            <a href="contatti.php">Contatti</a>
+            <a href="login.php">Accedi</a>
         </nav>
 
         <nav id="breadcrump">
-            <p>Ti trovi in: <a href="index.html"lang="en">Home</a> &gt; Area risrvata</p>
+            <p>Ti trovi in: <a href="../index.html"lang="en">Home</a> &gt; Area risrvata</p>
         </nav>
         
         <main id="client-content">
@@ -62,7 +60,5 @@
         <footer>
             <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
         </footer>
-
-        <script src="scripts/menu_logic.js"></script>
     </body>
 </html>
