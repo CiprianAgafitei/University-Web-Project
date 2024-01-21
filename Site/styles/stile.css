@@ -822,7 +822,7 @@ legend {
     background-color: var(--flagColor2);
 }
 
-#support-pren-bar span {
+#support-pren-bar div {
     display: flex;
 }
 
