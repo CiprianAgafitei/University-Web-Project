@@ -1349,7 +1349,6 @@ h5 {
 }
 
 /**********  404 *************/
-
 #error-display { 
     width: auto;
     margin:2em; 
@@ -1358,3 +1357,7 @@ h5 {
     text-align: center;  
 }
 
+#error-display h1 {
+    margin: 1em auto;
+    width: 8em;
+}
