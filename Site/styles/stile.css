@@ -874,10 +874,12 @@ legend {
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 35px;
+    top: 5px;
+    right: 5px;
+    font-size: 50px;
+    background-color: transparent;
+    color: var(--flagColor3);
+    border: none;
 }
 
 fieldset {
