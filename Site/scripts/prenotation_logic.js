@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function ()
         overlay.style.display = 'block';
     });
 
-    closeButton.addEventListener('click', () => {
+    closeButton.onclick = function() {
         overlay.style.display = 'none';
     });
 
