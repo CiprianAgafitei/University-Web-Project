@@ -51,18 +51,16 @@ a:visited {
 .gradient-text {
     background-image: linear-gradient(to right,
             #A65B54 0,
-            #cb9b51 30%, 
+            #cb9b51 20%, 
             #f6e27a 47%,
             #f6f2c0 50%,
             #f6e27a 53%,
-            #cb9b51 70%,
+            #cb9b51 80%,
             #A65B54 100%
 	);
     color:transparent;
     -webkit-background-clip:text;
     background-clip: text;
-    display: block;
-    padding: 20px 0;
 }
 
 #go-back {
@@ -205,6 +203,11 @@ header {
     font-size: 1.2em;
 }
 
+/* funzionerà solo sui dispositivi che supportano, nel resto sarà normale, visibile cliccandoci anche se per poco */
+.mobile-nav a:hover {
+    background-color: rgba(0, 24, 27, 0.7);
+}
+
 /* ----------------------------------------------------------
    |                           NAV                          |
    ----------------------------------------------------------
@@ -225,7 +228,6 @@ nav {
 #menu {
     text-align: center;
     padding-top: 1.5em;
-    display: block;
 }
 
 #menu ul li {
@@ -258,6 +260,19 @@ main {
     z-index: 1;
     width: 100%;
     margin: auto;
+}
+
+.auth-button {
+    margin: auto;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5em 1.7em;
+    text-transform: uppercase;
+    color: var(--flagColor1);
+    background-color: var(--flagColor3);
+    border: 1px solid var(--flagColor3);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 /***************************** INDEX *****************************/ 
@@ -542,6 +557,12 @@ input[type="date"]:hover {
     animation: slideIn 1s ease-in-out;
 }
 
+.field-container p {
+    margin: 1em auto;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
 div#calcio{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/soccerview.jpeg');
     background-size:100% auto;
@@ -697,25 +718,9 @@ select {
     color: var(--flagColor2);
 }
 
-.auth-button {
-    margin: auto;
-    font-size: 1.1em;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 0.5em 1.7em;
-    text-transform: uppercase;
-    color: var(--flagColor1);
-    background-color: var(--flagColor3);
-    border: 1px solid var(--flagColor3);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-}
-
 /* Inserimento dati senza autenticazione */
-.card-body > fieldset {
-    margin: auto;
-}
-
 .card-body form {
+    margin: auto;
     padding: 1em;
 }
 
@@ -724,6 +729,7 @@ legend {
     font-weight: bold;
     padding: 0 0.5em;
     color: var(--flagColor3);
+    line-height: 1.5em;
 }
 
 .input-group {
@@ -897,6 +903,15 @@ label {
     background-color: var(--flagColor3);
 }
 
+h6 {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+}
+
+#time-elapsed p {
+    margin-bottom: 1em;
+}
+
 /* ACCEDI */
 #login-access, #register-access, #invio-messaggio {
     margin-top: 2em;
@@ -933,7 +948,6 @@ label {
 }
 
 /***************************** EVENTI *****************************/ 
-
 #main-content h1, #main-content h2 {
     font-size: 2em;
     padding: 0.5em 0;
@@ -1041,7 +1055,6 @@ label {
 }
 
 /*********** CONTATTI ***********/
-
 #contacts-title {
     padding: 1em;
     text-transform: uppercase;
@@ -1151,7 +1164,10 @@ label {
 }
 
 fieldset > span {
-    width: 3em;
+    display: inline-block;
+    width: 290px;
+    font-weight: bold;
+    line-height: 1.5em;
     margin: 1.5em auto 1em;
 }
 
@@ -1159,12 +1175,56 @@ fieldset > span {
     text-align: center; 
     padding: 10px; 
     font-weight: bold;
-    background-color: #f8d7da; 
-    color: #721c24;
+    color: var(--errorColor);
+}
+
+h5 {
+    font-size: 2.5em;
+    padding: 0.5em;
+    margin: 0.5em auto;
+    width: 15em;
+    line-height: 1.5em;
+}
+
+#show-pren-details {
+    border: 1px solid var(--flagColor3);
+    border-radius: 25px;
+    padding: 1em 2em 2em;
+    margin: 2em auto;
+    width: 60%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+#show-pren-details div:not(#logged-in-confirmation) p {
+    display: inline-block;
+    font-size: 1.3em;
+    margin: 1em;
+}
+
+#logged-in-confirmation input {
+    margin: 1.5em 1em;
+    padding: 0.7em;
+}
+
+#logged-in-confirmation p {
+    margin: 0.5em auto 1.5em;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+#logged-in-confirmation a {
+    margin: 0 2em 0;
+    padding: 0.7em 1em;
+    border: 1px solid var(--flagColor3);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 /**********  ADMIN *************/
-
 .table-container {
     display: flex;
     justify-content: center;
