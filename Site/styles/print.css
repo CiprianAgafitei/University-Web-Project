@@ -3,16 +3,30 @@
     margin: 0;
 }
 
+:root {
+    --linkColor: rgb(226, 157, 29);
+    --flagColor: rgb(226, 157, 29);
+}
+
 /* ----------------------------------------------------------
    |                          HTML                          |
    ----------------------------------------------------------
 */
-
-/* Prendo gli elementi del css che voglio modificare e cambio i valor*/
 html {
-    font-size: 12pt;    /* Rispetto scelta utente */
     font-family: "Times New Roman", serif;
     line-height: 1.5em;
+    text-align: center;
+}
+
+a {
+    color: var(--linkColor);
+}
+
+ul {
+    list-style-type: none;
+}
+
+p {
     margin: auto;
 }
 
@@ -21,26 +35,22 @@ html {
    ----------------------------------------------------------
 */
 header {
-    text-align: left;
     padding: 1em 0 1em 0;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0.5em 0;
 }
 
-/* ----------------------------------------------------------
-   |                         HEADER                         |
-   ----------------------------------------------------------
-*/
-#menu {
+nav:not(#breadcrump), #go-back { 
     display: none;
 }
 
 #breadcrump {
     padding: 0.5em 0 0.5em 0;
-    margin-top: 00.5em;
+    margin-top: 0.5em;
+    margin-left: 2em;
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
-    font-weight: bold;
+    text-align: left;
+    margin-bottom: 2em;
 }
 
 /* ----------------------------------------------------------
@@ -48,9 +58,143 @@ header {
    ----------------------------------------------------------
 */
 footer {
-    font-size: 10pt;
     font-style: italic;
-    text-align: center;
     border-top: 1px solid #DDD;
-    padding: 1.3em 0.5em 0.5em;
+    position: fixed;
+    padding: 1em;
+    bottom: 0;
+    width: 100%;
 } 
+
+/* ----------------------------------------------------------
+   |                          MAIN                          |
+   ----------------------------------------------------------
+*/
+#logo {
+    width: 100px;
+    height: 90px;
+    margin: 3em auto 2em;
+}
+
+#event-packages h1 {
+    margin: 2em auto;
+}
+
+#content h1,
+#sports-tournaments h2 {
+    margin: 1em auto;
+}
+
+h3 {
+    margin: 1em;
+}
+
+.home-content p {
+    margin-bottom: 1em;
+}
+
+.home-content span > a {
+    padding: 1em;
+    margin: 2em;
+}
+
+#event-packages {
+    margin: 2em auto 12em;
+}
+
+#sports-tournaments {
+    margin: 1em auto 5em;
+}
+
+#event-packages ul, 
+#sports-tournaments ul {
+    margin: 1.5em auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#event-packages li, 
+#sports-tournaments li {
+    margin: 1em 0.5em;
+    width: 31%;
+}
+
+#event-packages li a, 
+#sports-tournaments li a {
+    text-decoration: none;
+}
+
+.content-section ul li h4 {
+    font-size: 1.3em;
+    margin-bottom: 0.5em;
+    text-decoration: underline;
+}
+
+.content-section ul li p {
+    width: 14em;
+    font-size: 0.9em;
+}
+
+/*  CONTATTI  */
+#content > div {
+    margin-bottom: 2em;
+}
+
+fieldset {
+    width: 40%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 0 1em 1.5em;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.input-group input {
+    width: 150px;
+    height: 25px;
+    border-color: var(--flagColor);
+    border-radius: 5px;
+    margin: auto;
+}
+
+.input-group label {
+    margin: 1em auto 0.5em;
+}
+
+.input-group textarea {
+    width: 70%;
+    height: 7em;
+    border: 1.2px solid var(--flagColor);
+    border-radius: 5px;
+    margin: auto;
+}
+
+.auth-button {
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    border: 1px solid var(--flagColor);
+}
+
+legend {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 0 0.5em;
+    color: var(--flagColor);
+}
+
+#login-access,
+#register-access {
+    margin-top: 5em;
+}
+
+#login-access .card-body fieldset hr,
+#register-access .card-body fieldset hr {
+    margin: 1.5em auto;
+    width: 1.5em;
+}
