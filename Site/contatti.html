@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contatti</title>
-        <meta name="keywords" content="codesportcenter, contattaci, prenotazione campi sportivi, attività, eventi sportivi, feste">
+        <meta name="keywords" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
         <link rel="stylesheet" href="../styles/stile.css" media="screen">
         <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
@@ -27,14 +27,14 @@
                     <li>Contatti</li>
                     <li><a href="login.php">Accedi</a></li>
                 </ul>
-                <button class="hamburger" aria-label="Premi per aprire il menù">
-                    <div class="bar"></div>
-                </button>
+                <div class="hamburger">
+                    <button class="bar" aria-label="Premi per aprire il menù"></button>
+                </div>
             </nav>
         </header>
 
         <nav class="mobile-nav" aria-label="Menù a tendina">
-            <a href="../index.html" lang="en">Home</a></li>
+            <a href="../index.html" lang="en">Home</a>
             <a href="../activities.html">Attività</a>
             <a href="../eventi.html">Eventi</a>
             <a href="login.php">Accedi</a>
@@ -47,7 +47,7 @@
         <main id="content">
             <h1 id="contacts-title" class="gradient-text">contattaci</h1>
 
-            <section id="contatti-azienda" class="card-body">
+            <div id="contatti-azienda" class="card-body">
                 <div class="contact-item contact-phone">
                     <p class="contact-text">+39 123 456 7890</p>
                 </div>
@@ -57,9 +57,9 @@
                 <div class="contact-item contact-address">
                     <p class="contact-text">Via Roma, 123, 00100 Roma, Italia</p>
                 </div>
-            </section>
+            </div>
             
-            <section id="invio-messaggio">
+            <div id="invio-messaggio">
                 <div class="card-body">
                     <form action="contatti.php" method="post" onsubmit="return validateFormContatti()">
                         <fieldset>
@@ -94,7 +94,7 @@
                         </fieldset>
                     </form>
                 </div>
-            </section>
+            </div>
         </main>
 
         <div id="go-back">
