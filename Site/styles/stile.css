@@ -1244,6 +1244,13 @@ h5 {
     color: white; 
 }
 
+
+caption {
+    position: absolute;
+    text-indent: -999em;
+}
+
+
 .custom-table thead {
     background-color: #f1c40f; 
     color: #2a2a2a; 
