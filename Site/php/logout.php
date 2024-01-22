@@ -3,5 +3,5 @@
         session_start();
     }
     session_destroy();
-    header("Location: accedi.html");
+    header("Location: login.php");
 ?>
