@@ -319,4 +319,52 @@ class CSCAccess {
 		mysqli_free_result($queryResult);
 		return $attivita;
 	}
+
+	/******************FUNZIONI PER FILE UPDATE_PASSWORD PHP */
+		public function getUserPassword($email) {
+			$query = "SELECT Pass_hash FROM Cliente WHERE Email=?";
+			
+			$stmt = mysqli_prepare($this->connection, $query);
+			mysqli_stmt_bind_param($stmt, 's', $email);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+	
+			if ($row = mysqli_fetch_assoc($result)) {
+				return $row['Pass_hash'];
+			} else {
+				return null;
+			}
+		}
+	
+		/** AGGIORNAMENTO DELLA PASSWORD DI UN UTENTE */
+		public function updateUserPassword($email, $newPasswordHash) {
+			$query = "UPDATE Cliente SET Pass_hash=? WHERE Email=?";
+			
+			$stmt = mysqli_prepare($this->connection, $query);
+			mysqli_stmt_bind_param($stmt, 'ss', $newPasswordHash, $email);
+			mysqli_stmt_execute($stmt);
+	
+			return mysqli_stmt_affected_rows($stmt) > 0;
+		}
+
+	public function getPrenotationsByEmail($email) {
+			$query = "SELECT * FROM Prenotazione WHERE utente = ?"; 
+			
+			$stmt = mysqli_prepare($this->connection, $query);
+			mysqli_stmt_bind_param($stmt, 's', $email);
+			mysqli_stmt_execute($stmt);
+			
+			$result = mysqli_stmt_get_result($stmt);
+			
+			if ($result) {
+				$prenotations = array();
+				while ($row = mysqli_fetch_assoc($result)) {
+					$prenotations[] = $row;
+				}
+				return $prenotations;
+			} else {
+				return null;
+			}
+		}
+	
 }
