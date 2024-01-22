@@ -119,3 +119,22 @@ h5 {
     font-size: 0.9em;
     padding: 0.5em;
 }
+
+/*   ADMIN SECTION   */
+.custom-table {
+    width: 70%;
+}
+
+.custom-table, .custom-table th, .custom-table td {
+    font-size: smaller; 
+    padding: 8px; 
+}
+
+#prevPage, #nextPage {
+    padding: 5px 7.5px;
+    font-size: 0.7em;
+}
+
+#admin-content h1 {
+    font-size: 2em;
+}
