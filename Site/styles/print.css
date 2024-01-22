@@ -388,3 +388,22 @@ input[type="date"] {
     text-transform: uppercase;
     text-decoration: none;
 }
+
+/**********  404 *************/
+#error-display { 
+    width: auto;
+    margin:2em; 
+    padding: 1em;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+#error-display h1 {
+    margin: 1em auto;
+    width: 8em;
+    padding: 0.5em;
+}
+
+#error-display h1 + p {
+    margin-bottom: 1em;
+}
