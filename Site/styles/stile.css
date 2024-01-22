@@ -1090,27 +1090,6 @@ h6 {
     margin-bottom: 15px;
 }
 
-.contact-item::before {
-    content: '';
-    display: inline-block;
-    width: 24px; 
-    height: 24px; 
-    background-size: cover;
-    margin-right: 10px;
-}
-
-.contact-phone::before {
-    background-image: url('../images/iconatel.png');
-}
-
-.contact-email::before {
-    background-image: url('../images/iconaemail.png');
-}
-
-.contact-address::before {
-    background-image: url('../images/iconapos.png');
-}
-
 .contact-text {
     margin: auto;
 }
