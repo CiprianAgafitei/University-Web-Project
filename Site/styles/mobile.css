@@ -167,9 +167,9 @@ h5 {
     width: 115px;
 }
 
-/* ADMIN SECTION */
+/*   ADMIN SECTION   */
 .custom-table {
-    width: 100%;
+    width: 70%;
 }
 
 .custom-table, .custom-table th, .custom-table td {
@@ -178,6 +178,10 @@ h5 {
 }
 
 #prevPage, #nextPage {
-    padding: 5px;
+    padding: 5px 7.5px;
     font-size: 0.7em;
+}
+
+#admin-content h1 {
+    font-size: 2em;
 }
