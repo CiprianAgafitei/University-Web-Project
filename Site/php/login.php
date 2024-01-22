@@ -30,13 +30,13 @@
         session_start();
     }
 
-    if (isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === true) {
+    if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
         if($_SESSION['user_id'] === 'admin') {
             header("Location: admin.php");
             exit();
         }
         else {
-            header("Location: client.php");
+            header("Location: cliente.php");
             exit();
         }
     }
@@ -77,7 +77,7 @@
                         if ($email_utente == "admin")
                             header("Location: admin.php");
                         else
-                            header("Location: client.php");
+                            header("Location: cliente.php");
                         exit;
                     } 
                     else {
