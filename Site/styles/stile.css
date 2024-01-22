@@ -1318,6 +1318,15 @@ caption {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, .4);
 }
 
+@media (hover: none) {
+    #prevPage:hover,
+    #nextPage:hover {
+        background-color: transparent;
+        color: var(--flagColor3);
+        border: 1px solid var(--flagColor3);
+    }
+}
+
 #prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
     background-color: var(--flagColor3); 
     color: var(--flagColor1);
@@ -1332,15 +1341,6 @@ caption {
 .pagination-buttons {
     text-align: center;
     margin-bottom: 20px;
-}
-
-@media (hover: none) {
-    #prevPage:hover,
-    #nextPage:hover {
-        background-color: transparent;
-        color: var(--flagColor3);
-        border: 1px solid var(--flagColor3);
-    }
 }
 
 /**********  404 *************/
