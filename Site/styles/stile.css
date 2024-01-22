@@ -1235,6 +1235,11 @@ h5 {
     overflow-x: auto;
 }
 
+caption {
+    position: absolute;
+    text-indent: -999em;
+}
+
 .custom-table {
     width: 80%; 
     border-collapse: collapse;
