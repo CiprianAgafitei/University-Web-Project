@@ -30,6 +30,17 @@
         session_start();
     }
 
+    if (isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === true) {
+        if($_SESSION['user_id'] === 'admin') {
+            header("Location: admin.php");
+            exit();
+        }
+        else {
+            header("Location: client.php");
+            exit();
+        }
+    }
+
     $cscAccess = new CSCAccess();
     $conn = $cscAccess->openConnection();
 
