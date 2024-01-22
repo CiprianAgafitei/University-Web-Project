@@ -1207,6 +1207,14 @@ h5 {
 }
 
 /**********  ADMIN *************/
+#admin-content h1, #admin-content h2 {
+    padding: 1em;
+    font-size: 2.5em;
+    width: 12em;
+    margin: auto;
+    line-height: 1.5em;
+}
+
 .table-container {
     display: flex;
     justify-content: center;
@@ -1214,30 +1222,30 @@ h5 {
     overflow-x: auto;
 }
 
-.custom-table {
-    width: 80%; 
-    border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #2a2a2a; 
-    color: white; 
-}
-
-
 caption {
     position: absolute;
     text-indent: -999em;
 }
 
+.custom-table {
+    width: 80%; 
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    background-color: #2a2a2a; 
+    color: white;
+    border: 3px solid var(--flagColor3); 
+}
 
 .custom-table thead {
-    background-color: #f1c40f; 
-    color: #2a2a2a; 
+    background-color: var(--flagColor3); 
+    color: var(--flagColor1); 
+    text-transform: uppercase;
 }
 
 .custom-table th,
 .custom-table td {
-    text-align: left;
+    text-align: center;
     padding: 12px 15px;
 }
 
@@ -1245,8 +1253,9 @@ caption {
     border-radius: 5px;
 }
 
+
 .custom-table tr {
-    border-bottom: 1px solid #f1c40f; 
+    border-bottom: 1px solid var(--flagColor3); 
 }
 
 .custom-table tr:nth-of-type(even) {
@@ -1254,10 +1263,10 @@ caption {
 }
 
 .custom-table tr:last-of-type {
-    border-bottom: 2px solid #f1c40f;
+    border-bottom: 2px solid var(--flagColor3);
 }
 
-
+/*  sezione richieste  */
 .messages-container {
     display: flex;
     flex-direction: column;
@@ -1273,24 +1282,17 @@ caption {
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 .message-title {
-    background-color: #f1c40f; 
+    background-color: var(--flagColor3); 
     color: #2a2a2a;
     padding: 10px;
     border-radius: 5px;
     margin: -20px -20px 10px; 
     display: inline-block;
 }
-
-.message-box h3::before {
-    content: "Titolo: ";
-    position: absolute;
-    left: -9999px; /* Sposta il testo fuori dalla vista */
-}
-
 
 .message-name,
 .message-email,
@@ -1304,37 +1306,41 @@ caption {
     margin-bottom: 5px; 
 }
 
-
 #prevPage, #nextPage {
-    padding: 10px 10px; 
-    border: 1px solid #f1c40f; 
+    padding: 10px 15px; 
+    border: 1px solid var(--flagColor3); 
     background: var(--flagColor1);
-    color: #f1c40f;
+    color: var(--flagColor3);
     border-radius: 20px; 
     cursor: pointer;
-    margin: 0 5px; 
-    font-size: 0.8em; 
+    margin: 0 20px; 
+    font-size: 1em; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .4);
 }
 
-#prevPage:hover, #nextPage:hover {
-    background-color: #f1c40f ; 
+#prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
+    background-color: var(--flagColor3); 
     color: var(--flagColor1);
-    border: solid var(--flagColor1)
+    border: 1px solid var(--flagColor1);
+}
+
+#prevPage:disabled, #nextPage:disabled {
+    border: 1px solid rgba(226, 157, 29, 0.3);
+    color: rgba(226, 157, 29, 0.3);
 }
 
 .pagination-buttons {
     text-align: center;
-    margin-top: 4em;
+    margin-bottom: 20px;
 }
 
 @media (hover: none) {
     #prevPage:hover,
     #nextPage:hover {
         background-color: transparent;
-        color: #f1c40f;
-        border: 1px solid #f1c40f;
+        color: var(--flagColor3);
+        border: 1px solid var(--flagColor3);
     }
-
 }
 
 /**********  404 *************/
