@@ -5,6 +5,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const totalRows = rows.length;
     const totalPages = Math.ceil(totalRows / rowsPerPage);
 
+    var pulsantePrec = document.getElementById('prevPage');
+    var pulsanteSucc = document.getElementById('nextPage');
+
+    updateButtons();
+
+    function updateButtons() {
+        // Disabilita opzione precedente se pagina 1
+        if (currentPage == 1)
+            pulsantePrec.disabled = true;
+        else
+            pulsantePrec.disabled = false;
+
+        // Disabilita opzione successiva se ultima pagina
+        if (currentPage == totalPages)
+            pulsanteSucc.disabled = true;
+        else
+            pulsanteSucc.disabled = false;
+    }
+
     function displayRows(start, end) {
         for (let i = 0; i < totalRows; i++) {
             rows[i].style.display = (i >= start && i < end) ? "" : "none";
@@ -15,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
         currentPage += (next ? 1 : -1);
         currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
+        updateButtons();
+
         let start = (currentPage - 1) * rowsPerPage;
         let end = start + rowsPerPage;
         displayRows(start, end);
@@ -24,6 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
     displayRows(0, rowsPerPage);
 
     // Aggiungi listener ai bottoni di navigazione
-    document.getElementById("prevPage").addEventListener("click", () => changePage(false));
-    document.getElementById("nextPage").addEventListener("click", () => changePage(true));
+    pulsantePrec.addEventListener("click", () => changePage(false));
+    pulsanteSucc.addEventListener("click", () => changePage(true));
 });
