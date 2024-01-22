@@ -1363,3 +1363,178 @@ h5 {
     margin: 1em auto;
     width: 8em;
 }
+/**********  LOGOUT,VISUALIZZA, CAMBIO_PASSWORD ********/
+#prenotazioni_cliente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bottoni_mod:hover {
+    background-color: #ccc;
+    color: #000;
+}
+*/
+html {
+	height: 100%;
+}
+
+.wrapper {
+	position: absolute;
+	top: 52%;
+	left: 50%;
+	width: 350px;
+	padding: 40px;
+	transform: translate(-50%, -50%);
+	background: #e8fbff;
+	box-sizing: border-box;
+	box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+	border-radius: 10px;
+	height: 400px;
+}
+.content {
+	position: relative;
+}
+.content input {
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #262626;
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 2px solid #262626;
+	outline: none;
+	background: transparent;
+}
+.content label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #262626;
+	pointer-events: none;
+	transition: .5s;
+}
+.content input:focus~label,
+.content input:valid~label {
+	top: -20px;
+	left: 0;
+	color: #101010;
+	font-size: 12px;
+	font-weight: 700;
+}
+#btn {
+    background: linear-gradient(45deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .6));
+    text-decoration: none;
+    color: #FFD700; 
+    padding: 15px 0;
+    display: block;
+    text-align: center;
+    margin-top: 8%;
+    font-size: 25px;
+    letter-spacing: 3px;
+    border: 2px solid #000; 
+}
+
+/*colore errori */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+/*PULSANTE INVIO MODIFICA*/
+
+#submit-button {
+    background-color: #007BFF; 
+    color: #FFF; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+
+#submit-button:hover {
+    background-color: #0056b3; 
+}
+
+
+.centered-table {
+    margin: 0 auto; /* Questo centrerà orizzontalmente la tabella */
+}
+.centered-prenotazione {
+    text-align: center;
+}
+
+
+/*FORM CON COLORI SITO*/
+.main-container_up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+}
+.card-body_up {
+    width: 500%; 
+    max-width: 600px; 
+}
+
+
+.bottoni_cliente {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    width: 400px; 
+    height: 60px; 
+    background-color: transparent;
+    border: 2px solid var(--flagColor3);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--flagColor3);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bottoni_cliente:hover {
+    background-color: var(--flagColor3);
+    color: var(--flagColor1);
+}
+
+.bottoni_cliente img {
+    width: 30px; /* Dimensione dell'immagine */
+    margin-right: 15px;
+}
+
+.bottoni_cliente span {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
