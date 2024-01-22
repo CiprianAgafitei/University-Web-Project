@@ -169,7 +169,7 @@ h5 {
 
 /*   ADMIN SECTION   */
 .custom-table {
-    width: 70%;
+    width: 100%;
 }
 
 .custom-table, .custom-table th, .custom-table td {
@@ -183,5 +183,5 @@ h5 {
 }
 
 #admin-content h1 {
-    font-size: 2em;
+    font-size: 1.7em;
 }
