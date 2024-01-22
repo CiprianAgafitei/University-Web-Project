@@ -615,27 +615,28 @@ select {
     margin-left: 3px;
     margin-bottom: 10px;
     padding: 5px 15px;
-    border: 2px solid var(--flagColor3);
+    border: 2px solid #A65B54;
     border-radius: 10px;
     background-color: #fff;
-    color: var(--flagColor3);
+    font-weight: bold;
+    color: #A65B54;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .time-buttons input[type=button].selected {
-    background-color: var(--flagColor3); 
+    background-color: #A65B54; 
     color: #fff;
 }
 
 @media (hover: none) {
     .field-container:hover{
-        border-color: var(--flagColor3);
+        border-color: #A65B54;
     }
 
     input[type="date"]:focus {
         color: white;
-        background-color: var(--flagColor3);
+        background-color: #A65B54;
     }
 }
 
