@@ -31,11 +31,12 @@
         foreach ($prenotations as $prenotazione) 
         {
             $sport = $csc->getNomeAttivita($prenotazione["id_Attivita"]);
+            $ora = date("H:i", strtotime($prenotazione["ora"]));
 
             $prenotazioni .= "<tr>
                                 <td>{$prenotazione["data"]}</td>
-                                <td>{$prenotazione["ora"]}</td>
-                                <td>\"$sport\"</td>
+                                <td>$ora</td>
+                                <td>$sport</td>
                                 <td>{$prenotazione["codice_campo"]}</td>
                                 <td>{$prenotazione["utente"]}</td>
                             </tr>";
@@ -43,20 +44,19 @@
 
         $messages = $csc->getAllRequests();
 
-        foreach ($messages as $messaggio) 
-        {
-            $info = $csc->getClientInfoDetails($messaggio["email"]);
-            $nome_utente = $info['nome'];
+        foreach ($messages as $messaggio) {
+            $email = htmlspecialchars($messaggio['email']);
+            $info = $csc->getClientInfoDetails($email);
+            $nome_utente = $info ? htmlspecialchars($info['nome']) : "Nome non disponibile";
 
-            if ($messaggio["titolo"] === NULL) {
-                $messaggio["titolo"] = "Senza titolo";
-            }
+            $titolo = $messaggio["titolo"] ?? "Senza titolo";
+            $testo = htmlspecialchars($messaggio['testo']);
 
             $messaggi .= "<div class=\"message-box\">
-                            <h3 class=\"message-title\">{$messaggio["titolo"]}</h3>
+                            <h3 class=\"message-title\">$titolo</h3>
                             <p class=\"message-name\">Nome: \"$nome_utente\"</p>
-                            <p class=\"message-email\">Email: {$messaggio["email"]}</p>
-                            <p class=\"message-content\">{$messaggio["testo"]}</p>
+                            <p class=\"message-email\">Email: $email</p>
+                            <p class=\"message-content\">$testo</p>
                         </div>";
         }
     }
