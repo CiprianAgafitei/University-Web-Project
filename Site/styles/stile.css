@@ -164,6 +164,10 @@ header {
     transition: 0.3s;
 }
 
+.bar {
+    border: none;
+}
+
 .hamburger.is-active:before {
     transform: rotate(-45deg) translate(-8px, 6px);
 }
