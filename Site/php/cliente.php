@@ -1,5 +1,4 @@
 <?php
-require_once "session_manager.php";
 require_once "CSCAccess.php";
 use CSC\CSCAccess;
 
