@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="../styles/print.css" media="print">
 
         <script src="../scripts/accedi.js"></script>
+        <script src="/Site/scripts/client_logic.js"></script>
 
     </head>
     <body>
@@ -28,7 +29,7 @@
                     <li><a href="../activities.html">Attività</a></li>
                     <li><a href="../eventi.html">Eventi</a></li>
                     <li><a href="../contatti.html">Contatti</a></li>
-                    <li><a href="../accedi.html">Accedi</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
                 <div class="hamburger" type="button">
                     <div class="bar"></div>
@@ -37,35 +38,72 @@
         </header>
 
         <nav class="mobile-nav" aria-label="Menù">
-            <a href="index.html" lang="en">Home</a>
-            <a href="activities.html">Attività</a>
-            <a href="eventi.html">Eventi</a>
-            <a href="contatti.html">Contatti</a>
-            <a href="accedi.html" lang="en">Logout</a>
+            <a href="../index.html" lang="en">Home</a>
+            <a href="../activities.html">Attività</a>
+            <a href="../eventi.html">Eventi</a>
+            <a href="../contatti.html">Contatti</a>
+            <a href="logout.php" lang="en">Logout</a>
         </nav>
 
         <nav id="breadcrump">
-            <p>Ti trovi in: <a href="../index.html"lang="en">Home</a> &gt; Area risrvata</p>
+            <p>Ti trovi in: <a href="../index.html"lang="en">Home</a> &gt; Area riservata</p>
         </nav>
         <script src="../scripts/bottoni_logic.js"></script>
 
         <main id="client-content">
-            <p id="utente-info">Benvenuto, Nome Utente!</p>
-            <div id="prenotazioni_cliente">
-                <a class="bottoni_cliente" href="update_password.php">
+
+            <p id="utente-info" class="gradient-text">Benvenuto, Nome Utente!</p>
+
+            <div id="modifica-password">
+                <button class="bottoni_cliente" id="modify-password">
                     <img src="../images/resetPw.png" alt="Modifica Password">
                     <span>Modifica Password</span>
-                </a>
-                <a class="bottoni_cliente" href="visualizzaPrenotazioni.php">
+                </button>
+
+                <form id="resetPasswordForm" action="update_password.php" method="post">
+                    <fieldset>
+                        <legend>Modifica Password</legend>
+                        <div id="error-message">{errorMessage}</div>
+    
+                        <div class="input-group">
+                            <input type="text" id="email" name="email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="oldPassword" name="oldPassword" required>
+                            <label for="oldPassword">Vecchia Password</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="newPassword" name="newPassword" required>
+                            <label for="newPassword">Nuova Password</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <label for="confirmPassword">Conferma Password</label>
+                        </div>
+                        <div id="error-message"></div>
+    
+                        <input type="hidden" name="csrf_token" value="{csrf_token}">
+    
+                        <button type="submit" name="submit" class="auth-button btn-filled-bg">Conferma la Modifica</button>
+                    </fieldset>
+                </form>
+
+            </div>
+
+            <div id = "prenotazioni">
+                <button class="bottoni_cliente" id="visualizza-prenotazioni">
                     <img src="../images/visualizzaGiorni.png" alt="Visualizza Prenotazioni">
                     <span>Visualizza prenotazioni</span>
-                </a>
-                <a class="bottoni_cliente" href="logout.php">
-                    <img src="../images/logoutP.png" alt="Logout">
-                    <span>Logout</span>
-                </a>
-            </div>
-            
+                </button>
+
+                <div id="storico-prenotazioni-cliente" class="card-body">
+                    <div class="prenotazioni-container">
+                        <dl id="prenotazioni_cliente">
+                            {elencoPrenotazioni}
+                        </dl>
+                    </div>
+                </div>         
         </main>
         
         
