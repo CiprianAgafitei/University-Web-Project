@@ -1361,11 +1361,28 @@ caption {
     width: 8em;
 }
 /**********  LOGOUT,VISUALIZZA, CAMBIO_PASSWORD ********/
-#prenotazioni_cliente {
+
+
+#client-content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+#u
+
+#modifica-password{
+    margin: 1em;
+}
+
+#resetPasswordForm{
+    display: none;
+}
+
+#storico-prenotazioni-cliente{
+    display: none;
+}
+
 .bottoni_mod:hover {
     background-color: #ccc;
     color: #000;
