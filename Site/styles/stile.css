@@ -532,7 +532,7 @@ input[type="date"] {
 }
 
 input[type="date"]:hover {
-    color:white;
+    color: var(--flagColor1);
     background-color: var(--flagColor3);
 }
 
