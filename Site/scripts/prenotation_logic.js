@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function ()
 
     closeButton.onclick = function() {
         overlay.style.display = 'none';
-    });
+    };
 
     // Possibilità di nascondere la finestra modale cliccando fuori da essa
     // Aggiungi un evento al documento per nascondere la finestra modale
