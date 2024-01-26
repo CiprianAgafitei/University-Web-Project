@@ -1,22 +1,30 @@
 function checkWindowSize() {
     const screenWidth = window.innerWidth;
-    const mobileMenu = document.querySelector('.mobile-nav');
     const desktopMenu = document.getElementById('menu');
+
+    var menuLinks = document.querySelectorAll(".mobile-nav a");
 
     if (screenWidth <= 1032) {
         // Schermo piccolo o uguale a 1032px (mobile)
-        mobileMenu.setAttribute('aria-hidden', 'false');
+        menuLinks.forEach(function(link) {
+            link.setAttribute('aria-hidden', 'false');
+            link.setAttribute('tabindex', '0');
+        });
         desktopMenu.setAttribute('aria-hidden', 'true');
+        desktopMenu.setAttribute('tabindex', '-1');
     } else {
         // Schermo più grande di 1032px (desktop)
-        mobileMenu.setAttribute('aria-hidden', 'true');
+        menuLinks.forEach(function(link) {
+            link.setAttribute('aria-hidden', 'true');
+            link.setAttribute('tabindex', '-1');
+        });
         desktopMenu.setAttribute('aria-hidden', 'false');
+        desktopMenu.setAttribute('tabindex', '0');
     }
 }
 
-
-window.onload = function() {
-    window.addEventListener('scroll', function(e) {
+window.onload = function() { 
+    window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
             document.querySelector("header").classList.add('is-scrolling');
         }
