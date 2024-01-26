@@ -17,8 +17,7 @@ ul {
 }
 
 #logo {
-    width: 60px;
-    height: auto;
+    width: 70px;
     padding: 1em 1.5em 0.5em;
 }
 
@@ -44,7 +43,7 @@ ul {
 }
 
 /* ATTIVITA */
-.container a {
+.container a { 
     width: 40%;
     height: 12em;
     margin: 1em 1em;
@@ -58,7 +57,6 @@ ul {
 .card-body legend {
     font-size: 1.5em;
 }
-
 #back-set-prenot {
     margin: 0 2em;
 }
@@ -120,7 +118,7 @@ h5 {
     padding: 0.5em;
 }
 
-/*   ADMIN SECTION   */
+/*   ADMIN & CLIENT SECTION   */
 .custom-table {
     width: 70%;
 }
@@ -135,6 +133,20 @@ h5 {
     font-size: 0.7em;
 }
 
-#admin-content h1 {
-    font-size: 2em;
+#user-content > p {
+    font-size: 1.5em;
+}
+
+#user-content h1,
+#user-content h2 {
+    font-size: 1.8em;
+}
+
+.bottoni_utente {
+    width: 12em;
+    font-size: 0.8em;
+}
+
+.prenot_cliente {
+    width: 25em;
 }
