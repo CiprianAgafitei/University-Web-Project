@@ -5,7 +5,28 @@ window.onload = function() {
     document.getElementById('logged-in-confirmation').style.display = "none";
     document.getElementById('modal').style.display = 'block';
     document.getElementById('time-elapsed').style.display = 'none';
+
+    // GESTIONE MENU
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            document.querySelector("header").classList.add('is-scrolling');
+        }
+        else {
+            document.querySelector("header").classList.remove('is-scrolling');
+        }
+    });
+
+    const menu_button = document.querySelector('.hamburger');
+    const mobile_menu = document.querySelector('.mobile-nav');
+
+    menu_button.addEventListener('click', function() {
+        menu_button.classList.toggle('is-active');
+        mobile_menu.classList.toggle('is-active');
+    });
 }
+
+window.addEventListener('DOMContentLoaded', checkWindowSize);
+window.addEventListener('resize', checkWindowSize);
 
 //===========================SELEZIONE DATA==================================
 document.addEventListener('DOMContentLoaded', function () {
@@ -38,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function ()
             },
             body: 'selectedDate=' + selectedDate
         })
-            .then(response => response.text())
-            .then(data => {
-                updateFieldContainers(data);
-            })
-            .catch(error => console.error('Errore:', error));
+        .then(response => response.text())
+        .then(data => {
+            updateFieldContainers(data);
+        })
+        .catch(error => console.error('Errore:', error));
     }
     
     defaultDate();
@@ -235,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function ()
     }
     
     var risultato_prenotazione = [];
-
+ 
     /** Pulsante di avvio conto alla rovescia/per bloccare la risorsa nel database */
     startButton.addEventListener('click', function () 
     {   
@@ -630,4 +651,29 @@ function validateFormLogin(event) {
         return false;
     })
     .catch(error => console.error('Errore:', error));
+}
+
+function checkWindowSize() {
+    const screenWidth = window.innerWidth;
+    const mobileMenu = document.querySelector('.mobile-nav');
+    const desktopMenu = document.getElementById('menu');
+    const mobileMenuButton = document.querySelector('.bar');
+
+    if (screenWidth <= 1032) {
+        // Schermo piccolo o uguale a 1032px (mobile)
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileMenu.setAttribute('tabindex', '0');
+        mobileMenuButton.setAttribute('aria-hidden', false);
+        mobileMenuButton.setAttribute('tabindex', '-1');
+        desktopMenu.setAttribute('aria-hidden', 'true');
+        desktopMenu.setAttribute('tabindex', '-1');
+    } else {
+        // Schermo più grande di 1032px (desktop)
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenu.setAttribute('tabindex', '-1');
+        mobileMenuButton.setAttribute('aria-hidden', true);
+        mobileMenuButton.setAttribute('tabindex', '0');
+        desktopMenu.setAttribute('aria-hidden', 'false');
+        desktopMenu.setAttribute('tabindex', '0');
+    }
 }
