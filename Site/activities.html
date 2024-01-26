@@ -18,7 +18,7 @@
                 <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
             <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
-            <nav id="menu" aria-label="Menù principale di navigazione">
+            <nav id="menu" aria-label="Menù principale di navigazione" tabindex="0">
                 <ul>
                     <li><a href="index.html" lang="en">Home</a></li>
                     <li>Attività</li>
@@ -26,18 +26,17 @@
                     <li><a href="php/contatti.php">Contatti</a></li>
                     <li><a href="php/login.php">Accedi</a></li>
                 </ul>
-                <div class="hamburger">
-                    <button class="bar" aria-label="Premi per aprire il menù"></button>
-                </div>
+            </nav>
+            <div class="hamburger">
+                <button class="bar" aria-label="Premi per aprire il menù" tabindex="-1"></button>
+            </div>
+            <nav class="mobile-nav" aria-label="Menù a tendina" tabindex="-1">
+                <a href="index.html" lang="en">Home</a>
+                <a href="eventi.html">Eventi</a>
+                <a href="php/contatti.php">Contatti</a>
+                <a href="php/login.php">Accedi</a>
             </nav>
         </header>
-
-        <nav class="mobile-nav" aria-label="Menù a tendina">
-            <a href="index.html" lang="en">Home</a>
-            <a href="eventi.html">Eventi</a>
-            <a href="php/contatti.php">Contatti</a>
-            <a href="php/login.php">Accedi</a>
-        </nav>
 
         <nav id="breadcrump" aria-label="Menù breadcrump">
             <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; Attività</p>
@@ -47,7 +46,7 @@
 
             <section id="sports">
                 <p>Inizia la ricerca del campo</p>
-                <h1 class="gradient-text">Scegli lo sport</h1>
+                <h1 class="gradient-text">Scelgi lo sport</h1>
                 <div class="separatore"></div>
 
                 <div class="container">
@@ -76,7 +75,7 @@
                         </div>
                     </a>
                     <a href="php/prenotation.php?option=paddel">
-                        <span id="paddel"></span>
+                        <span id="padel"></span>
                         <div class="contenuto">
                             <h2>Paddel</h2>
                         </div>
