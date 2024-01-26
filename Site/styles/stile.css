@@ -129,7 +129,6 @@ header {
 
 #logo {
     width: 80px;
-    height: 70px;
     float: left;
     padding: 1em 3em 1em;
 }
@@ -160,8 +159,9 @@ header {
         #cb9b51 80%,
         #9c763c 100%
     );
-    margin: 6px 0px;
+    margin: 6px 0;
     transition: 0.3s;
+    z-index: 1;
 }
 
 .bar {
@@ -187,7 +187,7 @@ header {
     width: 40%;
     min-height: 100vh;
     display: block;
-    z-index: 98;
+    z-index: -1;
     background-color: var(--flagColor1);
     padding-top: 100px;
     transition: 0.4s;
@@ -196,6 +196,11 @@ header {
 
 .mobile-nav.is-active {
     left: 60%;
+}
+
+.mobile-nav.is-active body {
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
 }
 
 .mobile-nav a {
@@ -490,22 +495,20 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
     background-image: url(../images/tennis.jpg);
 }
 
-#paddel {
-    background-image: url(../images/paddel.jpg);
+#padel {
+    background-image: url(../images/padel.jpg);
 }
 
 /***************************** PRENOTAZIONE *****************************/ 
 
-#set-prenotation legend{
+#set-prenotation legend {
     padding: 0.5em;
     font-size: 2.5em;
 }
 
 #data-description {
-    font-size: 1em;
-    margin-left: 3em;
-    margin-right: 3em;
-    margin-bottom: 8px;
+    font-size: 1.3em;
+    margin: 1em auto;
     opacity: 0;
     transform: translateX(800px);
     transition: opacity 2s ease-in-out, transform 1s ease-in-out;
@@ -523,7 +526,7 @@ input[type="date"] {
     border-radius: 10px;
     font-size: 16px;
     width: 130px;
-    margin: 1em;
+    margin: 1em auto;
     margin-bottom: 0.5em;
     outline: none;
     color:var(--flagColor3);
@@ -532,7 +535,7 @@ input[type="date"] {
 }
 
 input[type="date"]:hover {
-    color: var(--flagColor1);
+    color:var(--flagColor1);
     background-color: var(--flagColor3);
 }
 
@@ -561,12 +564,6 @@ input[type="date"]:hover {
     animation: slideIn 1s ease-in-out;
 }
 
-.field-container p {
-    margin: 1em auto;
-    font-size: 1.5em;
-    line-height: 1.5em;
-}
-
 div#calcio{
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/soccerview.jpeg');
     background-size:100% auto;
@@ -586,7 +583,7 @@ div#tennis{
 }
 
 div#pallavolo{
-    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/volleyballview.jpg');
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/volleyballview.png');
     background-size:100% auto;
     background-position: center center;
 }
@@ -637,7 +634,6 @@ select {
     .field-container:hover{
         border-color: #A65B54;
     }
-
     input[type="date"]:focus {
         color: white;
         background-color: #A65B54;
@@ -955,7 +951,7 @@ h6 {
 }
 
 /***************************** EVENTI *****************************/ 
-#main-content h1, #main-content h2 {
+#main-content h1, #main-content h3 {
     font-size: 2em;
     padding: 0.5em 0;
     line-height: 1.5em;
@@ -969,6 +965,7 @@ h6 {
 #main-content > p,
 .content-section > p {
     padding: 0.3em;
+    margin: 0.5em 1.5em;
     color: var(--flagColor2);
 }
 
@@ -998,7 +995,8 @@ h6 {
     overflow: hidden;
 }
 
-.content-section ul li h4 {
+.content-section ul li h2,
+.content-section ul li h5 {
     font-size: 1.3em;
     padding-bottom: 1em;
     color: var(--flagColor3);
@@ -1010,18 +1008,18 @@ h6 {
     color: var(--flagColor2);
 }
 
-#sports-tournaments > p + h3 {
+#sports-tournaments h4,
+#sports-tournaments h6 {
     margin: 1em auto 0;
+    font-size: 1.5em;
 }
 
-#sports-tournaments > ul + h3 {
-    margin: 1em auto;
-}
-
-.content-section ul li a > h4,
+.content-section ul li a > h2,
+.content-section ul li a > h5,
 .content-section ul li a > p {
     z-index: 2;
     position: relative;
+    margin: auto;
 }
 
 .item {
@@ -1056,8 +1054,9 @@ h6 {
     transform: scale(10);
 }
 
-.content-section ul li:hover h4,
-.content-section ul li:hover p {
+.content-section li:hover h2,
+.content-section li:hover h5,
+.content-section li:hover p {
     color: var(--flagColor1);
 }
 
@@ -1077,7 +1076,7 @@ h6 {
     flex-direction: column;
     align-items: center; 
     justify-content: center;
-    width: 70%; 
+    width: 70%;
     margin: 1em auto; 
     padding: 1em;
     box-sizing: border-box; 
@@ -1092,6 +1091,27 @@ h6 {
     align-items: center;
     width: 100%; 
     margin-bottom: 15px;
+}
+
+.contact-item::before {
+    content: '';
+    display: inline-block;
+    width: 24px; 
+    height: 24px; 
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.contact-phone::before {
+    background-image: url('../images/iconatel.png');
+}
+
+.contact-email::before {
+    background-image: url('../images/iconaemail.png');
+}
+
+.contact-address::before {
+    background-image: url('../images/iconapos.png');
 }
 
 .contact-text {
@@ -1144,8 +1164,8 @@ h6 {
     display: inline-block;
     width: 290px;
     color: var(--errorColor);
-    font-weight: bold;
     font-size: 0.9em;
+    font-weight: bold;
     margin: auto;
 }
 
@@ -1211,7 +1231,7 @@ h5 {
 }
 
 /**********  ADMIN *************/
-#admin-content h1, #admin-content h2 {
+#user-content h1, #user-content h2 {
     padding: 1em;
     font-size: 2.5em;
     width: 12em;
@@ -1256,7 +1276,6 @@ caption {
 .custom-table th {
     border-radius: 5px;
 }
-
 
 .custom-table tr {
     border-bottom: 1px solid var(--flagColor3); 
@@ -1347,205 +1366,120 @@ caption {
     margin-bottom: 20px;
 }
 
-/**********  404 *************/
-#error-display { 
-    width: auto;
-    margin:2em; 
-    padding: 1em;
-    justify-content: center;
-    text-align: center;  
-}
-
-#error-display h1 {
-    margin: 1em auto;
-    width: 8em;
-}
-/**********  LOGOUT,VISUALIZZA, CAMBIO_PASSWORD ********/
-
-
-#client-content {
+/*  CLIENTE  */
+#user-content{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: auto;
 }
 
-#u
-
-#modifica-password{
-    margin: 1em;
+#user-content > p {
+    font-size: 2em;
+    padding: 1em;
+    line-height: 1.5em;
 }
 
-#resetPasswordForm{
-    display: none;
+#resetPasswordForm, 
+#prenotazioni-container {
+    margin: 2em;
 }
 
-#storico-prenotazioni-cliente{
-    display: none;
+.user-menu > div {
+    margin: auto;
 }
 
-.bottoni_mod:hover {
-    background-color: #ccc;
-    color: #000;
-}
-
-.wrapper {
-	position: absolute;
-	top: 52%;
-	left: 50%;
-	width: 350px;
-	padding: 40px;
-	transform: translate(-50%, -50%);
-	background: #e8fbff;
-	box-sizing: border-box;
-	box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
-	border-radius: 10px;
-	height: 400px;
-}
-.content {
-	position: relative;
-}
-.content input {
-	width: 100%;
-	padding: 10px 0;
-	font-size: 16px;
-	color: #262626;
-	margin-bottom: 30px;
-	border: none;
-	border-bottom: 2px solid #262626;
-	outline: none;
-	background: transparent;
-}
-.content label {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 10px 0;
-	font-size: 16px;
-	color: #262626;
-	pointer-events: none;
-	transition: .5s;
-}
-.content input:focus~label,
-.content input:valid~label {
-	top: -20px;
-	left: 0;
-	color: #101010;
-	font-size: 12px;
-	font-weight: 700;
-}
-#btn {
-    background: linear-gradient(45deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .6));
-    text-decoration: none;
-    color: #FFD700; 
-    padding: 15px 0;
-    display: block;
-    text-align: center;
-    margin-top: 8%;
-    font-size: 25px;
-    letter-spacing: 3px;
-    border: 2px solid #000; 
-}
-
-/*colore errori */
-.error-message {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-}
-/*PULSANTE INVIO MODIFICA*/
-
-#submit-button {
-    background-color: #007BFF; 
-    color: #FFF; 
-    padding: 10px 20px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 16px; 
-}
-
-#submit-button:hover {
-    background-color: #0056b3; 
-}
-
-
-.centered-table {
-    margin: 0 auto; /* Questo centrerà orizzontalmente la tabella */
-}
-.centered-prenotazione {
-    text-align: center;
-}
-
-
-/*FORM CON COLORI SITO*/
-.main-container_up {
+.bottoni_utente {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 70vh; 
-}
-.card-body_up {
-    width: 500%; 
-    max-width: 600px; 
-}
-
-
-.bottoni_cliente {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 10px;
-    margin: 10px;
-    width: 20em; 
-    height: 60px; 
+    padding: 2em;
+    width: 15em; 
+    height: 1.5em; 
     background-color: transparent;
     border: 2px solid var(--flagColor3);
     border-radius: 10px;
     text-decoration: none;
     color: var(--flagColor3);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1em;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.bottoni_cliente:hover {
+.bottoni_utente:nth-child(1) {
+    float: right;
+    margin-left: 1em;
+}
+
+.bottoni_utente:nth-child(2) {
+    float: left;
+    margin-right: 1em;
+}
+
+.bottoni_utente:not(.disabled-effect):hover {
     background-color: var(--flagColor3);
     color: var(--flagColor1);
 }
 
-.bottoni_cliente img {
-    width: 30px; /* Dimensione dell'immagine */
-    margin-right: 15px;
+.bottoni_utente img {
+    width: 30px;
+    margin-right: 1em;
 }
 
-.bottoni_cliente span {
-    font-weight: bold;
+#prenotazioni-container h1 {
+    padding-bottom: 1em;
+}
+
+.prenot_cliente {
+    width: 30em;
+    padding: 1em;
+    margin: 1em auto;
+    border: 2px solid var(--flagColor2);
+    border-radius: 15px;
+    background-color: transparent;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.prenot_cliente dl {
+    text-align: justify;
+    margin: auto;
+}
+
+.prenot_cliente dt,
+.prenot_cliente dd {
+    margin: 1em;
+}
+
+.prenot_cliente dt span,
+.prenot_cliente dd span {
     text-transform: uppercase;
+    font-weight: bold;
 }
 
+.disabled-effect {
+    border: 1px solid rgba(226, 157, 29, 0.3);
+    color: rgba(226, 157, 29, 0.3);
+}
 
+.user-menu {
+    display: flex;
+}
 
+/**********  404 *************/
+#error-display { 
+    width: auto;
+    margin:2em; 
+    padding: 1em;
+    text-align: center;
+    font-size: 1.1em;
+}
 
+#error-display h1 {
+    margin: 1em auto;
+    width: 8em;
+    padding: 0.5em;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#error-display h1 + p {
+    margin-bottom: 1em;
+}
