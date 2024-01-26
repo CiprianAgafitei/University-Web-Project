@@ -66,7 +66,6 @@ footer {
     border-top: 1px solid #DDD;
     position: fixed;
     padding: 1em;
-    bottom: 0;
     width: 100%;
 } 
 
@@ -406,4 +405,169 @@ input[type="date"] {
 
 #error-display h1 + p {
     margin-bottom: 1em;
+}
+
+/*   CLIENT & ADMIN   */
+#user-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-content > p {
+    font-size: 2em;
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+#resetPasswordForm, 
+#prenotazioni-container {
+    margin: 1em;
+}
+
+.user-menu > div {
+    margin: 0 auto;
+}
+
+.bottoni_utente {
+    display: flex;
+    align-items: center;
+    padding: 2em;
+    width: 15em; 
+    height: 1.5em;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.disabled-effect {
+    text-decoration: underline;
+}
+
+.bottoni_utente img {
+    width: 30px;
+    margin-right: 1em;
+}
+
+.bottoni_utente:nth-child(1) {
+    float: right;
+    margin-left: 1em;
+}
+
+.bottoni_utente:nth-child(2) {
+    float: left;
+    margin-right: 1em;
+}
+
+#prenotazioni-container h1 {
+    padding-bottom: 1em;
+}
+
+.prenot_cliente {
+    margin: 1em auto;
+    border: 2px solid var(--flagColor1);
+    border-radius: 15px;
+}
+
+.prenot_cliente dl {
+    text-align: justify;
+    margin: auto;
+}
+
+.prenot_cliente dt,
+.prenot_cliente dd {
+    margin: 1em;
+}
+
+.prenot_cliente dt span,
+.prenot_cliente dd span {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.user-menu {
+    display: flex;
+}
+
+#user-content h1, #user-content h2 {
+    padding: 1em;
+    font-size: 2.5em;
+    width: 12em;
+    margin: auto;
+    line-height: 1.5em;
+}
+
+/* admin-prenotazioni */
+.table-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.custom-table {
+    width: 80%; 
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 3px solid var(--flagColor1); 
+}
+
+.custom-table thead {
+    background-color: var(--flagColor1);
+    text-transform: uppercase;
+}
+
+.custom-table th,
+.custom-table td {
+    text-align: center;
+    padding: 12px 15px;
+}
+
+.custom-table th {
+    border-radius: 5px;
+}
+
+.custom-table tr {
+    border-bottom: 1px solid var(--flagColor1); 
+    display: table-row !important;  /* forza la visualizzazione di tutte le righe */
+}
+
+.custom-table tr:last-of-type {
+    border-bottom: 2px solid var(--flagColor1);
+}
+
+.pagination-buttons, caption {
+    display: none;
+}
+
+/* admin-messaggi */
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+.message-box {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.message-title {
+    padding: 10px;
+    border-radius: 5px;
+    margin: -20px -20px 10px; 
+    display: inline-block;
+}
+
+.message-name,
+.message-email,
+.message-content {
+    margin-bottom: 10px;
+}
+
+.pagination-buttons {
+    text-align: center; 
+    margin-top: 10px;
+    margin-bottom: 5px; 
 }
