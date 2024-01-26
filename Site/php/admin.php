@@ -1,69 +1,55 @@
 <?php
-    include_once "CSCAccess.php"; 
-    use CSC\CSCAccess; 
-    
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    setlocale(LC_ALL, 'it_IT');
 
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+include_once "CSCAccess.php";
+use CSC\CSCAccess;
 
-    if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
-        header("Location: login.php");
-        exit();
-    }
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+setlocale(LC_ALL, 'it_IT');
 
-    $paginaHTML = file_get_contents('../admin.html');
+if (!isset($_SESSION)) {
+    session_start();
+}
 
-    $prenotazioni = "";
-    $messaggi = "";
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    header("Location: login.php");
+    exit();
+}
 
-    $csc = new CSCAccess();
-    $conn = $csc->openConnection();
-    
-    if($conn) 
-    {
-        $prenotations = $csc->getAllPrenotations();
+$nomeUtente = isset($_SESSION['user_name']) && $_SESSION['user_name'] !== null ? $_SESSION['user_name'] : '';
 
-        foreach ($prenotations as $prenotazione) 
-        {
-            $sport = $csc->getNomeAttivita($prenotazione["id_Attivita"]);
-            $ora = date("H:i", strtotime($prenotazione["ora"]));
+$paginaHTML = file_get_contents('../admin.html');
 
-            $prenotazioni .= "<tr>
-                                <td>{$prenotazione["data"]}</td>
-                                <td>$ora</td>
-                                <td>$sport</td>
-                                <td>{$prenotazione["codice_campo"]}</td>
-                                <td>{$prenotazione["utente"]}</td>
-                            </tr>";
-        }
+$messaggi = "";
 
-        $messages = $csc->getAllRequests();
+$csc = new CSCAccess();
+$conn = $csc->openConnection();
 
-        foreach ($messages as $messaggio) {
-            $email = htmlspecialchars($messaggio['email']);
-            $info = $csc->getClientInfoDetails($email);
-            $nome_utente = $info ? htmlspecialchars($info['nome']) : "Nome non disponibile";
+if ($conn) 
+{
+    $messages = $csc->getAllRequests();
 
-            $titolo = $messaggio["titolo"] ?? "Senza titolo";
-            $testo = htmlspecialchars($messaggio['testo']);
+    foreach ($messages as $messaggio) {
+        $email = htmlspecialchars($messaggio['email']);
+        $info = $csc->getClientInfoDetails($email);
+        $nome_utente = $info ? htmlspecialchars($info['nome']) : "Nome non disponibile";
 
-            $messaggi .= "<div class=\"message-box\">
+        $titolo = $messaggio["titolo"] ?? "Senza titolo";
+        $testo = htmlspecialchars($messaggio['testo']);
+
+        $messaggi .= "<div class=\"message-box\">
                             <h3 class=\"message-title\">$titolo</h3>
-                            <p class=\"message-name\">Nome: \"$nome_utente\"</p>
+                            <p class=\"message-name\">Nome: $nome_utente</p>
                             <p class=\"message-email\">Email: $email</p>
                             <p class=\"message-content\">$testo</p>
                         </div>";
-        }
     }
-    $csc->closeConnection();
+}
+$csc->closeConnection();
 
-    $paginaHTML = str_replace("{messaggi}", $messaggi, $paginaHTML);
-    $paginaHTML = str_replace("{righe_tabella}", $prenotazioni, $paginaHTML);
+$paginaHTML = str_replace("Nome", $nomeUtente, $paginaHTML);
+$paginaHTML = str_replace("{messaggi}", $messaggi, $paginaHTML);
 
-    echo $paginaHTML;
+echo $paginaHTML;
 ?>
