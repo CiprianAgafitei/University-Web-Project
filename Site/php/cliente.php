@@ -1,4 +1,5 @@
 <?php
+
 require_once "CSCAccess.php";
 use CSC\CSCAccess;
 
@@ -7,37 +8,57 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 setlocale(LC_ALL, 'it_IT');
 
-// Avvia la sessione solo se non è già attiva
-if (session_status() == PHP_SESSION_NONE) {
+if (!isset($_SESSION)) {
     session_start();
 }
+
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
+$emailUtente = $_SESSION['user_id'];
+$nomeUtente = isset($_SESSION['user_name']) && $_SESSION['user_name'] !== null ? $_SESSION['user_name'] : '';
+$cognomeUtente = isset($_SESSION['user_surname']) && $_SESSION['user_surname'] !== null ? $_SESSION['user_surname'] : '';
+
+function pulisciInput($value)
+{
+    $value = trim($value);
+    $value = strip_tags($value);
+    $value = htmlentities($value);
+    return $value;
+}
+
+ob_start();
+require_once "../cliente.html";
+$paginaHTML = ob_get_clean();
+
+$elencoPrenotazioni = "";
 
 $cscAccess = new CSCAccess();
 $conn = $cscAccess->openConnection();
 
+if ($conn) 
+{
+    $prenotations = $cscAccess->getClientPrenotations($emailUtente);
 
-// Verifica se l'utente è loggato
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // Se l'utente non è loggato, reindirizzalo alla pagina di login
-    header("Location: accedi.html");
-    exit;
+    foreach ($prenotations as $prenotazione) {
+        $sport = $cscAccess->getNomeAttivita($prenotazione['id_Attivita']);
+        $data = date("d-m-Y", strtotime($prenotazione['data']));
+        $ora = date("H:i", strtotime($prenotazione['ora']));
+
+        $elencoPrenotazioni .= "<div class=\"prenot_cliente\"><dt>Codice campo: <span>{$prenotazione['codice_campo']}</span> - Attività: <span>$sport</span></dt>
+                            <dd>Data: <span>$data</span> - Ora: <span>$ora</span></dd></div>";
+    }
 }
+$cscAccess->closeConnection();
 
-// Recupera l'email dell'utente dalla sessione
-$emailUtente = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'Utente Sconosciuto';
+if ($elencoPrenotazioni === '')
+    $elencoPrenotazioni = "Ancora nessuna prenotazione.";
 
-// Carica il file HTML
-$paginaHTML = file_get_contents("../cliente.html");
-
-// Sostituisci il segnaposto con l'email dell'utente
-$paginaHTML = str_replace("Nome Utente", $emailUtente, $paginaHTML);
-
-$elencoPrenotazioni = ""; // Qui va la logica per ottenere l'elenco delle prenotazioni
-
-// Sostituisci altri segnaposto se necessario
+$paginaHTML = str_replace("Nome", $nomeUtente, $paginaHTML);
+$paginaHTML = str_replace("Cognome", $cognomeUtente, $paginaHTML);
 $paginaHTML = str_replace("{elencoPrenotazioni}", $elencoPrenotazioni, $paginaHTML);
 
 echo $paginaHTML;
-
-$cscAccess->closeConnection();
 ?>
