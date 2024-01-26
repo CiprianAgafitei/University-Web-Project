@@ -225,7 +225,6 @@ document.addEventListener('DOMContentLoaded', function ()
 
     /** SEZIONE LEGATA AL COUNTDOWM */
     const startButton = document.getElementById("continueButton");
-    const circle = document.getElementById("circle");
 
     /** AVVIO DEL CONTO ALLA ROVESCIA */
     function startCountdown(duration) {
@@ -277,12 +276,12 @@ document.addEventListener('DOMContentLoaded', function ()
         })
         .then(response => response.text())
         .then(data => {
-            risultato_prenotazione = JSON.parse(data);
+            risultato_prenotazione = data;
 
-            var orario1 = risultato_prenotazione[0] && 'ora_1' in risultato_prenotazione[0] ? risultato_prenotazione[0]['ora_1'] : null;
-            var orario2 = risultato_prenotazione[1] && 'ora_2' in risultato_prenotazione[1] ? risultato_prenotazione[1]['ora_2'] : null;
-            var campo1 = risultato_prenotazione[0] && 'campo1' in risultato_prenotazione[0] ? risultato_prenotazione[0]['campo1'] : null;
-            var campo2 = risultato_prenotazione[1] && 'campo2' in risultato_prenotazione[1] ? risultato_prenotazione[1]['campo2'] : null;
+            var orario1 = risultato_prenotazione[0] ? risultato_prenotazione[0]['ora_1'] : null;
+            var orario2 = risultato_prenotazione[1] ? risultato_prenotazione[1]['ora_2'] : null;
+            var campo1 = risultato_prenotazione[0] ? risultato_prenotazione[0]['campo1'] : null;
+            var campo2 = risultato_prenotazione[1] ? risultato_prenotazione[1]['campo2'] : null;
 
             // Inserimento testi
             updateTextFields(chosenSport, selectedDate, orario1, orario2, campo1, campo2);
