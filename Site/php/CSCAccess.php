@@ -98,7 +98,7 @@
 
         /** INSERIMENTO NUOVA PRENOTAZIONE */
         public function insertNewPrenotation($campo, $attività, $utente, $data, $ora) {
-			$id_attività = $this->getIdAttivita($attività);
+			$id_attività = $this->getIdAttivita($attività)['id'];
 			$queryInsert = "INSERT INTO Prenotazione(Codice_campo, Id_Attivita, Utente, Data, Ora) 
 								VALUES (\"$campo\", \"$id_attività\", \"$utente\", \"$data\", \"$ora\")";
 			
@@ -109,7 +109,7 @@
 		
 		/** RIMOZIONE DI UNA PRENOTAZIONE */
         public function removePrenotation($campo, $attivita, $utente, $data, $ora) {
-			$id_attivita = $this->getIdAttivita($attivita);
+			$id_attivita = $this->getIdAttivita($attivita)['id'];
 
 			$queryRemove = "DELETE FROM Prenotazione WHERE codice_campo=\"$campo\" AND id_attivita=\"$id_attivita\" 
 					AND utente=\"$utente\" AND data=\"$data\" AND ora=\"$ora\"";
@@ -132,7 +132,7 @@
         
         /** OTTENIMENTO DI TUTTE LE PRENOTAZIONI DI UN UNTENTE ORDINATE CRONOLOGICAMENTE */
         public function getClientPrenotations($email) {
-			$query = "SELECT * FROM Prenotazione WHERE Utente=\"$email\" ORDER BY data";
+			$query = "SELECT * FROM Prenotazione WHERE Utente=\"$email\" AND data >= CURDATE() OR (data = CURDATE() AND ora >= CURTIME()) ORDER BY data, ora";
 			
 			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this->connection));
 
@@ -191,7 +191,7 @@
 			}
 		}
 
-		/** OTTENIMENTO DI TUTTE LE RICHIESTE */
+		/** OTTENIMENTO DI TUTTE LE RICHIESTE DA OGGI IN POI */
 		public function getAllRequests() {
 			$query = "SELECT * FROM Richieste";
 			
@@ -243,7 +243,7 @@
 		 * 								PRENOTATI PER CIASCUN ORARIO
 		 * 				(utile per visualizzare in seguito le disponibilità restanti) */
 		public function getReservedPrenotations($data_scelta, $attivita) {
-			$id_attivita = $this->getIdAttivita($attivita);
+			$id_attivita = $this->getIdAttivita($attivita)['id'];
 
 			$query = "SELECT ora, codice_campo
 					  FROM Prenotazione P JOIN Campo C 
@@ -301,7 +301,7 @@
 
 		/** OTTENIMENTO DEL PRIMO CAMPO DISPONIBILE CON DATA, L'ATTIVITA SCELTA E L'ORARIO */
 		public function getCampoDisponibile($data_scelta, $attivita, $orario) {
-			$id_attivita = $this->getIdAttivita($attivita);
+			$id_attivita = $this->getIdAttivita($attivita)['id'];
 
 			$query = "SELECT codice
 					  FROM Campo
@@ -318,7 +318,7 @@
 		}
 
 		public function updateUserPrenotation($campo, $data, $attivita, $ora, $email) {
-			$id_attivita = $this->getIdAttivita($attivita);
+			$id_attivita = $this->getIdAttivita($attivita)['id'];
 
 			if ($ora !== null) {
 				$query = "UPDATE Prenotazione SET utente=\"$email\" WHERE codice_campo=\"$campo\" AND data=\"$data\"
@@ -367,7 +367,7 @@
 
 		/******************FUNZIONI PER FILE UPDATE_PASSWORD PHP */
 		public function getUserPassword($email) {
-			$query = "SELECT Pass_hash FROM Cliente WHERE Email=?";
+			$query = "SELECT pass_hash FROM Cliente WHERE email=?";
 				
 			$stmt = mysqli_prepare($this->connection, $query);
 			mysqli_stmt_bind_param($stmt, 's', $email);
@@ -375,7 +375,7 @@
 			$result = mysqli_stmt_get_result($stmt);
 		
 			if ($row = mysqli_fetch_assoc($result)) {
-				return $row['Pass_hash'];
+				return $row['pass_hash'];
 			} else {
 				return null;
 			}
@@ -383,7 +383,7 @@
 		
 		/** AGGIORNAMENTO DELLA PASSWORD DI UN UTENTE */
 		public function updateUserPassword($email, $newPasswordHash) {
-			$query = "UPDATE Cliente SET Pass_hash=? WHERE Email=?";
+			$query = "UPDATE Cliente SET pass_hash=? WHERE email=?";
 				
 			$stmt = mysqli_prepare($this->connection, $query);
 			mysqli_stmt_bind_param($stmt, 'ss', $newPasswordHash, $email);
