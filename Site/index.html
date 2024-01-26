@@ -25,7 +25,7 @@
                 <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
             <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
-            <nav id="menu" aria-label="Menù principale di navigazione">
+            <nav id="menu" aria-label="Menù principale di navigazione" tabindex="0">
                 <ul>
                     <li lang="en">Home</li>
                     <li><a href="activities.html">Attività</a></li>
@@ -33,18 +33,17 @@
                     <li><a href="php/contatti.php">Contatti</a></li>
                     <li><a href="php/login.php">Accedi</a></li>
                 </ul>
-                <div class="hamburger">
-                    <button class="bar" aria-label="Premi per aprire il menù"></button>
-                </div>
+            </nav>
+            <div class="hamburger">
+                <button class="bar" aria-label="Premi per aprire il menù" tabindex="-1"></button>
+            </div>
+            <nav class="mobile-nav" aria-label="Menù a tendina" tabindex="-1">
+                <a href="activities.html">Attività</a>
+                <a href="eventi.html">Eventi</a>
+                <a href="php/contatti.php">Contatti</a>
+                <a href="php/login.php">Accedi</a>
             </nav>
         </header>
-
-        <nav class="mobile-nav" aria-label="Menù a tendina">
-            <a href="activities.html">Attività</a>
-            <a href="eventi.html">Eventi</a>
-            <a href="php/contatti.php">Contatti</a>
-            <a href="php/login.php">Accedi</a>
-        </nav>
 
         <nav id="breadcrump" aria-label="Menù breadcrump">
             <p>Ti trovi in: <span lang="en">Home</span></p>
@@ -61,7 +60,6 @@
                     <a href="eventi.html" class="btn-filled-bg">Eventi &amp; Feste</a>
                 </span>
             </div>
-
         </main>
         
         <div id="go-back">
