@@ -1,7 +1,6 @@
 /* GENERAL */
 #logo {
     width: 60px;
-    height: auto;
     padding: 1em 1em 1em;
 }
 
@@ -21,6 +20,10 @@
 
 #breadcrump p {
     margin-left: 6%;
+}
+
+.main-background {
+    min-height: 15em;
 }
 
 /* ATTIVITA */
@@ -167,7 +170,7 @@ h5 {
     width: 115px;
 }
 
-/*   ADMIN SECTION   */
+/*   ADMIN & CLIENT SECTION   */
 .custom-table {
     width: 100%;
 }
@@ -182,6 +185,20 @@ h5 {
     font-size: 0.7em;
 }
 
-#admin-content h1 {
+#user-content h1,
+#user-content h2 {
     font-size: 1.7em;
+}
+
+.user-menu {
+    width: 100%;
+}
+
+.bottoni_utente {
+    width: 14em;
+    font-size: 0.6em;
+}
+
+.prenot_cliente {
+    width: 21em;
 }
