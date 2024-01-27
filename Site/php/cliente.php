@@ -42,13 +42,16 @@ if ($conn)
 {
     $prenotations = $cscAccess->getClientPrenotations($emailUtente);
 
-    foreach ($prenotations as $prenotazione) {
-        $sport = $cscAccess->getNomeAttivita($prenotazione['id_Attivita']);
-        $data = date("d-m-Y", strtotime($prenotazione['data']));
-        $ora = date("H:i", strtotime($prenotazione['ora']));
+    if (is_array($prenotations) || is_object($prenotations)) 
+    {
+        foreach ($prenotations as $prenotazione) {
+            $sport = $cscAccess->getNomeAttivita($prenotazione['id_Attivita']);
+            $data = date("d-m-Y", strtotime($prenotazione['data']));
+            $ora = date("H:i", strtotime($prenotazione['ora']));
 
-        $elencoPrenotazioni .= "<div class=\"prenot_cliente\"><dt>Codice campo: <span>{$prenotazione['codice_campo']}</span> - Attività: <span>$sport</span></dt>
-                            <dd>Data: <span>$data</span> - Ora: <span>$ora</span></dd></div>";
+            $elencoPrenotazioni .= "<div class=\"prenot_cliente\"><dt>Codice campo: <span>{$prenotazione['codice_campo']}</span> - Attività: <span>$sport</span></dt>
+                                <dd>Data: <span>$data</span> - Ora: <span>$ora</span></dd></div>";
+        }
     }
 }
 $cscAccess->closeConnection();
