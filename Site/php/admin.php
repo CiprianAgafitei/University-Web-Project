@@ -30,23 +30,29 @@ if ($conn)
 {
     $messages = $csc->getAllRequests();
 
-    foreach ($messages as $messaggio) {
-        $email = htmlspecialchars($messaggio['email']);
-        $info = $csc->getClientInfoDetails($email);
-        $nome_utente = $info ? htmlspecialchars($info['nome']) : "Nome non disponibile";
+    if (is_array($messages) || is_object($messages)) 
+    {
+        foreach ($messages as $messaggio) {
+            $email = htmlspecialchars($messaggio['email']);
+            $info = $csc->getClientInfoDetails($email);
+            $nome_utente = $info ? $info['nome'] : "Nome non disponibile";
 
-        $titolo = $messaggio["titolo"] ?? "Senza titolo";
-        $testo = htmlspecialchars($messaggio['testo']);
+            $titolo = $messaggio["titolo"] ?? "Senza titolo";
+            $testo = htmlspecialchars($messaggio['testo']);
 
-        $messaggi .= "<div class=\"message-box\">
-                            <h3 class=\"message-title\">$titolo</h3>
-                            <p class=\"message-name\">Nome: $nome_utente</p>
-                            <p class=\"message-email\">Email: $email</p>
-                            <p class=\"message-content\">$testo</p>
-                        </div>";
+            $messaggi .= "<div class=\"message-box\">
+                                <h3 class=\"message-title\">$titolo</h3>
+                                <p class=\"message-name\">Nome: $nome_utente</p>
+                                <p class=\"message-email\">Email: $email</p>
+                                <p class=\"message-content\">$testo</p>
+                            </div>";
+        }
     }
 }
 $csc->closeConnection();
+
+if ($messaggi === '')
+    $messaggi = "Ancora nessun messaggio.";
 
 $paginaHTML = str_replace("Nome", $nomeUtente, $paginaHTML);
 $paginaHTML = str_replace("{messaggi}", $messaggi, $paginaHTML);
