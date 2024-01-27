@@ -49,7 +49,7 @@ if ($conn)
             $data = date("d-m-Y", strtotime($prenotazione['data']));
             $ora = date("H:i", strtotime($prenotazione['ora']));
 
-            $elencoPrenotazioni .= "<div class=\"prenot_cliente\"><dt>Codice campo: <span>{$prenotazione['codice_campo']}</span> - Attività: <span>$sport</span></dt>
+            $elencoPrenotazioni .= "<div class=\"prenot_cliente\" tabindex=\"0\"><dt>Codice campo: <span>{$prenotazione['codice_campo']}</span> - Attività: <span>$sport</span></dt>
                                 <dd>Data: <span>$data</span> - Ora: <span>$ora</span></dd></div>";
         }
     }
