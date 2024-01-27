@@ -29,20 +29,26 @@ $conn = $csc->openConnection();
 if ($conn) {
     $prenotations = $csc->getAllPrenotations();
 
-    foreach ($prenotations as $prenotazione) {
-        $sport = $csc->getNomeAttivita($prenotazione["id_Attivita"]);
-        $ora = date("H:i", strtotime($prenotazione["ora"]));
+    if (is_array($prenotations) || is_object($prenotations)) 
+    {
+        foreach ($prenotations as $prenotazione) {
+            $sport = $csc->getNomeAttivita($prenotazione["id_Attivita"]);
+            $ora = date("H:i", strtotime($prenotazione["ora"]));
 
-        $prenotazioni .= "<tr>
-                                <td>{$prenotazione["data"]}</td>
-                                <td>$ora</td>
-                                <td>$sport</td>
-                                <td>{$prenotazione["codice_campo"]}</td>
-                                <td>{$prenotazione["utente"]}</td>
-                            </tr>";
+            $prenotazioni .= "<tr>
+                                    <td>{$prenotazione["data"]}</td>
+                                    <td>$ora</td>
+                                    <td>$sport</td>
+                                    <td>{$prenotazione["codice_campo"]}</td>
+                                    <td>{$prenotazione["utente"]}</td>
+                                </tr>";
+        }
     }
 }
 $csc->closeConnection();
+
+if ($prenotazioni !== '')
+    $prenotazioni = "<tr><td colspan=\"5\">Ancora nessuna prenotazione.</td></tr>";
 
 $paginaHTML = str_replace("Nome", $nomeUtente, $paginaHTML);
 $paginaHTML = str_replace("{righe_tabella}", $prenotazioni, $paginaHTML);
