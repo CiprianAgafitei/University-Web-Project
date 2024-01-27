@@ -40,7 +40,7 @@ if ($conn)
             $titolo = $messaggio["titolo"] ?? "Senza titolo";
             $testo = htmlspecialchars($messaggio['testo']);
 
-            $messaggi .= "<div class=\"message-box\">
+            $messaggi .= "<div class=\"message-box\" tabindex=\"0\">
                                 <h3 class=\"message-title\">$titolo</h3>
                                 <p class=\"message-name\">Nome: $nome_utente</p>
                                 <p class=\"message-email\">Email: $email</p>
