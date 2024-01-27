@@ -49,6 +49,10 @@ ul {
     margin: 1em 1em;
 }
 
+.container a::after {
+    filter: blur(12px);
+}
+
 .container a .contenuto h2 {
     font-size: 2em;
 }
