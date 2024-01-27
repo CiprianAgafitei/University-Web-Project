@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         viewPrenButton.classList.add('disabled-effect');
         viewPrenButton.removeAttribute('href');
         viewPrenButton.setAttribute('aria-disabled', 'true');
-        viewPrenButton.setAttribute('tabindex', '0');
+        viewPrenButton.setAttribute('tabindex', '-1');
     }
     else if (currentPage === "update_password.php") {
         // Applica effetti per mostrare il pulsante "Modifica password" disabilitato
@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', function () {
         editPassButton.classList.add('disabled-effect');
         editPassButton.removeAttribute('href');
         editPassButton.setAttribute('aria-disabled', 'true');
-        editPassButton.setAttribute('tabindex', '0');
+        editPassButton.setAttribute('tabindex', '-1');
 
         // Applica effetti per mostrare il pulsante "Visualizza prenotazioni" abilitato
         viewPrenSection.style.display = "none";
         viewPrenButton.classList.remove('disabled-effect');
         viewPrenButton.setAttribute('href', '../php/cliente.php');
         viewPrenButton.setAttribute('aria-disabled', 'false');
-        viewPrenButton.setAttribute('tabindex', '-1');
+        viewPrenButton.setAttribute('tabindex', '0');
     }
 
     // Gestione dei campi degli errori
