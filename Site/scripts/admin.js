@@ -80,7 +80,33 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         displayRows(0, rowsPerPage);
 
-        pulsantePrec.addEventListener("click", () => changePage(false));
-        pulsanteSucc.addEventListener("click", () => changePage(true));
+        pulsantePrec.addEventListener("click", function() {
+            // Selezione della prima riga
+            var firstRow = document.querySelector('firstRow');
+            if (firstRow) {
+                firstRow.focus();
+            }
+            changePage(false);
+        });
+        pulsanteSucc.addEventListener("click", function() {
+            // Selezione della prima riga
+            var firstRow = document.querySelector('.firstRow');
+            if (firstRow) {
+                firstRow.focus();
+            }
+            changePage(true);
+        });
     }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Tab') {
+            // Controlla se il focus sta uscendo dalla tua tabella
+            var lastRow = document.querySelector('.lastRow');
+    
+            if (document.activeElement == lastRow) {
+                event.preventDefault();
+                pulsanteSucc.focus(); // Sposta il focus al pulsante next
+            }
+        }
+    });
 });
