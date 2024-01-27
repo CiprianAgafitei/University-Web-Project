@@ -47,7 +47,7 @@ if ($conn) {
 }
 $csc->closeConnection();
 
-if ($prenotazioni !== '')
+if ($prenotazioni === '')
     $prenotazioni = "<tr><td colspan=\"5\">Ancora nessuna prenotazione.</td></tr>";
 
 $paginaHTML = str_replace("Nome", $nomeUtente, $paginaHTML);
