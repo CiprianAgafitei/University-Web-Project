@@ -456,7 +456,7 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
     width: 100%;
     height: 100%;
     background: linear-gradient(45deg, var(--flagColor2), var(--flagColor4), var(--flagColor2));
-    filter: blur(25px);
+    filter: blur(20px);
 }
 
 /* Applica solamente ai dispositivi che non supportano hover */
