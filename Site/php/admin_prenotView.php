@@ -31,17 +31,28 @@ if ($conn) {
 
     if (is_array($prenotations) || is_object($prenotations)) 
     {
-        foreach ($prenotations as $prenotazione) {
+        $count_rows = 1;    // Variabile per contare il numero di riga corrente da 1 a 10
+
+        foreach ($prenotations as $prenotazione) 
+        {
             $sport = $csc->getNomeAttivita($prenotazione["id_Attivita"]);
             $ora = date("H:i", strtotime($prenotazione["ora"]));
 
-            $prenotazioni .= "<tr>
-                                    <td>{$prenotazione["data"]}</td>
-                                    <td>$ora</td>
-                                    <td>$sport</td>
-                                    <td>{$prenotazione["codice_campo"]}</td>
-                                    <td>{$prenotazione["utente"]}</td>
-                                </tr>";
+            // Aggiunta dell'id lastRow solo sull'ultima colonna
+            if ($count_rows % 10 == 1)
+                $prenotazioni .= "<tr tabindex=\"0\" class=\"firstRow\">";
+            else if ($count_rows % 10 == 0)
+                $prenotazioni .= "<tr tabindex=\"0\" class=\"lastRow\">";
+            else
+                $prenotazioni .= "<tr tabindex=\"0\">";
+            
+            $prenotazioni .= "<td>{$prenotazione["data"]}</td>
+                            <td>$ora</td>
+                            <td>$sport</td>
+                            <td>{$prenotazione["codice_campo"]}</td>
+                            <td>{$prenotazione["utente"]}</td>
+                        </tr>";
+            $count_rows++;
         }
     }
 }
