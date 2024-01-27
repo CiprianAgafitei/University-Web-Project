@@ -74,7 +74,7 @@
                     aria-describedby="Ogni riga di questa tabella descrive una prenotazione. Ogni prenotazione è identificata da: Data, Ora, Attività e Nome dell'utente che l'ha effettuata.">
                     <caption>Prenotazioni</caption>
                     <thead>
-                        <tr>
+                        <tr tabindex="0">
                             <th scope="col">Data</th>
                             <th scope="col">Ora</th>
                             <th scope="col">Attività</th>
@@ -87,7 +87,6 @@
                         {righe_tabella}
                     </tbody>
                 </table>
-                <div tabindex="0" aria-label="Inizio tabella" id="tabella-focus"></div>
             </div>
         </div>
 
