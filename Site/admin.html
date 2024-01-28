@@ -8,10 +8,11 @@
     <meta name="keywords" content="cadosportcenter">
     <meta name="description"
         content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-    <link rel="stylesheet" href="../styles/stile.css" media="screen">
-    <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
-    <link rel="stylesheet" href="../styles/mobile.css" media="screen and (max-width:496px)">
-    <link rel="stylesheet" href="../styles/print.css" media="print">
+    <link rel="stylesheet" href="../styles/stile.min.css" media="screen">
+    <link rel="stylesheet" href="../styles/tablet.min.css" media="screen and (max-width:1032px)">
+    <link rel="stylesheet" href="../styles/mobile.min.css" media="screen and (max-width:496px)">
+    <link rel="stylesheet" href="../styles/print.min.css" media="print">
+    <meta name="author" content="Pasqualotto Lorenzo">
     <script src="../scripts/menu_logic.js"></script>
     <script src="../scripts/admin.js"></script>
 </head>
@@ -21,7 +22,11 @@
         <nav aria-label="Aiuti alla navigazione">
             <a class="navigationHelp" href="#user-content">Vai al contenuto</a>
         </nav>
-        <img id="logo" src="../images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+        <picture>
+            <source type="image/webp" srcset="../images/logo.webp">
+            <source type="image/png" srcset="../images/logo.png">
+            <img id="logo" src="../images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+        </picture>
         <nav id="menu" aria-label="Menù principale di navigazione" tabindex="0">
             <ul>
                 <li><a href="../index.html" lang="en">Home</a></li>
@@ -42,7 +47,6 @@
             <a href="logout.php" lang="en">Esci</a>
         </nav>
     </header>
-
 
     <nav id="breadcrump" aria-label="Menù breadcrump">
         <p>Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; <span lang="en">Account</span></p>
