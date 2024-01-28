@@ -87,8 +87,15 @@ document.addEventListener('DOMContentLoaded', function ()
         containerSection.innerHTML = '';
 
         var fieldContainer = document.createElement('div');
-        fieldContainer.className = 'field-container';
+        fieldContainer.className = 'field-container sport';
         fieldContainer.id = chosenSport;
+
+        // Blocco per gestire lo sfondo in base al formato compatibile: webp o non-webp
+        Modernizr.addTest('webp', function() {
+            return (document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0);
+        });
+        var supportedClass = Modernizr.webp ? 'webp-supported' : 'no-webp';
+        fieldContainer.classList.add(supportedClass);
 
         var fieldName = document.createElement('h2');
         fieldName.textContent = chosenSport.charAt(0).toUpperCase() + chosenSport.slice(1);
