@@ -6,15 +6,20 @@
         <title>ERRORE404</title>
         <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-        <link rel="stylesheet" href="styles/stile.css" media="screen">
-        <link rel="stylesheet" href="styles/tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width:496px)">
-        <link rel="stylesheet" href="styles/print.css" media="print">
+        <meta name="author" content="Pasqualotto Lorenzo">
+        <link rel="stylesheet" href="styles/stile.min.css" media="screen">
+        <link rel="stylesheet" href="styles/tablet.min.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="styles/mobile.min.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="styles/print.min.css" media="print">  
         <script src="scripts/menu_logic.js"></script>
     </head>
     <body>
         <header>
-            <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            <picture>
+                <source type="image/webp" srcset="images/logo.webp">
+                <source type="image/png" srcset="images/logo.png">
+                <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            </picture>
             <nav id="menu" aria-label="Menù principale di navigazione" tabindex="0">
                 <ul>
                     <li><a href="index.html" lang="en">Home</a></li>
@@ -37,10 +42,11 @@
         </header>
 
         <main>
-            <div id="error-display">
-                <h1 class="gradient-text">ERRORE 404</h1>
-                <p>La pagina che stai cercando non appartiene al nostro sito</p>
-                <p>Torna in <a href="index.html">Home</a></p>
+            <div id="error-message">
+                <h1>Oh no! <span role="img" aria-label="Pallone da pallacanestro">&#127936;</span> Errore 404 - Nessun <span lang="en">touchdown</span> qui!</h1>
+                <p>Abbiamo cercato nella zona di gioco, ma sembra che la pagina sia scivolata fuori dal campo. 
+                    Forse ha fatto un <span lang="en">fumble</span> o ha cercato di fare un gol impossibile. <span role="img" aria-label="Icona con faccina pensante">&#129300;</span></p>
+                <p>Scegli un'altra strategia navigando altrove o ritorna alla partita principale sulla <a href="index.html">homepage</a>.</p>
             </div>
         </main>
         
