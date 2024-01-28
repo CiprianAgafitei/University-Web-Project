@@ -129,6 +129,7 @@ header {
 
 #logo {
     width: 80px;
+    height: auto;
     float: left;
     padding: 1em 3em 1em;
 }
@@ -293,6 +294,15 @@ main {
     margin-bottom: 1.5em;
     width: 100%;
     min-height: 25em;
+}
+
+.main-background.webp-supported {
+    background-image: url(../images/homeImg.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+.main-background.no-web {
     background-image: url(../images/homeImg.jpg);
     background-size: cover;
     background-position: center;
@@ -479,23 +489,43 @@ a.btn-filled-bg:hover, .btn-filled-bg:hover {
     }
 }
 
-#calcetto {
+#calcetto.webp-supported {
+    background-image: url(../images/calcetto.webp);
+}
+
+#calcetto.no-webp {
     background-image: url(../images/calcetto.jpg);
 }
 
-#calcio {
+#calcio.webp-supported {
+    background-image: url(../images/calcio.webp);
+}
+
+#calcio.no-webp {
     background-image: url(../images/calcio.jpg);
 }
 
-#pallavolo {
+#pallavolo.webp-supported {
+    background-image: url(../images/beachVolley.webp);
+}
+
+#pallavolo.no-webp {
     background-image: url(../images/beachVolley.jpg);
 }
 
-#tennis {
+#tennis.webp-supported {
+    background-image: url(../images/tennis.webp);
+}
+
+#tennis.no-webp {
     background-image: url(../images/tennis.jpg);
 }
 
-#padel {
+#padel.webp-supported {
+    background-image: url(../images/padel.webp);
+}
+
+#padel.no-webp {
     background-image: url(../images/padel.jpg);
 }
 
@@ -564,33 +594,63 @@ input[type="date"]:hover {
     animation: slideIn 1s ease-in-out;
 }
 
-div#calcio{
+div#calcio.webp-supported {
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/soccerview.webp');
+    background-size: 100% auto;
+    background-position: center center;
+}
+
+div#calcio.no-webp {
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/soccerview.jpeg');
-    background-size:100% auto;
+    background-size: 100% auto;
     background-position: center center;
 }
 
-div#calcetto{
+div#calcetto.webp-supported {
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/futsalview.webp');
+    background-size: 100% auto;
+    background-position: center center;
+}
+
+div#calcetto.no-webp {
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/futsalview.jpeg');
-    background-size:100% auto;
+    background-size: 100% auto;
     background-position: center center;
 }
 
-div#tennis{
+div#tennis.webp-supported {
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/tennisview.webp');
+    background-size: 100% auto;
+    background-position: center center;
+}
+
+div#tennis.no-webp {
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/tennisview.jpeg');
-    background-size:100% auto;
+    background-size: 100% auto;
     background-position: center center;
 }
 
-div#pallavolo{
+div#pallavolo.webp-supported {
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/volleyballview.webp');
+    background-size: 100% auto;
+    background-position: center center;
+}
+
+div#pallavolo.no-webp {
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/volleyballview.png');
-    background-size:100% auto;
+    background-size: 100% auto;
     background-position: center center;
 }
 
-div#paddel{
+div#padel.webp-supported {
+    background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/padelview.webp');
+    background-size: 100% auto;
+    background-position: center center;
+}
+
+div#padel.no-webp {
     background: linear-gradient(rgb(0,0,0,0.7), rgba(0, 0, 0, 0.6)), url('../images/padelview.jpeg');
-    background-size:100% auto;
+    background-size: 100% auto;
     background-position: center center;
 }
 
@@ -1089,7 +1149,6 @@ h6 {
     justify-content: center; 
     display: flex;
     align-items: center;
-    width: 100%; 
     margin-bottom: 15px;
 }
 
@@ -1103,19 +1162,19 @@ h6 {
 }
 
 .contact-phone::before {
-    background-image: url('../images/iconatel.png');
+    background-image: url('../images/tel.png');
 }
 
 .contact-email::before {
-    background-image: url('../images/iconaemail.png');
+    background-image: url('../images/mail.png');
 }
 
 .contact-address::before {
-    background-image: url('../images/iconapos.png');
+    background-image: url('../images/map.png');
 }
 
 .contact-text {
-    margin: auto;
+    margin: 0 1em;
 }
 
 #invio-messaggio .card-body {
@@ -1350,13 +1409,13 @@ caption {
     }
 }
 
-#prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
+#prevPage:not(:disabled-effect):hover, #nextPage:not(:disabled-effect):hover {
     background-color: var(--flagColor3); 
     color: var(--flagColor1);
     border: 1px solid var(--flagColor1);
 }
 
-#prevPage:disabled, #nextPage:disabled {
+#prevPage:disabled-effect, #nextPage:disabled-effect {
     border: 1px solid rgba(226, 157, 29, 0.3);
     color: rgba(226, 157, 29, 0.3);
 }
@@ -1466,20 +1525,75 @@ caption {
 }
 
 /**********  404 *************/
-#error-display { 
-    width: auto;
-    margin:2em; 
+#error-message {
+    margin: 2em auto; 
     padding: 1em;
     text-align: center;
     font-size: 1.1em;
+    width: 70%;
 }
 
-#error-display h1 {
+#error-message h1 {
     margin: 1em auto;
-    width: 8em;
+    line-height: 1.5em;
     padding: 0.5em;
 }
 
-#error-display h1 + p {
+#error-message p {
+    color: var(--flagColor2);
     margin-bottom: 1em;
+    line-height: 1.5em;
+}
+
+/* TERMINI e CONDIZIONI */
+#terms-conditions {
+    width: 70%;
+    color: var(--flagColor2);
+}
+
+#terms-conditions h1 {
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+#terms-conditions h2 {
+    padding: 0.5em;
+}
+
+#terms-conditions p {
+    padding: 0.5em;
+}
+
+#terms-conditions span {
+    font-weight: bold;
+}
+
+#terms-conditions hr {
+    margin: 1em;
+    border: 1px solid var(--flagColor5);
+}
+
+#terms-conditions div {
+    margin-bottom: 2em;
+}
+
+ol {
+    margin: 3em auto;
+    width: 60%;
+    text-align: justify;
+}
+
+ol > li p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#terms-conditions ul > li {
+    font-weight: none;
+}
+
+#terms-conditions li {
+    padding: 0.2em;
+    text-align: left;
+    line-height: 1.5em;
 }
