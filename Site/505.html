@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ERRORE505</title>
+        <meta name="keyword" content="cadosportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
+        <meta name="description" content="Sito CadoSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
+        <meta name="author" content="Agafitei Ciprian">
+        <link rel="stylesheet" href="styles/stile.min.css" media="screen">
+        <link rel="stylesheet" href="styles/tablet.min.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="styles/mobile.min.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="styles/print.min.css" media="print">  
+        <script src="scripts/menu_logic.js"></script>
+    </head>
+    <body>
+        <header>
+            <picture>
+                <source type="image/webp" srcset="images/logo.webp">
+                <source type="image/png" srcset="images/logo.png">
+                <img id="logo" src="images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            </picture>
+            <nav id="menu" aria-label="Menù principale di navigazione" tabindex="0">
+                <ul>
+                    <li><a href="index.html" lang="en">Home</a></li>
+                    <li><a href="activities.html">Attività</a></li>
+                    <li><a href="eventi.html">Eventi</a></li>
+                    <li><a href="php/contatti.php">Contatti</a></li>
+                    <li><a href="php/login.php">Accedi</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <button class="bar" aria-label="Premi per aprire il menù" tabindex="-1"></button>
+            </div>
+            <nav class="mobile-nav" aria-label="Menù a tendina" tabindex="-1">
+                <a href="index.html" lang="en">Home</a>
+                <a href="activities.html">Attività</a>
+                <a href="eventi.html">Eventi</a>
+                <a href="php/contatti.php">Contatti</a>
+                <a href="php/login.php">Accedi</a>
+            </nav>
+        </header>
+
+        <main>
+            <div id="error-message">
+                <h1>Oh no! <span role="img" aria-label="Icona con un trofeo">&#127942;</span> Errore 505 - Allenatore fuori campo!</h1>
+                <p>Sembra che il nostro allenatore principale sia temporaneamente indisponibile. Forse ha preso una pausa tattica o sta elaborando nuove strategie vincenti. <span role="img" aria-label="Icona con il simbolo di pausa">&#9208;</span></p>
+                <p>Ritorna più tardi quando il nostro coach sarà di nuovo in panchina pronto a guidarci alla vittoria! Nel frattempo, puoi esplorare altre aree del nostro stadio virtuale. <span role="img" aria-label="Icona con un edificio">&#127978;</span><span role="img" aria-label="Icona con la lente d'ingrandimento">&#128269;</span></p>
+                <p>Torna in <a href="index.html">home</a>.</p>
+            </div>
+        </main>
+        
+        <footer>
+            <p><span lang="en">CadoSportCenter Website</span> &minus; &copy; Tutti i diritti riservati.</p>
+        </footer>
+    </body>
+</html>
