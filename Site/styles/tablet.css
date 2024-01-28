@@ -154,3 +154,16 @@ h5 {
 .prenot_cliente {
     width: 25em;
 }
+
+/*  TERMINI E CONDIZIONI  */
+#terms-conditions {
+    width: 90%;
+}
+
+ol {
+    width: 80%;
+}
+
+#terms-conditions ul  {
+    display: block;
+}
