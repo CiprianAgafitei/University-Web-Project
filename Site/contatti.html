@@ -6,10 +6,11 @@
         <title>Contatti</title>
         <meta name="keywords" content="codesportcenter, prenotazione campi sportivi, attività, eventi sportivi, feste">
         <meta name="description" content="Sito CodeSportCenter per la prenotazione di attività sportive, eventi o feste, presso il nostro complesso sportivo">
-        <link rel="stylesheet" href="../styles/stile.css" media="screen">
-        <link rel="stylesheet" href="../styles/tablet.css" media="screen and (max-width:1032px)">
-        <link rel="stylesheet" href="../styles/mobile.css" media="screen and (max-width:496px)">
-        <link rel="stylesheet" href="../styles/print.css" media="print">
+        <meta name="author" content="Pasqualotto Lorenzo, Agafitei Ciprian">
+        <link rel="stylesheet" href="../styles/stile.min.css" media="screen">
+        <link rel="stylesheet" href="../styles/tablet.min.css" media="screen and (max-width:1032px)">
+        <link rel="stylesheet" href="../styles/mobile.min.css" media="screen and (max-width:496px)">
+        <link rel="stylesheet" href="../styles/print.min.css" media="print">  
         <script src="../scripts/menu_logic.js"></script>
         <script src="../scripts/contatti.js"></script>
     </head>
@@ -18,7 +19,11 @@
             <nav aria-label="Aiuti alla navigazione">
                 <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
-            <img id="logo" src="../images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            <picture>
+                <source type="image/webp" srcset="../images/logo.webp">
+                <source type="image/png" srcset="../images/logo.png">
+                <img id="logo" src="../images/logo.png" alt="Logo: corna di cervo stilizzate di color oro">
+            </picture>
             <nav id="menu" aria-label="Menù principale di navigazione" tabindex="0">
                 <ul>
                     <li><a href="../index.html" lang="en">Home</a></li>
@@ -46,7 +51,7 @@
         <main id="content">
             <h1 id="contacts-title" class="gradient-text">contattaci</h1>
 
-            <div id="contatti-azienda" class="card-body">
+            <div id="contatti-azienda" class="card-body" tabindex="0">
                 <div class="contact-item contact-phone">
                     <p class="contact-text">+39 123 456 7890</p>
                 </div>
