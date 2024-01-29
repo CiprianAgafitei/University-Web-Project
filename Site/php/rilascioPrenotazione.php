@@ -35,7 +35,7 @@ if ($conn)
 
     $result = false;
 
-    if ($campo1 && $campo1 !== null && $ora1 && $ora1 !== null) {
+    if ($campo1 && $campo1 != null && $ora1 && $ora1 != null) {
         $result = $cscAccess->removePrenotation($campo1, $attivita_scelta, $utente, $data_selezionata, $ora1);
     }
     if ($campo2 && $campo2 !== null && $ora2 && $ora2 !== null) {
