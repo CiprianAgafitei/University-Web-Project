@@ -98,7 +98,8 @@
 
         /** INSERIMENTO NUOVA PRENOTAZIONE */
         public function insertNewPrenotation($campo, $attività, $utente, $data, $ora) {
-			$id_attività = $this->getIdAttivita($attività)['id'];
+			$result = $this->getIdAttivita($attività);
+			$id_attività = isset($result['id']) ? $result['id'] : null;
 			$queryInsert = "INSERT INTO Prenotazione(Codice_campo, Id_Attivita, Utente, Data, Ora) 
 								VALUES (\"$campo\", \"$id_attività\", \"$utente\", \"$data\", \"$ora\")";
 			
@@ -107,12 +108,22 @@
 			return mysqli_affected_rows($this->connection) > 0;
 		}
 		
-		/** RIMOZIONE DI UNA PRENOTAZIONE */
+		/** RIMOZIONE DI UNA PRENOTAZIONE DATI I VALORI DEI CAMPI */
         public function removePrenotation($campo, $attivita, $utente, $data, $ora) {
-			$id_attivita = $this->getIdAttivita($attivita)['id'];
+			$result = $this->getIdAttivita($attivita);
+			$id_attivita = isset($result['id']) ? $result['id'] : null;
 
 			$queryRemove = "DELETE FROM Prenotazione WHERE codice_campo=\"$campo\" AND id_attivita=\"$id_attivita\" 
 					AND utente=\"$utente\" AND data=\"$data\" AND ora=\"$ora\"";
+			
+			mysqli_query($this->connection, $queryRemove) or die(mysqli_error($this->connection));
+
+			return mysqli_affected_rows($this->connection) > 0;
+		}
+
+		/** RIMOZIONE DI UNA PRENOTAZIONE DATO L'ID */
+		public function removePrenotationById($id) {
+			$queryRemove = "DELETE FROM Prenotazione WHERE id=\"$id\"";
 			
 			mysqli_query($this->connection, $queryRemove) or die(mysqli_error($this->connection));
 
@@ -218,15 +229,16 @@
 
 		/** OTTENIMENTO DELL'ID DELL'ATTIVITA PASSATA COME PARAMETRO */
 		private function getIdAttivita($attivita) {
-			$query = "SELECT id FROM Attivita WHERE nome_sport=\"$attivita\"";
+			$query = "SELECT id FROM Attivita WHERE nome_sport=?";
+			$stmt = mysqli_prepare($this->connection, $query);
+			mysqli_stmt_bind_param($stmt, "s", $attivita);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $id_attivita);
+			mysqli_stmt_fetch($stmt);
+			mysqli_stmt_close($stmt);
 
-			$queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess" . mysqli_error($this -> connection));
-
-			$row = mysqli_fetch_assoc($queryResult);
-			$id_attivita = ($row !== null) ? $row['id'] : null;
-
-			mysqli_free_result($queryResult);
-			return $id_attivita;
+			// Restituisci un array associativo con la chiave 'id'
+			return ['id' => $id_attivita];
 		}
 
 		/** CONTEGGIO DEL NUMERO DI CAMPO DISPONIBILI DI UNA CERTA ATTIVITA */
@@ -243,7 +255,8 @@
 		 * 								PRENOTATI PER CIASCUN ORARIO
 		 * 				(utile per visualizzare in seguito le disponibilità restanti) */
 		public function getReservedPrenotations($data_scelta, $attivita) {
-			$id_attivita = $this->getIdAttivita($attivita)['id'];
+			$result = $this->getIdAttivita($attivita);
+			$id_attivita = isset($result['id']) ? $result['id'] : null;
 
 			$query = "SELECT ora, codice_campo
 					  FROM Prenotazione P JOIN Campo C 
@@ -301,7 +314,8 @@
 
 		/** OTTENIMENTO DEL PRIMO CAMPO DISPONIBILE CON DATA, L'ATTIVITA SCELTA E L'ORARIO */
 		public function getCampoDisponibile($data_scelta, $attivita, $orario) {
-			$id_attivita = $this->getIdAttivita($attivita)['id'];
+			$result = $this->getIdAttivita($attivita);
+			$id_attivita = isset($result['id']) ? $result['id'] : null;
 
 			$query = "SELECT codice
 					  FROM Campo
@@ -318,7 +332,8 @@
 		}
 
 		public function updateUserPrenotation($campo, $data, $attivita, $ora, $email) {
-			$id_attivita = $this->getIdAttivita($attivita)['id'];
+			$result = $this->getIdAttivita($attivita);
+			$id_attivita = isset($result['id']) ? $result['id'] : null;
 
 			if ($ora !== null) {
 				$query = "UPDATE Prenotazione SET utente=\"$email\" WHERE codice_campo=\"$campo\" AND data=\"$data\"
