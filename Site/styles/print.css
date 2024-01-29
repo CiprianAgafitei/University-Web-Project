@@ -571,3 +571,51 @@ input[type="date"] {
     margin-top: 10px;
     margin-bottom: 5px; 
 }
+
+/* TERMINI E CONDIZIONI */
+#terms-conditions h1 {
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+#terms-conditions h2 {
+    padding: 0.5em;
+}
+
+#terms-conditions p {
+    padding: 0.5em;
+}
+
+#terms-conditions span {
+    font-weight: bold;
+}
+
+#terms-conditions hr {
+    margin: 1em;
+    border: 1px solid var(--flagColor5);
+}
+
+#terms-conditions div {
+    margin-bottom: 2em;
+}
+
+ol {
+    margin: 3em auto;
+    width: 60%;
+    text-align: justify;
+}
+
+ol > li p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#terms-conditions ul > li {
+    font-weight: none;
+}
+
+#terms-conditions li {
+    padding: 0.2em;
+    text-align: left;
+    line-height: 1.5em;
+}
