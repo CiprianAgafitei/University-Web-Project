@@ -39,7 +39,7 @@
                 <li><a href="../activities.html">Attività</a></li>
                 <li><a href="../eventi.html">Eventi</a></li>
                 <li><a href="contatti.php">Contatti</a></li>
-                <li><a href="login.php">Accedi</a></li>
+                <li><a id="login-link-desk" href="login.php">Accedi</a></li>
             </ul>
         </nav>
         <div class="hamburger">
@@ -50,7 +50,7 @@
             <a href="../activities.html">Attività</a>
             <a href="../eventi.html">Eventi</a>
             <a href="contatti.php">Contatti</a>
-            <a href="login.php">Accedi</a>
+            <a id="login-link-mob" href="login.php">Accedi</a>
         </nav>
     </header>
 
@@ -77,6 +77,13 @@
                 </div>
             </fieldset>
         </form>
+
+        <div class="overlay" id="popup-overlay">
+            <div id="popup" class="modal">
+                <p id="popup-msg">Messaggio</p>
+                <button id="confirm-btn" class="auth-button">Ho capito</button>
+            </div>
+        </div>
 
         <!-- Visualizzazione compilazione campi con informazioni utente/login -->
         <div id="end-prenotation" hidden>
@@ -113,7 +120,7 @@
 
                         <span>
                             <input id="check-disclaimer" type="checkbox" required>
-                            <label for="check-disclaimer">Accetto i <a href="../terminiECondizioni.html">Termini e le Condizioni</a>.</label>
+                            <label for="check-disclaimer">Accetto i <a href="../terminiECondizioni.html" target="_blank">Termini e le Condizioni</a>.</label>
                         </span><br>
 
                         <span id="errore_box" class="error_form"></span>
@@ -183,7 +190,7 @@
                 <input id="back-to-times" class="auth-button btn-empty-bg" type="button" value="Indietro">
                 <a href="cliente.php" class="btn-filled-bg">Termina</a>
             </div><br>
-            <p>Nota: per visualizzare tutte le tue prenotazioni <a href="register.php">registrati</a> oppure accedi alla
+            <p id="registered-only">Nota: per visualizzare tutte le tue prenotazioni <a href="register.php">registrati</a> oppure accedi alla
                 tua <a href="client_area.php">area riservata</a>.</p>
         </div>
     </main>
