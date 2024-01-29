@@ -1,13 +1,16 @@
-window.onload = function() {
+window.onload = function () {
     document.getElementById('set-prenotation').style.display = "block";
     document.getElementById('end-prenotation').style.display = "none";
     document.getElementById('show-pren-details').style.display = "none";
     document.getElementById('logged-in-confirmation').style.display = "none";
     document.getElementById('modal').style.display = 'block';
     document.getElementById('time-elapsed').style.display = 'none';
+    document.getElementById('popup-overlay').style.display = 'none';
+    document.getElementById('popup').setAttribute('aria-hidden', 'true');
+    document.getElementById('popup').setAttribute('tabindex', '-1');
 
     // GESTIONE MENU
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
             document.querySelector("header").classList.add('is-scrolling');
         }
@@ -19,10 +22,30 @@ window.onload = function() {
     const menu_button = document.querySelector('.hamburger');
     const mobile_menu = document.querySelector('.mobile-nav');
 
-    menu_button.addEventListener('click', function() {
+    menu_button.addEventListener('click', function () {
         menu_button.classList.toggle('is-active');
         mobile_menu.classList.toggle('is-active');
     });
+
+    // Gestione controllo se user loggato
+    fetch('../php/auth.php')
+        .then(response => response.text())
+        .then(data => {
+            const parsedData = JSON.parse(data);
+            const accessButtonDesktop = document.getElementById('login-link-desk');
+            const accessButtonMobile = document.getElementById('login-link-mob');
+            accessButtonDesktop.textContent = parsedData.logged_in ? 'Area riservata' : 'Accedi';
+            accessButtonMobile.textContent = parsedData.logged_in ? 'Area riservata' : 'Accedi';
+
+            if (parsedData.logged_in != true) {
+                // Modifica testo in base allo stato di logged in dell'utente
+                var testo = document.getElementById('registered-only');
+                testo.innerHTML = "Nota: per visualizzare tutte le tue prenotazioni <a href=\"register.php\">registrati</a>.";
+            }
+        })
+        .catch(error => {
+            console.error('Errore durante la richiesta fetch:', error);
+        });
 }
 
 window.addEventListener('DOMContentLoaded', checkWindowSize);
@@ -42,16 +65,15 @@ let countdownInterval;
 var informazioni_prenotazione;
 
 // ===========================CREAZIONE CONTAINER==================================
-document.addEventListener('DOMContentLoaded', function () 
-{
+document.addEventListener('DOMContentLoaded', function () {
     function defaultDate() {
         var dataSelezionata = document.getElementById('dataSelezionata');
         var today = new Date();
         var formattedDate = today.toISOString().split('T')[0];
         dataSelezionata.value = formattedDate;
-    
+
         // Trigger the database query
-        var selectedDate = new Date(dataSelezionata.value).toISOString().split('T')[0];      
+        var selectedDate = new Date(dataSelezionata.value).toISOString().split('T')[0];
         fetch('../php/dateSelect.php', {
             method: 'POST',
             headers: {
@@ -59,13 +81,13 @@ document.addEventListener('DOMContentLoaded', function ()
             },
             body: 'selectedDate=' + selectedDate
         })
-        .then(response => response.text())
-        .then(data => {
-            updateFieldContainers(data);
-        })
-        .catch(error => console.error('Errore:', error));
+            .then(response => response.text())
+            .then(data => {
+                updateFieldContainers(data);
+            })
+            .catch(error => console.error('Errore:', error));
     }
-    
+
     defaultDate();
 
     var containerSection = document.getElementById('fieldContainerSection');
@@ -73,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function ()
     var confirmationButtonContainer = document.getElementById('confirmationButtonContainer');
     confirmationButtonContainer.style.display = 'none';
 
-    var selectedButtons = [];        
+    var selectedButtons = [];
     let nrSelectedButtons = 0;
 
     // Ottiene l'URL corrente
@@ -91,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function ()
         fieldContainer.id = chosenSport;
 
         // Blocco per gestire lo sfondo in base al formato compatibile: webp o non-webp
-        Modernizr.addTest('webp', function() {
+        Modernizr.addTest('webp', function () {
             return (document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0);
         });
         var supportedClass = Modernizr.webp ? 'webp-supported' : 'no-webp';
@@ -173,14 +195,14 @@ document.addEventListener('DOMContentLoaded', function ()
         if (chosenDate < today) {
             displayErrorPopup("Si prega di non selezionare una data passata");
             defaultDate();
-        } 
+        }
         else if (chosenDate > oneMonthFromToday) {
             displayErrorPopup("Si prega a selezionare una data compresa tra la data corrente ed un mese dalla data corrente");
             defaultDate();
         }
         else {
             // Gestione data-selezionata-ricerca orari disponibili
-            var selectedDate = new Date(dataSelezionata.value).toISOString().split('T')[0];      
+            var selectedDate = new Date(dataSelezionata.value).toISOString().split('T')[0];
             fetch('../php/dateSelect.php', {
                 method: 'POST',
                 headers: {
@@ -188,11 +210,11 @@ document.addEventListener('DOMContentLoaded', function ()
                 },
                 body: 'selectedDate=' + selectedDate
             })
-            .then(response => response.text())
-            .then(data => {
-                updateFieldContainers(data);
-            })
-            .catch(error => console.error('Errore:', error));
+                .then(response => response.text())
+                .then(data => {
+                    updateFieldContainers(data);
+                })
+                .catch(error => console.error('Errore:', error));
         }
     });
 
@@ -207,27 +229,26 @@ document.addEventListener('DOMContentLoaded', function ()
     /** Visualizzazione dei messaggi di errore relativi all'inserimento erratto della data */
     function displayErrorPopup(errorMessage) {
         closeDateSelectionDialog();
-        var popupContainer = document.createElement('div');
-        popupContainer.className = 'popup-container';
+        var previousFocusedElement = document.activeElement;
 
-        var popup = document.createElement('div');
-        popup.className = 'popup';
-        var errorText = document.createElement('p');
+        var popupContainer = document.getElementById('popup-overlay');
+        popupContainer.style.display = 'block';
+
+        var popup = document.getElementById('popup');
+        popup.setAttribute('aria-hidden', 'false');
+        popup.setAttribute('tabindex', '0');
+        popup.focus();
+
+        var errorText = document.getElementById('popup-msg');
         errorText.textContent = errorMessage;
 
-        var closeButton = document.createElement('input');
-        closeButton.type = 'button';
-        closeButton.value = 'Ho capito';
+        var closeButton = document.getElementById('confirm-btn');
         closeButton.addEventListener('click', function () {
-            document.body.removeChild(popupContainer);
-            document.body.style.overflow = 'auto';
+            popupContainer.style.display = 'none';
+            popup.setAttribute('aria-hidden', 'true');
+            popup.setAttribute('tabindex', '-1');
+            previousFocusedElement.focus();
         });
-        popup.appendChild(errorText);
-        popup.appendChild(closeButton);
-        popupContainer.appendChild(popup);
-
-        document.body.appendChild(popupContainer);
-        document.body.style.overflow = 'hidden';
     }
 
     /** SEZIONE LEGATA AL COUNTDOWM */
@@ -237,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function ()
     function startCountdown(duration) {
         let timer = duration * 60;
 
-        const countdownInterval = setInterval(function() {
+        const countdownInterval = setInterval(function () {
             var minutes = Math.floor(timer / 60);
             var seconds = timer % 60;
             minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -258,14 +279,13 @@ document.addEventListener('DOMContentLoaded', function ()
                 document.getElementById('time-elapsed').style.display = 'block';
             }
         }, 1000);
-        return countdownInterval; 
+        return countdownInterval;
     }
-    
+
     var risultato_prenotazione = [];
- 
+
     /** Pulsante di avvio conto alla rovescia/per bloccare la risorsa nel database */
-    startButton.addEventListener('click', function () 
-    {   
+    startButton.addEventListener('click', function () {
         // Blocco della risorsa nel database
         var selectedDate = document.getElementById('dataSelezionata').value;
 
@@ -281,73 +301,80 @@ document.addEventListener('DOMContentLoaded', function ()
             },
             body: data.toString()
         })
-        .then(response => response.text())
-        .then(data => {
-            risultato_prenotazione = data;
+            .then(response => response.text())
+            .then(data => {
+                risultato_prenotazione = JSON.parse(data);
 
-            var orario1 = risultato_prenotazione[0] ? risultato_prenotazione[0]['ora_1'] : null;
-            var orario2 = risultato_prenotazione[1] ? risultato_prenotazione[1]['ora_2'] : null;
-            var campo1 = risultato_prenotazione[0] ? risultato_prenotazione[0]['campo1'] : null;
-            var campo2 = risultato_prenotazione[1] ? risultato_prenotazione[1]['campo2'] : null;
+                var orario1 = risultato_prenotazione[0] ? risultato_prenotazione[0]['ora_1'] : null;
+                var orario2 = risultato_prenotazione[1] ? risultato_prenotazione[1]['ora_2'] : null;
+                var campo1 = risultato_prenotazione[0] ? risultato_prenotazione[0]['campo1'] : null;
+                var campo2 = risultato_prenotazione[1] ? risultato_prenotazione[1]['campo2'] : null;
 
-            // Inserimento testi
-            updateTextFields(chosenSport, selectedDate, orario1, orario2, campo1, campo2);
+                // Inserimento testi
+                updateTextFields(chosenSport, selectedDate, orario1, orario2, campo1, campo2);
 
-            const info_prenotazione = new URLSearchParams();
-            info_prenotazione.append('orario1', orario1);
-            info_prenotazione.append('campo1', campo1);
-            info_prenotazione.append('orario2', orario2);
-            info_prenotazione.append('campo2', campo2);
+                const info_prenotazione = new URLSearchParams();
+                info_prenotazione.append('orario1', orario1);
+                info_prenotazione.append('campo1', campo1);
+                info_prenotazione.append('orario2', orario2);
+                info_prenotazione.append('campo2', campo2);
 
-            informazioni_prenotazione = info_prenotazione;
+                informazioni_prenotazione = info_prenotazione;
 
-            // Distinzione per utente loggato e non
-            if (startButton.value === 'continua') 
-            {
-                countdownInterval = startCountdown(10);
-                document.getElementById('set-prenotation').style.display = "none";
-                document.getElementById('end-prenotation').style.display = "block";
+                // Distinzione per utente loggato e non
+                if (startButton.value === 'continua') {
+                    countdownInterval = startCountdown(10);
+                    document.getElementById('set-prenotation').style.display = "none";
+                    document.getElementById('end-prenotation').style.display = "block";
 
-                /** Annullamento della scelta della data e degli orari selezionati dell'utente non loggato */
-                const backButton = document.getElementById("back-set-prenot");
-                backButton.addEventListener('click', function () {
-                    // Rilascio della risorsa (rimozione della prenotazione dal database)
-                    fetch('../php/rilascioPrenotazione.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: info_prenotazione.toString()
-                    })
-                    stopCountdown();
-                    document.getElementById("countdown").textContent = "10:00";
-                    document.getElementById('set-prenotation').style.display = "block";
-                    document.getElementById('end-prenotation').style.display = "none";
-                });
-            } 
-            else if (startButton.value === 'conferma') {
-                document.getElementById('set-prenotation').style.display = "none";
-                document.getElementById('show-pren-details').style.display = "block";
-                document.getElementById('logged-in-confirmation').style.display = "block";
+                    /** Annullamento della scelta della data e degli orari selezionati dell'utente non loggato */
+                    const backButton = document.getElementById("back-set-prenot");
+                    backButton.addEventListener('click', function () {
+                        // Rilascio della risorsa (rimozione della prenotazione dal database)
+                        fetch('../php/rilascioPrenotazione.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: info_prenotazione.toString()
+                        })
+                            .catch(error => {
+                                console.error('Errore durante la richiesta fetch:', error);
+                            });
 
-                /** Annullamento della scelta della data e degli orari selezionati dell'utente loggato */
-                const backToTimes = document.getElementById("back-to-times");
-                backToTimes.addEventListener('click', function () {
-                    // Rilascio della risorsa (rimozione della prenotazione dal database)
-                    fetch('../php/rilascioPrenotazione.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: info_prenotazione.toString()
+                        stopCountdown();
+                        document.getElementById("countdown").textContent = "10:00";
+                        document.getElementById('set-prenotation').style.display = "block";
+                        document.getElementById('end-prenotation').style.display = "none";
                     });
-                    document.getElementById('set-prenotation').style.display = "block";
-                    document.getElementById('show-pren-details').style.display = "none";
-                    document.getElementById('logged-in-confirmation').style.display = "none";
-                });
-            } 
-        })
-        .catch(error => console.error('Errore:', error));       
+                }
+                else if (startButton.value === 'conferma') {
+                    document.getElementById('set-prenotation').style.display = "none";
+                    document.getElementById('show-pren-details').style.display = "block";
+                    document.getElementById('logged-in-confirmation').style.display = "block";
+
+                    /** Annullamento della scelta della data e degli orari selezionati dell'utente loggato */
+                    const backToTimes = document.getElementById("back-to-times");
+                    backToTimes.addEventListener('click', function () {
+                        // Rilascio della risorsa (rimozione della prenotazione dal database)
+                        fetch('../php/rilascioPrenotazione.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: info_prenotazione
+                        }).then(data => {
+                            document.getElementById('set-prenotation').style.display = "block";
+                            document.getElementById('show-pren-details').style.display = "none";
+                            document.getElementById('logged-in-confirmation').style.display = "none";
+                        })
+                            .catch(error => {
+                                console.error('Errore durante la richiesta fetch:', error);
+                            });
+                    });
+                }
+            })
+            .catch(error => console.error('Errore:', error));
         scrollToTop();
     });
 
@@ -401,7 +428,7 @@ document.addEventListener('DOMContentLoaded', function ()
         overlay.style.display = 'block';
     });
 
-    closeButton.onclick = function() {
+    closeButton.onclick = function () {
         overlay.style.display = 'none';
     };
 
@@ -412,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function ()
 
         if (event.target === overlay) {
             overlay.style.display = 'none';
-            
+
             if (timeElapsed === 'block') {
                 aggiornaAContenutoIniziale();
                 scrollToTop();
@@ -437,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function ()
     var nome_error_contat = document.getElementById('errore_nome_info');
     var email_error_contat = document.getElementById('errore_email_info');
     var conf_em_error_contat = document.getElementById('errore_conf_email');
-    var checkBoxError = document.getElementById('errore_box'); 
+    var checkBoxError = document.getElementById('errore_box');
 
     if (nome_error_contat && nome_error_contat.textContent.trim() === '') {
         nome_error_contat.style.display = 'none';
@@ -452,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function ()
         checkBoxError.style.display = 'none';
     }
 
-    document.getElementById('submitForm').addEventListener('click', function() {
+    document.getElementById('submitForm').addEventListener('click', function () {
         var strutturaEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         var nome_contat = document.getElementById('nome').value.trim();
@@ -471,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function ()
             return;
         } else
             nome_error_contat.textContent = '';
-    
+
         if (email_contat === '') {
             email_error_contat.textContent = "Il campo email è richiesto.";
             email_error_contat.style.display = 'block';
@@ -482,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function ()
             return;
         } else
             email_error_contat.textContent = '';
-    
+
         if (conf_em_contat === '') {
             conf_em_error_contat.textContent = "Il campo conferma email non può essere vuoto.";
             conf_em_error_contat.style.display = 'block';
@@ -494,24 +521,24 @@ document.addEventListener('DOMContentLoaded', function ()
             return;
         } else
             conf_em_error_contat.textContent = '';
-    
+
         if (!checkBox.checked) {
             checkBoxError.textContent = "Accetta i termini e le condizioni per continuare";
             checkBoxError.style.display = 'block';
             return;
         } else
             checkBoxError.textContent = '';
-    
+
         // Tutto ok -> nessun errore
         const data = new URLSearchParams();
         data.append('nome', nome_contat);
         data.append('email', email_contat);
-    
+
         // Aggiungi i parametri da informazioni_prenotazione a data
         for (const pair of informazioni_prenotazione.entries()) {
             data.append(pair[0], pair[1]);
         }
-    
+
         fetch('../php/aggiornaUserPrenot.php', {
             method: 'POST',
             headers: {
@@ -519,19 +546,19 @@ document.addEventListener('DOMContentLoaded', function ()
             },
             body: data
         })
-        .catch(error => console.error('Errore:', error));
-    
+            .catch(error => console.error('Errore:', error));
+
         document.getElementById('overlay').style.display = 'none';
         document.getElementById('set-prenotation').style.display = 'none';
         document.getElementById('end-prenotation').style.display = 'none';
         document.getElementById('show-pren-details').style.display = 'block';
         document.getElementById('logged-in-confirmation').style.display = 'none';
         scrollToTop();
-        return true;    
+        return true;
     });
 
     // Gestione pulsante della finestra di fine sessione cliccato
-    document.getElementById('submit-session-ended').addEventListener('click', function() {
+    document.getElementById('submit-session-ended').addEventListener('click', function () {
         aggiornaAContenutoIniziale();
         scrollToTop();
     });
@@ -546,12 +573,21 @@ document.addEventListener('DOMContentLoaded', function ()
             },
             body: informazioni_prenotazione.toString()
         })
-        document.getElementById('set-prenotation').style.display = "block";
-        document.getElementById('end-prenotation').style.display = "none";
-        document.getElementById('show-pren-details').style.display = "none";
-        document.getElementById('logged-in-confirmation').style.display = "none";
-        document.getElementById('modal').style.display = 'block';
-        document.getElementById('time-elapsed').style.display = 'none';
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Errore nella richiesta fetch: ${response.status}`);
+                }
+                // Esegui il codice dopo che la richiesta è stata completata con successo
+                document.getElementById('set-prenotation').style.display = "block";
+                document.getElementById('end-prenotation').style.display = "none";
+                document.getElementById('show-pren-details').style.display = "none";
+                document.getElementById('logged-in-confirmation').style.display = "none";
+                document.getElementById('modal').style.display = 'block';
+                document.getElementById('time-elapsed').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Errore durante la richiesta fetch:', error);
+            });
     }
 });
 
@@ -585,7 +621,7 @@ function validateFormLogin(event) {
         email_error_login.style.display = 'block';
         return false;
     }
-    else 
+    else
         email_error_login.textContent = '';
 
     // PASSWORD
@@ -614,49 +650,49 @@ function validateFormLogin(event) {
         },
         body: data
     })
-    .then(response => response.text())
-    .then(data => {
-        esito = JSON.parse(data);
+        .then(response => response.text())
+        .then(data => {
+            esito = JSON.parse(data);
 
-        document.getElementById('messaggioLogin').textContent = "";
-
-        if (esito['loginResult']) {
-            stopCountdown();
             document.getElementById('messaggioLogin').textContent = "";
 
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('set-prenotation').style.display = 'none';
-            document.getElementById('end-prenotation').style.display = 'none';
-            document.getElementById('show-pren-details').style.display = 'block';
-            document.getElementById('logged-in-confirmation').style.display = 'block';
+            if (esito['loginResult']) {
+                stopCountdown();
+                document.getElementById('messaggioLogin').textContent = "";
 
-            /** Annullamento della scelta della data e degli orari selezionati dell'utente loggato */
-            const backToTimes = document.getElementById("back-to-times");
-            backToTimes.addEventListener('click', function () {
-                // Rilascio della risorsa (rimozione della prenotazione dal database)
-                fetch('../php/rilascioPrenotazione.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: informazioni_prenotazione.toString()
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('set-prenotation').style.display = 'none';
+                document.getElementById('end-prenotation').style.display = 'none';
+                document.getElementById('show-pren-details').style.display = 'block';
+                document.getElementById('logged-in-confirmation').style.display = 'block';
+
+                /** Annullamento della scelta della data e degli orari selezionati dell'utente loggato */
+                const backToTimes = document.getElementById("back-to-times");
+                backToTimes.addEventListener('click', function () {
+                    // Rilascio della risorsa (rimozione della prenotazione dal database)
+                    fetch('../php/rilascioPrenotazione.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: informazioni_prenotazione.toString()
+                    });
+                    document.getElementById('set-prenotation').style.display = "block";
+                    document.getElementById('show-pren-details').style.display = "none";
+                    document.getElementById('logged-in-confirmation').style.display = "none";
+                    scrollToTop();
                 });
-                document.getElementById('set-prenotation').style.display = "block";
-                document.getElementById('show-pren-details').style.display = "none";
-                document.getElementById('logged-in-confirmation').style.display = "none";
-                scrollToTop();
-            });
-            return true;   // credenziali corrette
-        }
-        else if ('registeredResult' in esito) {
-            if (esito['registeredResult'])
-                document.getElementById('messaggioLogin').textContent = "La password inserita non è corretta.";   // credenziali sbagliate
-            else
-                document.getElementById('messaggioLogin').textContent = "Utente non registrato.";   // utente non registrato
-        }
-        return false;
-    })
-    .catch(error => console.error('Errore:', error));
+                return true;   // credenziali corrette
+            }
+            else if ('registeredResult' in esito) {
+                if (esito['registeredResult'])
+                    document.getElementById('messaggioLogin').textContent = "La password inserita non è corretta.";   // credenziali sbagliate
+                else
+                    document.getElementById('messaggioLogin').textContent = "Utente non registrato.";   // utente non registrato
+            }
+            return false;
+        })
+        .catch(error => console.error('Errore:', error));
 }
 
 function checkWindowSize() {
