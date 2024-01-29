@@ -23,20 +23,29 @@ if ($conn) {
         // Recupero di tutte le prenotazioni dell'attivita scelta e della data selezionata
         $reservedPrenotations = $cscAccess->getReservedPrenotations($selectedDate, $attivita_scelta);
 
-        $data = new DateTime();
-        $currentHour = $data->format('H');
-        $currentHour = sprintf('%02d:00', $currentHour);
+        $oggi = new DateTime('today');
 
-        for ($hour = 8; $hour <= 21; $hour++) {
-            // Formatta l'ora aggiungendo uno zero se necessario davanti
-            $formattedHour = sprintf('%02d:00', $hour);
+        // Se la data è quella di oggi
+        if ($selectedDate == $oggi->format('Y-m-d')) 
+        {
+            $data = new DateTime();
+            $currentHour = $data->format('H');
+            $currentHour = sprintf('%02d:00', $currentHour);
 
-            // Aggiungi l'ora se è già prenotata o se è precedente a quella corrente
-            if ($formattedHour <= $currentHour || (!in_array($formattedHour, $orari) && isHourBooked($formattedHour, $reservedPrenotations))) {
-                $orari[] = $formattedHour;
+            for ($hour = 8; $hour <= 21; $hour++) {
+                // Formatta l'ora aggiungendo uno zero se necessario davanti
+                $formattedHour = sprintf('%02d:00', $hour);
+
+                // Aggiungi l'ora se è già prenotata o se è precedente a quella corrente
+                if ($formattedHour <= $currentHour || (!in_array($formattedHour, $orari) && isHourBooked($formattedHour, $reservedPrenotations))) {
+                    $orari[] = $formattedHour;
+                }
             }
+            echo json_encode($orari);
         }
-        echo json_encode($orari);
+        else {
+            echo json_encode($reservedPrenotations);
+        }
     }
 }
 $closeResult = $cscAccess->closeConnection();
