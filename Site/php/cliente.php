@@ -48,9 +48,10 @@ if ($conn)
             $sport = $cscAccess->getNomeAttivita($prenotazione['id_Attivita']);
             $data = date("d-m-Y", strtotime($prenotazione['data']));
             $ora = date("H:i", strtotime($prenotazione['ora']));
+            $id_prenotazione = $prenotazione['id']; // inserito come id del pulsante di cancellazione
 
             $elencoPrenotazioni .= "<div class=\"prenot_cliente\" tabindex=\"0\"><dt>Codice campo: <span>{$prenotazione['codice_campo']}</span> - Attività: <span>$sport</span></dt>
-                                <dd>Data: <span>$data</span> - Ora: <span>$ora</span></dd></div>";
+                                <dd>Data: <span>$data</span> - Ora: <span>$ora</span></dd><input id-prenot=\"$id_prenotazione\" type=\"button\" aria-label=\"Cancella prenotazione\" value=\"&#128465;\"></div>";
         }
     }
 }
