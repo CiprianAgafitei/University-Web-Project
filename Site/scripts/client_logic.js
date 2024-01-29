@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const viewPrenSection = document.getElementById('prenotazioni-container');
     const editPassButton = document.getElementById('modify-password');
     const viewPrenButton = document.getElementById('visualizza-prenotazioni');
+    var overlay = document.getElementById('overlay');
+    var modal = document.getElementById('modal');
+    var confirmBtn = document.getElementById('confirm-btn');
+    var cancelBtn = document.getElementById('cancel-btn');
+    overlay.style.display = "none";
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('tabindex', '-1');
 
     var currentPage = window.location.pathname.split("/").pop();
 
@@ -20,6 +27,38 @@ document.addEventListener('DOMContentLoaded', function () {
         viewPrenButton.removeAttribute('href');
         viewPrenButton.setAttribute('aria-disabled', 'true');
         viewPrenButton.setAttribute('tabindex', '-1');
+
+        // Gestione cancellazione di una prenotazione: individuazione di tutti i pulsanti di cancellazione della pagina
+        var elementi = document.querySelectorAll('[id-prenot]');
+        if (elementi.length !== 0) 
+        {
+            elementi.forEach(function(elemento) {
+                elemento.addEventListener('click', function() {
+                    var id_prenotazione = elemento.getAttribute('id-prenot');
+
+                    overlay.style.display = 'block';
+                    modal.setAttribute('aria-hidden', 'false');
+                    modal.setAttribute('tabindex', '0');
+                    modal.focus();
+
+                    confirmBtn.addEventListener('click', function() 
+                    {
+                        fetch('../php/deletePrenotation.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: 'idPrenotazione=' + encodeURIComponent(id_prenotazione)
+                        }).then(location.reload());
+                    });
+
+                    cancelBtn.addEventListener('click', function() {
+                        overlay.style.display = "none";
+                        modal.setAttribute('aria-hidden', 'true');
+                    });
+                });
+            });
+        }
     }
     else if (currentPage === "update_password.php") {
         // Applica effetti per mostrare il pulsante "Modifica password" disabilitato
