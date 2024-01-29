@@ -27,25 +27,26 @@ window.onload = function () {
         mobile_menu.classList.toggle('is-active');
     });
 
-    // Gestione controllo se user loggato
-    fetch('../php/auth.php')
+    const currentPath = window.location.pathname.replace(/\/[^\/]+$/, '');
+    let pathToAuthPhp = "";
+    if (currentPath.includes('/php'))
+        pathToAuthPhp = window.location.origin + currentPath + '/auth.php';
+    else
+        pathToAuthPhp = window.location.origin + currentPath + '/php/auth.php';
+ 
+    // Verifica se l'utente è loggato e aggiorna il testo del menu
+    const accessButtonDesktop = document.getElementById('login-link-desk');
+    const accessButtonMobile = document.getElementById('login-link-mob');
+    if (accessButtonDesktop !== null && accessButtonMobile !== null) 
+    {
+        fetch(pathToAuthPhp)
         .then(response => response.text())
         .then(data => {
             const parsedData = JSON.parse(data);
-            const accessButtonDesktop = document.getElementById('login-link-desk');
-            const accessButtonMobile = document.getElementById('login-link-mob');
             accessButtonDesktop.textContent = parsedData.logged_in ? 'Area riservata' : 'Accedi';
             accessButtonMobile.textContent = parsedData.logged_in ? 'Area riservata' : 'Accedi';
-
-            if (parsedData.logged_in != true) {
-                // Modifica testo in base allo stato di logged in dell'utente
-                var testo = document.getElementById('registered-only');
-                testo.innerHTML = "Nota: per visualizzare tutte le tue prenotazioni <a href=\"register.php\">registrati</a>.";
-            }
-        })
-        .catch(error => {
-            console.error('Errore durante la richiesta fetch:', error);
         });
+    }
 }
 
 window.addEventListener('DOMContentLoaded', checkWindowSize);
