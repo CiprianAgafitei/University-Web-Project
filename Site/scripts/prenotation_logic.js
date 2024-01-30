@@ -278,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('overlay').style.display = 'block';
                 document.getElementById('modal').style.display = 'none';
                 document.getElementById('time-elapsed').style.display = 'block';
+                document.getElementById('time-elapsed').focus();
             }
         }, 1000);
         return countdownInterval;
