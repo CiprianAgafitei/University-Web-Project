@@ -610,10 +610,6 @@ ol > li p {
     font-weight: bold;
 }
 
-#terms-conditions ul > li {
-    font-weight: none;
-}
-
 #terms-conditions li {
     padding: 0.2em;
     text-align: left;
