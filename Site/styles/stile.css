@@ -1377,13 +1377,13 @@ caption {
     }
 }
 
-#prevPage:not(:disabled-effect):hover, #nextPage:not(:disabled-effect):hover {
+#prevPage:not(.disabled-effect):hover, #nextPage:not(.disabled-effect):hover {
     background-color: var(--flagColor3); 
     color: var(--flagColor1);
     border: 1px solid var(--flagColor1);
 }
 
-#prevPage:disabled-effect, #nextPage:disabled-effect {
+#prevPage.disabled-effect, #nextPage.disabled-effect {
     border: 1px solid rgba(226, 157, 29, 0.3);
     color: rgba(226, 157, 29, 0.3);
 }
@@ -1564,10 +1564,6 @@ ol {
 ol > li p {
     font-size: 1.2em;
     font-weight: bold;
-}
-
-#terms-conditions ul > li {
-    font-weight: none;
 }
 
 #terms-conditions li {
