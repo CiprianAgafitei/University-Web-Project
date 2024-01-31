@@ -4,9 +4,9 @@
 
 	class CSCAccess {
 		private const HOST_DB = "localhost";
-		private const DATABASE_NAME = "csc_db";
-		private const USERNAME = "root";
-		private const PASSWORD = "";
+		private const DATABASE_NAME = "lpasqual";
+		private const USERNAME = "lpasqual";
+		private const PASSWORD = "ohSh3thipo7toavi";
 
 		private $connection;
 		
