@@ -1,4 +1,4 @@
-USE csc_db;
+USE lpasqual;
 
 DROP TABLE IF EXISTS Richieste;
 DROP TABLE IF EXISTS Prenotazione;
@@ -28,7 +28,7 @@ CREATE TABLE Cliente (
     FOREIGN KEY (email) REFERENCES Utente(email)
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
-INSERT INTO Cliente VALUES 
+INSERT INTO Cliente VALUES
                     ("admin", "admin", "admin", SHA2('admin', 256)),
                     ("user", "user", "user", SHA2('user', 256)),
                     ("pluto@gmail.com", "pluto", "plutoropoli", SHA2('1234', 256)),
@@ -78,17 +78,21 @@ CREATE TABLE Prenotazione (
     FOREIGN KEY (utente) REFERENCES Utente(email)
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
-INSERT INTO Prenotazione VALUES 
-                    (1, 'A', 1, "pippo@gmail.com", '2023-12-01', '08:00'),
-                    (2, 'A', 2, "admin", '2023-12-01', '10:00'),
-                    (3, 'A', 2, "pluto@gmail.com", '2023-12-03', '12:00'),
-                    (4, 'C', 1, "pippo@gmail.com", '2023-12-05', '09:00'),
-                    (5, 'B', 5, "pippo@gmail.com", '2023-12-05', '19:00'),
-                    (6, 'B', 1, "pluto@gmail.com", '2023-12-06', '08:00'),
-                    (7, 'A', 4, "paperino@gmail.com", '2023-12-09', '15:00'),
-                    (8, 'A', 3, "paperino@gmail.com", '2023-12-09', '21:00'),
-                    (9, 'C', 1, "pippo@gmail.com", '2023-12-15', '08:00'),
-                    (10, 'B', 3, "pluto@gmail.com", '2023-12-15', '08:00');
+INSERT INTO Prenotazione VALUES
+                    (1,'A', 1, "pippo@gmail.com", '2023-02-12', '08:00'),
+                    (2,'A', 2, "admin", '2023-02-12', '10:00'),
+                    (3,'A', 2, "pluto@gmail.com", '2023-02-07', '12:00'),
+                    (4,'C', 1, "user", '2023-02-05', '09:00'),
+                    (5,'B', 5, "user", '2023-02-07', '19:00'),
+                    (6,'B', 1, "pluto@gmail.com", '2023-02-06', '08:00'),
+                    (7,'A', 4, "paperino@gmail.com", '2023-02-09', '15:00'),
+                    (8,'A', 3, "paperino@gmail.com", '2023-02-09', '21:00'),
+                    (9,'C', 1, "pippo@gmail.com", '2023-02-15', '08:00'),
+                    (10,'B', 3, "pluto@gmail.com", '2023-02-15', '08:00'),
+                    (11,'A', 4, "paperino@gmail.com", '2023-02-11', '15:00'),
+                    (12,'A', 3, "paperino@gmail.com", '2023-02-12', '21:00'),
+                    (13,'C', 1, "pippo@gmail.com", '2023-02-16', '08:00'),
+                    (14,'B', 3, "pluto@gmail.com", '2023-02-17', '08:00');
 
 CREATE TABLE Richieste (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -99,5 +103,6 @@ CREATE TABLE Richieste (
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO Richieste VALUES
-                    (1, "pluto@gmail.com", "Sconti natalizi", "Salve, vorrei sapere se per il periodo natalizio siete aperti e se sono previsti sconti. Grazie."),
-                    (2, "paperino@gmail.com", "SONO UN VIP", "Salve, sapete chi sono io vero? Sono Paperino De Paperoni, in persona! Ho intenzione di prenotarmi un campetto per paddel, non pagherò nulla vero?? sono un vip.");
+                    (1,'pluto@gmail.com', 'Problema Tecnico', 'Sto riscontrando un problema tecnico sul sito.'),
+                    (2,'pippo@gmail.com', 'Informazioni', 'Vorrei ricevere informazioni riguardo agli orari di apertura.'),
+                    (3,'user', 'Assistenza Prenotazioni', 'Ho bisogno di assistenza per le prenotazioni dei campi.');
