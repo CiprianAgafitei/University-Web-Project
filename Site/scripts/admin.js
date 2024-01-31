@@ -51,15 +51,15 @@ document.addEventListener("DOMContentLoaded", function() {
         function updateButtons() {
             // Disabilita opzione precedente se pagina 1
             if (currentPage == 1)
-                pulsantePrec.disabled = true;
+                pulsantePrec.classList.add('disabled-effect');
             else
-                pulsantePrec.disabled = false;
+                pulsantePrec.classList.remove('disabled-effect');
 
             // Disabilita opzione successiva se ultima pagina
             if (currentPage == totalPages)
-                pulsanteSucc.disabled = true;
+                pulsanteSucc.classList.add('disabled-effect');
             else
-                pulsanteSucc.disabled = false;
+                pulsanteSucc.classList.remove('disabled-effect');
         }
 
         function displayRows(start, end) {
